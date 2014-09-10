@@ -1,12 +1,16 @@
 require 'contentful/management'
 require 'storage_room'
 require 'pry'
+require 'pp'
 
-STORAGEROOM_ACCOUNT_ID = '4d13574cba05613d25000004'
-STORAGEROOM_APPLICATION_API_KEY = 'DZHpRbsJ7VgFXhybKWmT'
+ACCOUNT_ID = '4d13574cba05613d25000004'
+APPLICATION_API_KEY = 'DZHpRbsJ7VgFXhybKWmT'
 
-CONTENTFUL_ACCESS_TOKEN = 'access token'
-CONTENTFUL_ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
+StorageRoom.authenticate(ACCOUNT_ID, APPLICATION_API_KEY)
 
-StorageRoom.authenticate(STORAGEROOM_ACCOUNT_ID, STORAGEROOM_APPLICATION_API_KEY)
+collections = StorageRoom::Collection.all
+collections.instance_variable_get("@_attributes")['resources'].each do |collection|
+  json_collection = JSON.parse collection.to_json
+  File.open("collection_#{collection.name.downcase}.json", "w").write(JSON.pretty_generate(json_collection))
+end
 

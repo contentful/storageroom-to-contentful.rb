@@ -1,0 +1,114 @@
+{
+  "collection": {
+    "name": "Announcements",
+    "entry_type": "Announcement",
+    "primary_field_identifier": "text",
+    "fields": [
+      {
+        "default_value": null,
+        "choices": null,
+        "include_blank_choice": null,
+        "name": "Text",
+        "identifier": "text",
+        "interface": null,
+        "hint": null,
+        "input_type": "text_area",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "default_value": null,
+        "choices": [
+          "en",
+          "de"
+        ],
+        "include_blank_choice": null,
+        "name": "Locale",
+        "identifier": "locale",
+        "interface": null,
+        "hint": null,
+        "input_type": "select",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "default_value": null,
+        "choices": [
+          "announcement"
+        ],
+        "include_blank_choice": null,
+        "name": "Type",
+        "identifier": "type",
+        "interface": null,
+        "hint": null,
+        "input_type": "select",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "default_value": null,
+        "choices": null,
+        "include_blank_choice": null,
+        "name": "Link",
+        "identifier": "link",
+        "interface": null,
+        "hint": null,
+        "input_type": "text_field",
+        "required": null,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "name": "Image",
+        "identifier": "image",
+        "interface": null,
+        "hint": "Upload an icon image",
+        "input_type": "file",
+        "required": null,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      }
+    ],
+    "webhook_definitions": [
+      {
+        "url": "http://www.postbin.org/195aj9e",
+        "username": null,
+        "password": null,
+        "on_create": true,
+        "on_update": true,
+        "on_delete": true,
+        "api": true,
+        "web_interface": true
+      }
+    ],
+    "@version": 5
+  }
+}

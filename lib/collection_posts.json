@@ -1,0 +1,65 @@
+{
+  "collection": {
+    "name": "Posts",
+    "entry_type": "Post",
+    "primary_field_identifier": "name",
+    "fields": [
+      {
+        "default_value": null,
+        "choices": null,
+        "include_blank_choice": null,
+        "name": "Name",
+        "identifier": "name",
+        "interface": null,
+        "hint": null,
+        "input_type": "text_field",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "default_value": null,
+        "choices": null,
+        "include_blank_choice": null,
+        "name": "Body",
+        "identifier": "body",
+        "interface": null,
+        "hint": null,
+        "input_type": "text_area",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      },
+      {
+        "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033",
+        "name": "Categories",
+        "identifier": "categories",
+        "interface": null,
+        "hint": null,
+        "input_type": "association_field",
+        "required": null,
+        "unique": null,
+        "maximum_length": 3,
+        "minimum_length": 1,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      }
+    ],
+    "webhook_definitions": [
+
+    ],
+    "@version": 6
+  }
+}

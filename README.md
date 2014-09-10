@@ -19,6 +19,7 @@ Dump all the data from Storageroom to JSON file and make a proposal for Contentf
 You have to manually modify the structure of collection.
 
 Available types of field on Contentful:
+```
 1. 'Symbol'
 2. 'Text'
 3. 'Integer'
@@ -29,6 +30,7 @@ Available types of field on Contentful:
 8. 'Array'
 9. 'Object'
 10. 'Location'
+```
 
 Each file in ```'lib/data/collections'``` must be changed.
 Value of "input_type" attribute must belongs to list of available field types.
@@ -49,5 +51,5 @@ Example:
 Script execution:
 
 ```
-$ ruby script.rb
+$ ruby 'lib/script.rb'
 ```

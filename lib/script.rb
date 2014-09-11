@@ -12,7 +12,7 @@ APPLICATION_API_KEY = 'HKqZqeesYzwmB3DC6eeZ'
 Contentful::Management::Client.new(CONTENTFUL_ACCESS_TOKEN)
 StorageRoom.authenticate(ACCOUNT_ID, APPLICATION_API_KEY)
 
-puts "Actions:\n 1. Download all data from StorageRoom to JSON file\n 2. Import data to Contentful."
+puts "Actions:\n 1. Download all data from StorageRoom to JSON file\n 2. Import data to Contentful.\n 3. Dump entries from Storageroom."
 user_action = gets.to_i
 
 def create_contentful_space
@@ -32,8 +32,8 @@ def dump_collections_from_storageroom
 end
 
 def import_collection_to_contentful
-  $dir_target = "#{Dir.pwd}/data/collections"
-  Dir.glob("#{$dir_target}/*json") do |file_path|
+  $dir_target = "#{Dir.pwd}/data"
+  Dir.glob("#{$dir_target}/collections/*json") do |file_path|
     collection_file = JSON.parse(File.read(file_path))
     collection_attribute = collection_file['collection']
     content_type = @space.content_types.create(name: collection_attribute['entry_type'])
@@ -51,7 +51,34 @@ def import_collection_to_contentful
   end
 end
 
+def dump_entries_from_storageroom
+  $dir_target = "#{Dir.pwd}/data"
+  Dir.glob("#{$dir_target}/collections/*json") do |file_path|
+    collection_file = JSON.parse(File.read(file_path))
+    collection_attribute = collection_file['collection']
+    entry_name = collection_attribute['entry_type']
+    collection = StorageRoom::Collection.find(collection_attribute['id'])
+    entries = collection.entries
+    entries.instance_variable_get("@_attributes")['resources'].each do |entry|
+      json_entry = JSON.parse entry.to_json
+      FileUtils.mkdir_p "data/entries/#{entry_name}"
+      File.open("data/entries/#{entry_name}/#{entry.name}.json", "w").write(JSON.pretty_generate(json_entry))
+    end
+  end
+end
 
+# def import_assets_to_contentful
+#   Dir.glob("#{$dir_target}/entries/*json") do |file_path|
+#     collection_file = JSON.parse(File.read(file_path))
+#     collection_attribute = collection_file['collection']
+#     fields = collection_attribute['fields']
+#     fields.each do |field|
+#       unless field['input_type'] == 'Asset'
+#         @space.assets.create()
+#       end
+#     end
+#   end
+# end
 
 def create_field(params)
   field = Contentful::Management::Field.new
@@ -66,4 +93,6 @@ case user_action
   when 2
     create_contentful_space
     import_collection_to_contentful
+  when 3
+    dump_entries_from_storageroom
 end

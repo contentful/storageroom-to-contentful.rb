@@ -3,11 +3,16 @@ class ContentfulImporter
   ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
   ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
   COLLECTIONS_DATA_DIR = 'data/collections'
+  ENTRIES_DATA_DIR = 'data/entries'
 
-  attr_reader :space
+  attr_reader :space, :content_type
 
   def initialize
     Contentful::Management::Client.new(ACCESS_TOKEN)
+  end
+
+  def content_type(content_type_id, space_id)
+    @content_type ||= Contentful::Management::ContentType.find(space_id, content_type_id)
   end
 
   def create_space
@@ -25,10 +30,35 @@ class ContentfulImporter
       collection_attributes['fields'].each do |field|
         create_field(field, content_type)
       end
+      add_content_type_id_to_file(content_type.id, content_type.space.id, file_path)
+      content_type.activate
+    end
+  end
+
+  def import_entries
+    Dir.glob("#{ENTRIES_DATA_DIR}/**/*json") do |file_path|
+      entry_attrbiutes = JSON.parse(File.read(file_path))['entry']
+      entry_params = {}
+      entry_attrbiutes.each do |attr, value|
+        entry_params[attr.to_sym] = value
+      end
+      collection_name = file_path.match(/data\/entries\/(.*)\/.*/)[1]
+      content_type_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['content_type_id']
+      space_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['space_id']
+      content_type(content_type_id, space_id).entries.create(entry_params)
     end
   end
 
   private
+
+  def add_content_type_id_to_file(content_type_id, space_id, file_path)
+    content_type = JSON.parse(File.read(file_path))
+    File.open(file_path, 'w').write(format_json(content_type.merge(content_type_id: content_type_id, space_id: space_id)))
+  end
+
+  def format_json(item)
+    JSON.pretty_generate(JSON.parse(item.to_json))
+  end
 
   def create_field(field, content_type)
     field_params = {id: field['identifier'], name: field['name'], required: field['required']}
@@ -50,7 +80,7 @@ class ContentfulImporter
 
   def create_array_field(params)
     Contentful::Management::Field.new.tap do |field|
-      field.type = 'Link'
+      field.type = params['link'].presence || 'Link'
       field.link_type = params['link_type']
     end
   end

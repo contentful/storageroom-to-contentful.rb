@@ -12,9 +12,10 @@ class Migrator
   def run
     puts <<-eoruby, __FILE__
 Actions:
-  1. Download all data from StorageRoom to JSON file
-  2. Import data to Contentful.
+  1. Download collections data from StorageRoom to JSON file.
+  2. Import collections to Contentful.
   3. Dump entries from Storageroom.
+  4. Import entries to Contentful.
     eoruby
     action_choice = gets.to_i
     case action_choice
@@ -25,6 +26,8 @@ Actions:
         contentful_importer.import_content_types
       when 3
         storage_room_exporter.export_entries
+      when 4
+        contentful_importer.import_entries
     end
   end
 

@@ -1,32 +1,34 @@
 {
-    "collection": {
-        "name": "Category",
-        "entry_type": "Category",
-        "primary_field_identifier": "name",
-        "id": "4dff88d74d085d6010000033",
-        "fields": [
-            {
-                "default_value": null,
-                "choices": null,
-                "include_blank_choice": null,
-                "name": "Name",
-                "identifier": "name",
-                "interface": null,
-                "hint": null,
-                "input_type": "Text",
-                "required": true,
-                "unique": null,
-                "maximum_length": null,
-                "minimum_length": null,
-                "minimum_number": null,
-                "maximum_number": null,
-                "minimum_size": null,
-                "maximum_size": null
-            }
-        ],
-        "webhook_definitions": [
+  "collection": {
+    "name": "Category",
+    "entry_type": "Category",
+    "primary_field_identifier": "name",
+    "id": "4dff88d74d085d6010000033",
+    "fields": [
+      {
+        "default_value": null,
+        "choices": null,
+        "include_blank_choice": null,
+        "name": "Name",
+        "identifier": "name",
+        "interface": null,
+        "hint": null,
+        "input_type": "Text",
+        "required": true,
+        "unique": null,
+        "maximum_length": null,
+        "minimum_length": null,
+        "minimum_number": null,
+        "maximum_number": null,
+        "minimum_size": null,
+        "maximum_size": null
+      }
+    ],
+    "webhook_definitions": [
 
-        ],
-        "@version": 7
-    }
+    ],
+    "@version": 7
+  },
+  "content_type_id": "3DS66qmZF6EyK2aeUcAkqg",
+  "space_id": "ene4qtp2sh7u"
 }

@@ -35,8 +35,13 @@ Available types of field on Contentful:
 Each file in ```'lib/data/collections'``` must be changed.
 Value of "input_type" attribute must belongs to list of available field types.
 
-To create a single field of Entry/Asset type, we must change ```input_type``` to ```Asset``` or ```Entry```
-To create a multiple field of Entries/Assets type, we must change ```"link_type"``` to ```Array``` and add an additional parameter:
+##Association
+```
+    1. OneAssociationField (To-One)
+    2. ManyAssociationField (To-Many)
+ ```
+To create a ```OneAssociationField``` of Entry / Asset type, we must change ```input_type``` to ```Asset``` or ```Entry```
+To create a ```ManyAssociationFieldof``` Entries / Assets type, we must change ```"link_type"``` to ```Array``` and add an additional parameter:
 ```"link_type": "Entry"```  or  ```"link_type": "Asset"```
 
 Example:
@@ -48,7 +53,19 @@ Example:
     "unique": null,
     "link_type": "Entry"
 ```
-Script execution:
+
+To create a ```Array of Symbols``` you must change ```input_type``` to ```Array``` and add an additional parameter:
+```"link": "Symbol"```
+
+Example:
+```
+                "name": "Symbols",
+                "identifier": "symbol_tag",
+                "input_type": "Array",
+                "link": "Symbol"
+```
+
+##Script execution:
 
 ```
 $ ruby 'lib/script.rb'

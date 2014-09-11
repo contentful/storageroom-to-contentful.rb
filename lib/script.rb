@@ -22,7 +22,7 @@ def create_contentful_space
   @space = Contentful::Management::Space.find('ene4qtp2sh7u')
 end
 
-def dump_all_data_from_storageroom_to_json_files
+def dump_collections_from_storageroom
   collections = StorageRoom::Collection.all
   collections.instance_variable_get("@_attributes")['resources'].each do |collection|
     json_collection = JSON.parse collection.to_json
@@ -31,20 +31,19 @@ def dump_all_data_from_storageroom_to_json_files
   end
 end
 
-def import_data_to_contentful
+def import_collection_to_contentful
   $dir_target = "#{Dir.pwd}/data/collections"
   Dir.glob("#{$dir_target}/*json") do |file_path|
     collection_file = JSON.parse(File.read(file_path))
     collection_attribute = collection_file['collection']
-    content_type_name = collection_attribute['entry_type']
-    content_type = @space.content_types.create(name: content_type_name)
+    content_type = @space.content_types.create(name: collection_attribute['entry_type'])
     fields = collection_attribute['fields']
     fields.each do |field|
       field_type = field['input_type']
       if field_type == 'Entry' ||field_type == 'Asset'
         content_type.fields.create(id: field['identifier'], name: field['name'], type: 'Link', link_type: field['input_type'], required: field['required'])
       elsif field_type == 'Array'
-        content_type.fields.create(id: field['identifier'], name: field['name'], type: 'Array', items: create_array_field(field))
+        content_type.fields.create(id: field['identifier'], name: field['name'], type: 'Array', items: create_field(field))
       else
         content_type.fields.create(id: field['identifier'], name: field['name'], type: field['input_type'], required: field['required'])
       end
@@ -52,17 +51,19 @@ def import_data_to_contentful
   end
 end
 
-def create_array_field(params)
-  file = Contentful::Management::Field.new
-  file.type = 'Link'
-  file.link_type = params['link_type']
-  file
+
+
+def create_field(params)
+  field = Contentful::Management::Field.new
+  field.type = 'Link'
+  field.link_type = params['link_type']
+  field
 end
 
 case user_action
   when 1
-    dump_all_data_from_storageroom_to_json_files
+    dump_collections_from_storageroom
   when 2
     create_contentful_space
-    import_data_to_contentful
+    import_collection_to_contentful
 end

@@ -1,0 +1,15 @@
+{
+  "@type": "Guidebook",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4ddaf68b4d085d374a000003/entries/4ddaf6ed4d085d374a000011",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4ddaf68b4d085d374a000003",
+  "@version": 3,
+  "@trash": false,
+  "@created_at": "2011-05-24T00:08:13Z",
+  "@updated_at": "2011-11-29T17:45:19Z",
+  "title": "Name 4",
+  "category": null,
+  "categories": [
+
+  ],
+  "price": 4.1
+}

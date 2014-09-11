@@ -1,252 +1,144 @@
 {
-  "collection": {
-    "name": "Codequest",
-    "entry_type": "Codequest",
-    "primary_field_identifier": "name1",
-    "id": "540d6d001e29fa3541000d2d",
-    "fields": [
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Name",
-        "identifier": "name1",
-        "interface": null,
-        "hint": null,
-        "input_type": "Text",
-        "required": true,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Number",
-        "identifier": "number",
-        "interface": null,
-        "hint": null,
-        "input_type": "Integer",
-        "required": true,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Float",
-        "identifier": "float1",
-        "interface": null,
-        "hint": null,
-        "input_type": "Number",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "default_value": null,
-        "choices": [
-          [
-            "Yes",
-            true
-          ],
-          [
-            "No",
-            false
-          ]
+  "@type": "Collection",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d",
+  "@account_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004",
+  "@entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries",
+  "@deleted_entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F540d6d001e29fa3541000d2d",
+  "@version": 2,
+  "@created_at": "2014-09-08T08:46:56Z",
+  "@updated_at": "2014-09-11T07:38:50Z",
+  "name": "Codequest",
+  "note": "Testing",
+  "entry_type": "Codequest",
+  "primary_field_identifier": "name",
+  "fields": [
+    {
+      "@type": "StringField",
+      "name": "Name",
+      "identifier": "name",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "IntegerField",
+      "name": "Number",
+      "identifier": "number",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "FloatField",
+      "name": "Float",
+      "identifier": "float1",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "BooleanField",
+      "name": "Boolean",
+      "identifier": "boolean",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "radio",
+      "include_blank_choice": false,
+      "choices": [
+        [
+          "Yes",
+          true
         ],
-        "include_blank_choice": null,
-        "name": "Boolean",
-        "identifier": "boolean",
-        "interface": null,
-        "hint": null,
-        "input_type": "Boolean",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Date",
-        "identifier": "date",
-        "interface": null,
-        "hint": null,
-        "input_type": "Date",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Time",
-        "identifier": "time",
-        "interface": null,
-        "hint": null,
-        "input_type": "Date",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "name": "Location",
-        "identifier": "location",
-        "interface": null,
-        "hint": null,
-        "input_type": "Location",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "name": "File",
-        "identifier": "file",
-        "interface": null,
-        "hint": null,
-        "input_type": "Asset",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "versions": [
+        [
+          "No",
+          false
+        ]
+      ]
+    },
+    {
+      "@type": "DateField",
+      "name": "Date",
+      "identifier": "date",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "date_picker",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "TimeField",
+      "name": "Time",
+      "identifier": "time",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "time_picker",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "LocationField",
+      "name": "Location",
+      "identifier": "location",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "location"
+    },
+    {
+      "@type": "FileField",
+      "name": "File",
+      "identifier": "file",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "file"
+    },
+    {
+      "@type": "ImageField",
+      "name": "Image",
+      "identifier": "image",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "file",
+      "versions": [
 
-        ],
-        "name": "Image",
-        "identifier": "image",
-        "interface": null,
-        "hint": null,
-        "input_type": "Array",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null,
-        "link_type": "Asset"
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Symbols",
-        "identifier": "symbol",
-        "interface": null,
-        "hint": null,
-        "input_type": "Array",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null,
-        "link": "Symbol"
-      },
-      {
-        "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005",
-        "name": "Entry",
-        "identifier": "entry",
-        "interface": null,
-        "hint": null,
-        "input_type": "Entry",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      },
-      {
-        "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033",
-        "name": "Entries",
-        "identifier": "entries",
-        "interface": null,
-        "hint": null,
-        "input_type": "Array",
-        "required": true,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null,
-        "link_type": "Entry"
-      },
-      {
-        "default_value": null,
-        "choices": null,
-        "include_blank_choice": null,
-        "name": "Object",
-        "identifier": "object_json",
-        "interface": null,
-        "hint": null,
-        "input_type": "Object",
-        "required": null,
-        "unique": null,
-        "maximum_length": null,
-        "minimum_length": null,
-        "minimum_number": null,
-        "maximum_number": null,
-        "minimum_size": null,
-        "maximum_size": null
-      }
-    ],
-    "webhook_definitions": [
+      ]
+    },
+    {
+      "@type": "ArrayField",
+      "name": "Array",
+      "identifier": "array",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "array_field"
+    },
+    {
+      "@type": "OneAssociationField",
+      "name": "Entry",
+      "identifier": "entry",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "association_field",
+      "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005"
+    },
+    {
+      "@type": "ManyAssociationField",
+      "name": "Entries",
+      "identifier": "entries",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "association_field",
+      "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033"
+    },
+    {
+      "@type": "JsonField",
+      "name": "Object",
+      "identifier": "object_json",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "json_field"
+    }
+  ],
+  "webhook_definitions": [
 
-    ],
-    "@version": 1
-  },
-  "content_type_id": "6Mkf0bXIPeGKKS2Yi8cyYy",
-  "space_id": "ene4qtp2sh7u"
+  ]
 }

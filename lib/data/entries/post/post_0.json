@@ -1,0 +1,21 @@
+{
+  "@type": "Post",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e170ac34d085d091f000105/entries/4e43898b4d085d72480000dd",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e170ac34d085d091f000105",
+  "@version": 1,
+  "@trash": false,
+  "@created_at": "2011-08-11T07:49:31Z",
+  "@updated_at": "2011-08-11T07:49:31Z",
+  "name": "Post 1",
+  "body": "Nihil recusandae repellat consequuntur et. Quaerat aut iste animi esse voluptate rerum molestiae. Labore nihil pariatur ab ad dicta beatae atque dolorem. Illum temporibus odit repudiandae rerum est. Reiciendis sed explicabo sunt.",
+  "categories": [
+    {
+      "@type": "Category",
+      "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1614d085d46aa000017"
+    },
+    {
+      "@type": "Category",
+      "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea15c4d085d46aa000012"
+    }
+  ]
+}

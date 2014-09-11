@@ -1,0 +1,30 @@
+{
+  "@type": "Restaurant",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091cba05617333000019",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005",
+  "@version": 1,
+  "@trash": false,
+  "@created_at": "2011-04-01T17:19:24Z",
+  "@updated_at": "2011-04-01T17:19:24Z",
+  "name": "Morton's Steak House",
+  "text": "Located in Toronto's trendy Yorkville at the Park Hyatt Hotel, Morton's the Steakhouse offers a classic dining experience. Welcoming decor, succulent steaks and fresh fish and seafood make Morton's a destination for Torontonians, celebrities and tourists alike. Whether you are looking for the perfect place to unwind with cocktails and Bar Bites or to book a private boardroom for a special occasion, Morton's offers impeccable service and a timeless menu.",
+  "website": "http://www.mortons.com/toronto/",
+  "location": {
+    "@type": "Location",
+    "lat": 43.668,
+    "lng": -79.394
+  },
+  "image": {
+    "@type": "File",
+    "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000019/fields/k4d960916ba0561733300000f/file.png"
+  },
+  "address": "4 Avenue Road at Prince Arthur\nToronto, Canada",
+  "last_visit": "2010-11-29",
+  "price_range": 3,
+  "stars": 3,
+  "vegetarian_menu": true,
+  "preview_image": {
+    "@type": "File",
+    "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000019/fields/k4d960916ba05617333000010/file.png"
+  }
+}

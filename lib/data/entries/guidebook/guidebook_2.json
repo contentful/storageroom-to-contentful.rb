@@ -1,0 +1,15 @@
+{
+  "@type": "Guidebook",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4ddaf68b4d085d374a000003/entries/4ddaf6ec4d085d374700001d",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4ddaf68b4d085d374a000003",
+  "@version": 4,
+  "@trash": false,
+  "@created_at": "2011-05-24T00:08:12Z",
+  "@updated_at": "2011-11-29T17:45:22Z",
+  "title": "Foobar",
+  "category": null,
+  "categories": [
+
+  ],
+  "price": 2.1
+}

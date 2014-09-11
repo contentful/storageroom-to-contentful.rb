@@ -1,0 +1,15 @@
+{
+  "@type": "FileUploadTest",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4f435bbf61b0e51976000005/entries/4f894b545338157b2f000005",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4f435bbf61b0e51976000005",
+  "@version": 1,
+  "@trash": false,
+  "@created_at": "2012-04-14T10:03:00Z",
+  "@updated_at": "2012-04-14T10:03:00Z",
+  "name": "Test 20 MB again",
+  "file": {
+    "@type": "File",
+    "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4f435bbf61b0e51976000005/entries/4f894b545338157b2f000005/fields/k4f435bbf61b0e51976000006/file.tst"
+  },
+  "category": null
+}

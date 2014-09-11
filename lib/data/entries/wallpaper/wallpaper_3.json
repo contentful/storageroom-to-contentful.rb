@@ -1,0 +1,31 @@
+{
+  "@type": "Wallpaper",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e1304f14d085d487c000028/entries/4ec52823643b8d0b97000005",
+  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e1304f14d085d487c000028",
+  "@version": 1,
+  "@trash": false,
+  "@created_at": "2011-11-17T15:28:35Z",
+  "@updated_at": "2011-11-17T15:28:35Z",
+  "name": "Kitesurfer",
+  "tags": [
+    "kitesurfing",
+    "water",
+    "ocean"
+  ],
+  "image": {
+    "@type": "Image",
+    "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4e1304f14d085d487c000028/entries/4ec52823643b8d0b97000005/fields/k4e1708334d085d091f0000d8/file.jpg",
+    "@processing": false,
+    "@versions": {
+      "half": {
+        "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4e1304f14d085d487c000028/entries/4ec52823643b8d0b97000005/fields/k4e1708334d085d091f0000d8/v4e1708334d085d091f0000d9.jpg"
+      },
+      "tower": {
+        "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4e1304f14d085d487c000028/entries/4ec52823643b8d0b97000005/fields/k4e1708334d085d091f0000d8/v4e1708334d085d091f0000da.png"
+      },
+      "thumbnail": {
+        "@url": "http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4e1304f14d085d487c000028/entries/4ec52823643b8d0b97000005/fields/k4e1708334d085d091f0000d8/v4e1708e64d085d08b000010f.png"
+      }
+    }
+  }
+}

@@ -1,6 +1,4 @@
 require 'contentful/management'
-require 'storage_room'
-require 'pry'
 require 'fileutils'
 require_relative 'storage_room_exporter'
 require_relative 'contentful_importer'
@@ -12,21 +10,19 @@ class Migrator
   def run
     puts <<-eoruby, __FILE__
 Actions:
-  1. Download collections data from StorageRoom to JSON file.
+  1. Export data from StorageRoom to JSON files.
   2. Import collections to Contentful.
-  3. Dump entries from Storageroom.
-  4. Import entries to Contentful.
+  3. Import entries to Contentful.
     eoruby
     action_choice = gets.to_i
     case action_choice
       when 1
         storage_room_exporter.export_collections
+        storage_room_exporter.export_entries
       when 2
         contentful_importer.create_space
         contentful_importer.import_content_types
       when 3
-        storage_room_exporter.export_entries
-      when 4
         contentful_importer.import_entries
     end
   end

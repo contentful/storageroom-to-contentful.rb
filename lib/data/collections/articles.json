@@ -1,0 +1,39 @@
+{
+  "@type": "Collection",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e4528c74d085d4db7000f4b",
+  "@account_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004",
+  "@entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4e4528c74d085d4db7000f4b/entries",
+  "@deleted_entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F4e4528c74d085d4db7000f4b",
+  "@version": 4,
+  "@created_at": "2011-08-12T13:21:11Z",
+  "@updated_at": "2012-09-08T13:14:31Z",
+  "name": "Articles",
+  "note": "",
+  "entry_type": "Article",
+  "primary_field_identifier": "title",
+  "fields": [
+    {
+      "@type": "StringField",
+      "name": "Title",
+      "identifier": "title",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "required": true,
+      "include_blank_choice": false
+    },
+    {
+      "@type": "StringField",
+      "name": "Text",
+      "identifier": "text",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_area",
+      "required": true,
+      "include_blank_choice": false
+    }
+  ],
+  "webhook_definitions": [
+
+  ]
+}

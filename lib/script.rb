@@ -6,16 +6,12 @@ require 'fileutils'
 CONTENTFUL_ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
 CONTENTFUL_ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
 
-
 puts "Actions:\n 1. Download all data from StorageRoom to JSON file\n 2. Import data to Contentful.\n 3. Dump entries from Storageroom."
 user_action = gets.to_i
-
 
 def authenticate_contentful
   Contentful::Management::Client.new(CONTENTFUL_ACCESS_TOKEN)
 end
-
-
 
 def create_contentful_space
   # puts "Write your contentful name of space:"
@@ -45,7 +41,6 @@ def import_collection_to_contentful
 end
 
 
-
 # def import_assets_to_contentful
 #   Dir.glob("#{$dir_target}/entries/*json") do |file_path|
 #     collection_file = JSON.parse(File.read(file_path))
@@ -68,10 +63,10 @@ end
 
 case user_action
   when 1
-    dump_collections_from_storageroom
+    import_collections
   when 2
     create_contentful_space
     import_collection_to_contentful
   when 3
-    dump_entries_from_storageroom
+    import_entries
 end

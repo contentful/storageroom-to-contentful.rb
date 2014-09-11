@@ -5,14 +5,14 @@ class ContentfulImporter
   COLLECTIONS_DATA_DIR = 'data/collections'
   ENTRIES_DATA_DIR = 'data/entries'
 
-  attr_reader :space, :content_type
+  attr_reader :space
 
   def initialize
     Contentful::Management::Client.new(ACCESS_TOKEN)
   end
 
   def content_type(content_type_id, space_id)
-    @content_type ||= Contentful::Management::ContentType.find(space_id, content_type_id)
+    Contentful::Management::ContentType.find(space_id, content_type_id)
   end
 
   def create_space
@@ -24,7 +24,7 @@ class ContentfulImporter
 
   def import_content_types
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
-      collection_attributes = JSON.parse(File.read(file_path))['collection']
+      collection_attributes = JSON.parse(File.read(file_path))
       content_type = space.content_types.create(name: collection_attributes['entry_type'])
       puts "Importing content_type: #{content_type.name}"
       collection_attributes['fields'].each do |field|
@@ -37,16 +37,44 @@ class ContentfulImporter
 
   def import_entries
     Dir.glob("#{ENTRIES_DATA_DIR}/**/*json") do |file_path|
-      entry_attrbiutes = JSON.parse(File.read(file_path))['entry']
+      entry_attrbiutes = JSON.parse(File.read(file_path))
       entry_params = {}
       entry_attrbiutes.each do |attr, value|
-        entry_params[attr.to_sym] = value
+        attr_value = if value.is_a? Hash
+                       extract_value_from_hash(value)
+                     else
+                       value
+                     end
+        entry_params[attr.to_sym] = attr_value
       end
       collection_name = file_path.match(/data\/entries\/(.*)\/.*/)[1]
+      puts "Create entry for #{collection_name}."
       content_type_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['content_type_id']
       space_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['space_id']
       content_type(content_type_id, space_id).entries.create(entry_params)
     end
+  end
+
+  #TODO Not done - fix fix fix
+  def extract_value_from_hash(params)
+    type = params['@type']
+    case type
+      when 'Location'
+        Contentful::Management::Location.new.tap do |file|
+          file.lat = params['lat']
+          file.lon = params['lng']
+        end
+      when 'File'
+        #TODO Pass Asset Object not File...
+      when 'Image'
+        #TODO Pass Asset Object not File...
+        # Contentful::Management::File.new.tap do |file|
+        #   file.properties[:contentType] = 'image/png'
+        #   file.properties[:fileName] = 'fix_this_name'
+        #   file.properties[:upload] = params['@url']
+        # end
+    end
+
   end
 
   private
@@ -80,7 +108,7 @@ class ContentfulImporter
 
   def create_array_field(params)
     Contentful::Management::Field.new.tap do |field|
-      field.type = params['link'].presence || 'Link'
+      field.type = params['link'] || 'Link'
       field.link_type = params['link_type']
     end
   end

@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "name": "M-Steakhouse",
+    "text": "Hello.Probably the best beef in Germany.&nbsp;",
+    "website": "http://www.the-steakhouse.de/steakhouse/main-frames.html",
+    "location": {
+      "lat": 50.106993125620185,
+      "lng": 8.630141015624986
+    },
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "address": "Feuerbachstrasse 11a\r\n60325 Frankfurt am Main\r\nGermany",
+    "last_visit": "2011-04-01",
+    "price_range": 3,
+    "stars": 4,
+    "vegetarian_menu": true,
+    "preview_image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 4
+  }
+}

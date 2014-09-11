@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "name": "Banyan Tree Bangkok - Vertigo",
+    "text": "A must-see on every Bangkok travel itinerary, Vertigo is unlike any other bar-restaurant in the world: some 61 floors above the streets of Bangkok, this open-air rooftop lounge gives true meaning to the word 'vertigo' as it grants views that simply take your breath away. Stylish, sophisticated and reaching for the clouds, there is no better place for a romantic tête-à-tête, glamorous cocktail party or fashion launch than this. Indulge in a variety of western-style fresh grilled seafood and premium steaks, champagne and a wide selection of cocktails, wines-by-the-glass and non-alcoholic drinks.",
+    "website": "http://www.banyantree.com/en/bangkok/overview",
+    "location": {
+      "lat": 13.724,
+      "lng": 100.5411
+    },
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "address": "21/100 South Sathon Road\r\nBangkok, 10120\r\n Thailand",
+    "last_visit": "2011-03-29",
+    "price_range": 2,
+    "stars": 3,
+    "vegetarian_menu": null,
+    "preview_image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 4
+  }
+}

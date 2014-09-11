@@ -1,0 +1,15 @@
+{
+  "entry": {
+    "name": "Post 11",
+    "body": "Enim occaecati fugit porro nihil. Nihil dicta doloribus consequatur aut blanditiis. Adipisci dignissimos voluptatem voluptas aut unde. Et quia aut repellat.",
+    "categories": [
+      {
+        "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1514d085d4716000019"
+      },
+      {
+        "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1574d085d4621000055"
+      }
+    ],
+    "@version": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "entry": {
+    "text": "Did you visit the website of our partner?",
+    "locale": "en",
+    "type": "announcement",
+    "link": "http://www.google.com/",
+    "image": null,
+    "@version": 1
+  }
+}

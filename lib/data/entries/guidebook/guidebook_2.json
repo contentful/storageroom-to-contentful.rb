@@ -1,0 +1,11 @@
+{
+  "entry": {
+    "title": "Foobar",
+    "category": null,
+    "categories": [
+
+    ],
+    "price": 2.1,
+    "@version": 4
+  }
+}

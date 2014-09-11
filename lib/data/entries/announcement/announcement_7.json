@@ -1,0 +1,10 @@
+{
+  "entry": {
+    "text": "Did you know that you can change the interface language in the settings?",
+    "locale": "en",
+    "type": "announcement",
+    "link": null,
+    "image": null,
+    "@version": 3
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "name": "Hill Top Steak House",
+    "text": "In 1961 Frank Giuffrida bought a club in Saugus that he converted into a western-style steakhouse. Over the years Frank became known as the \"king of the Hill\" serving over three million customers annually.  Now over 50 million meals later The Hilltop is still known today for it's generous portions at a great value winning numerous awards.",
+    "website": "http://hilltopsteakhouse.com",
+    "location": {
+      "lat": 42.474,
+      "lng": -71.023
+    },
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "address": "855 Broadway, Saugus, MA",
+    "last_visit": "2011-02-06",
+    "price_range": 2,
+    "stars": 1,
+    "vegetarian_menu": true,
+    "preview_image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 1
+  }
+}

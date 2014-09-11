@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "name": "Peter Luger",
+    "text": "Rated No. 1 New York Steak House for 26 years in a Row.",
+    "website": "http://www.peterluger.com/",
+    "location": {
+      "lat": 40.7097,
+      "lng": -73.962
+    },
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "address": "178 Broadway\nBrooklyn, N.Y. 11211",
+    "last_visit": "2011-03-02",
+    "price_range": 3,
+    "stars": 4,
+    "vegetarian_menu": null,
+    "preview_image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 1
+  }
+}

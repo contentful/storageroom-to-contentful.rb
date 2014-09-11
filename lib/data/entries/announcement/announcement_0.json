@@ -1,0 +1,10 @@
+{
+  "entry": {
+    "text": "Welcome to our app. Try clicking around.",
+    "locale": "en",
+    "type": "announcement",
+    "link": null,
+    "image": null,
+    "@version": 1
+  }
+}

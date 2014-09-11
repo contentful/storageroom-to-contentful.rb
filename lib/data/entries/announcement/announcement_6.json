@@ -1,0 +1,10 @@
+{
+  "entry": {
+    "text": "Yey, we have won an award for our application!",
+    "locale": "en",
+    "type": "announcement",
+    "link": "http://oscar.go.com/",
+    "image": null,
+    "@version": 3
+  }
+}

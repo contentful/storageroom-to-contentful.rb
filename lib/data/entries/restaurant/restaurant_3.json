@@ -1,0 +1,29 @@
+{
+  "entry": {
+    "name": "Pat's King of Steaks",
+    "text": "Creator of the Philly Steak and Cheese Steak",
+    "website": "http://www.patskingofsteaks.com/",
+    "location": {
+      "lat": 39.933,
+      "lng": -75.159
+    },
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "address": "1237 East Passyunk Avenue\n, Philadelphia, PA",
+    "last_visit": "2011-03-29",
+    "price_range": 1,
+    "stars": 3,
+    "vegetarian_menu": true,
+    "preview_image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 1
+  }
+}

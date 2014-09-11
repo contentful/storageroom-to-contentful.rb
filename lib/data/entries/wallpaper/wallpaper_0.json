@@ -1,0 +1,13 @@
+{
+  "entry": {
+    "name": "Winter",
+    "tags": null,
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 3
+  }
+}

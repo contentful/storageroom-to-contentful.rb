@@ -1,0 +1,18 @@
+{
+  "entry": {
+    "name": "Bay Bridge",
+    "tags": [
+      "bridge",
+      "san francisco",
+      "california",
+      "bay"
+    ],
+    "image": {
+      "filename": null,
+      "content_type": null,
+      "data": null,
+      "remove": null
+    },
+    "@version": 1
+  }
+}

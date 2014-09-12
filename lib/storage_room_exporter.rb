@@ -21,8 +21,9 @@ class StorageRoomExporter
   def export_entries
     collections.each do |collection|
       puts "Exporting entries for: #{collection['name']}"
-      entries(collection).each_with_index do |entry, i|
-        save_to_file("#{ENTRIES_DATA_DIR}/#{collection['entry_type'].downcase}", "#{collection['entry_type']}_#{i}", format_json(entry))
+      entries(collection).each do |entry|
+        entry_id = File.basename(entry['@url'])
+        save_to_file("#{ENTRIES_DATA_DIR}/#{collection['entry_type'].downcase}", "#{entry_id}", format_json(entry))
       end
     end
   end

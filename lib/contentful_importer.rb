@@ -45,18 +45,19 @@ class ContentfulImporter
       entry_params = {}
       entry_attributes.each do |attr, value|
         attr_value = if value.is_a? Hash
-                       parse_attributes(value, space_id)
+                       parse_attributes(value, space_id, content_type_id)
                      else
                        value
                      end
         entry_params[attr.to_sym] = attr_value
       end
-      content_type(content_type_id, space_id).entries.create(entry_params)
+      entry_id = get_id(entry_attributes)
+      content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
     end
   end
 
   #TODO Not done - fix fix fix
-  def parse_attributes(params, space_id)
+  def parse_attributes(params, space_id, content_type_id)
     type = params['@type']
     case type
       when 'Location'
@@ -65,6 +66,8 @@ class ContentfulImporter
         create_asset(space_id, params)
       when 'Image'
         create_asset(space_id, params)
+      else
+        create_entry(params, space_id, content_type_id)
     end
   end
 
@@ -79,6 +82,17 @@ class ContentfulImporter
     JSON.pretty_generate(JSON.parse(item.to_json))
   end
 
+  def create_entry(params, space_id, content_type_id)
+    content_type = Contentful::Management::ContentType.find(space_id, content_type_id)
+    entry = content_type.entries.new
+    entry.id = get_id(params)
+    entry
+  end
+
+  def get_id(params)
+    File.basename(params['@url'] || params['url'] )
+  end
+
   def create_asset(space_id, params)
     file = Contentful::Management::File.new
     file.properties[:contentType] = 'image/png'
@@ -88,7 +102,7 @@ class ContentfulImporter
     space.assets.create(title: 'StorageRoom file', description: 'test', file: file).process_file
   end
 
-  def create_location_file( params)
+  def create_location_file(params)
     Contentful::Management::Location.new.tap do |file|
       file.lat = params['lat']
       file.lon = params['lng']

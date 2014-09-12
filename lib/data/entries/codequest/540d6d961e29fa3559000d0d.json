@@ -2,7 +2,6 @@
   "@type": "Codequest",
   "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d",
   "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d",
-  "@version": 1,
   "@trash": false,
   "@created_at": "2014-09-08T08:49:26Z",
   "@updated_at": "2014-09-08T08:49:26Z",
@@ -27,6 +26,10 @@
     "@processing": false,
     "@versions": {
     }
+  },
+  "entry": {
+    "@type": "Restaurant",
+    "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012"
   },
   "object_json": null
 }

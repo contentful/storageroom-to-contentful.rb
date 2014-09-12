@@ -28,24 +28,5 @@
     "@versions": {
     }
   },
-  "array": [
-    "some value",
-    "second value",
-    "third value"
-  ],
-  "entry": {
-    "@type": "Restaurant",
-    "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012"
-  },
-  "entries": [
-    {
-      "@type": "Category",
-      "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021"
-    },
-    {
-      "@type": "Category",
-      "url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019"
-    }
-  ],
   "object_json": null
 }

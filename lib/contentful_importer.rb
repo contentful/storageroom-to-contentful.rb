@@ -25,7 +25,7 @@ class ContentfulImporter
   def import_content_types
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
-      content_type = space.content_types.create(name: collection_attributes['entry_type'])
+      content_type = space.content_types.create(name: collection_attributes['entry_type'], description: collection_attributes['note'])
       puts "Importing content_type: #{content_type.name}"
       collection_attributes['fields'].each do |field|
         create_field(field, content_type)
@@ -37,44 +37,35 @@ class ContentfulImporter
 
   def import_entries
     Dir.glob("#{ENTRIES_DATA_DIR}/**/*json") do |file_path|
-      entry_attrbiutes = JSON.parse(File.read(file_path))
+      entry_attributes = JSON.parse(File.read(file_path))
+      collection_name = file_path.match(/data\/entries\/(.*)\/.*/)[1]
+      puts "Create entry for #{collection_name}."
+      content_type_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['content_type_id']
+      space_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['space_id']
       entry_params = {}
-      entry_attrbiutes.each do |attr, value|
+      entry_attributes.each do |attr, value|
         attr_value = if value.is_a? Hash
-                       extract_value_from_hash(value)
+                       parse_attributes(value, space_id)
                      else
                        value
                      end
         entry_params[attr.to_sym] = attr_value
       end
-      collection_name = file_path.match(/data\/entries\/(.*)\/.*/)[1]
-      puts "Create entry for #{collection_name}."
-      content_type_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['content_type_id']
-      space_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['space_id']
       content_type(content_type_id, space_id).entries.create(entry_params)
     end
   end
 
   #TODO Not done - fix fix fix
-  def extract_value_from_hash(params)
+  def parse_attributes(params, space_id)
     type = params['@type']
     case type
       when 'Location'
-        Contentful::Management::Location.new.tap do |file|
-          file.lat = params['lat']
-          file.lon = params['lng']
-        end
+        create_location_file(params)
       when 'File'
-        #TODO Pass Asset Object not File...
+        create_asset(space_id, params)
       when 'Image'
-        #TODO Pass Asset Object not File...
-        # Contentful::Management::File.new.tap do |file|
-        #   file.properties[:contentType] = 'image/png'
-        #   file.properties[:fileName] = 'fix_this_name'
-        #   file.properties[:upload] = params['@url']
-        # end
+        create_asset(space_id, params)
     end
-
   end
 
   private
@@ -86,6 +77,22 @@ class ContentfulImporter
 
   def format_json(item)
     JSON.pretty_generate(JSON.parse(item.to_json))
+  end
+
+  def create_asset(space_id, params)
+    file = Contentful::Management::File.new
+    file.properties[:contentType] = 'image/png'
+    file.properties[:fileName] = 'fix_this_name'
+    file.properties[:upload] = params['@url']
+    space = Contentful::Management::Space.find(space_id)
+    space.assets.create(title: 'StorageRoom file', description: 'test', file: file).process_file
+  end
+
+  def create_location_file( params)
+    Contentful::Management::Location.new.tap do |file|
+      file.lat = params['lat']
+      file.lon = params['lng']
+    end
   end
 
   def create_field(field, content_type)
@@ -112,5 +119,4 @@ class ContentfulImporter
       field.link_type = params['link_type']
     end
   end
-
 end

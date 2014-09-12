@@ -45,7 +45,9 @@ class ContentfulImporter
       entry_params = {}
       entry_attributes.each do |attr, value|
         attr_value = if value.is_a? Hash
-                       parse_attributes(value, space_id, content_type_id)
+                       parse_attributes_from_hash(value, space_id, content_type_id)
+                     elsif value.is_a? Array
+                       parse_attributes_from_array(value, space_id, content_type_id)
                      else
                        value
                      end
@@ -56,8 +58,7 @@ class ContentfulImporter
     end
   end
 
-  #TODO Not done - fix fix fix
-  def parse_attributes(params, space_id, content_type_id)
+  def parse_attributes_from_hash(params, space_id, content_type_id)
     type = params['@type']
     case type
       when 'Location'
@@ -69,6 +70,18 @@ class ContentfulImporter
       else
         create_entry(params, space_id, content_type_id)
     end
+  end
+
+  def parse_attributes_from_array(params, space_id, content_type_id)
+    array_attributes = []
+    params.each do |attr|
+      array_attributes << if attr['@type']
+                            create_entry(attr, space_id, content_type_id)
+                          else
+                            attr
+                          end
+    end
+    array_attributes
   end
 
   private
@@ -90,7 +103,7 @@ class ContentfulImporter
   end
 
   def get_id(params)
-    File.basename(params['@url'] || params['url'] )
+    File.basename(params['@url'] || params['url'])
   end
 
   def create_asset(space_id, params)

@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/warkocz/RubymineProjects/contentful-management.rb
+  remote: /Users/piotrprotas/RubyProjects/contentful-management.rb
   specs:
     contentful-management (0.2.0)
       http (~> 0.6)

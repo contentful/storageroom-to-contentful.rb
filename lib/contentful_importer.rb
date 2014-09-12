@@ -1,3 +1,4 @@
+require_relative 'mime_content_type'
 class ContentfulImporter
 
   ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
@@ -117,7 +118,8 @@ class ContentfulImporter
 
   def create_asset(space_id, params)
     file = Contentful::Management::File.new.tap do |file|
-      file.properties[:contentType] = 'image/png' #TODO mapping for extensions
+      file_content_type = MimeContentType::EXTENSION_LIST[File.extname(params['@url'])]
+      file.properties[:contentType] = file_content_type
       file.properties[:fileName] = 'fix_this_name'
       file.properties[:upload] = params['@url']
     end
@@ -126,10 +128,10 @@ class ContentfulImporter
   end
 
   def create_location_file(params)
-    Contentful::Management::Location.new.tap do |file|
-      file.lat = params['lat']
-      file.lon = params['lng']
-    end
+      Contentful::Management::Location.new.tap do |file|
+        file.lat = params['lat']
+        file.lon = params['lng']
+      end
   end
 
   def create_field(field, content_type)

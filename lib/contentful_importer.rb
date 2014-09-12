@@ -48,7 +48,7 @@ class ContentfulImporter
   def import_entry(content_type_id, dir_path, space_id)
     Dir.glob("#{dir_path}/*.json") do |file_path|
       entry_attributes = JSON.parse(File.read(file_path))
-      entry_id = File.basename(dir_path, '.json')
+      entry_id = File.basename(file_path, '.json')
       puts "Creating entry: #{entry_id}."
       entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
       content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))

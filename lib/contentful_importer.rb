@@ -11,10 +11,6 @@ class ContentfulImporter
     Contentful::Management::Client.new(ACCESS_TOKEN)
   end
 
-  def content_type(content_type_id, space_id)
-    Contentful::Management::ContentType.find(space_id, content_type_id)
-  end
-
   def create_space
     # puts "Write your contentful name of space:"
     # name_space = gets
@@ -30,31 +26,45 @@ class ContentfulImporter
       collection_attributes['fields'].each do |field|
         create_field(field, content_type)
       end
-      add_content_type_id_to_file(content_type.id, content_type.space.id, file_path)
+      add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
       content_type.activate
     end
   end
 
   def import_entries
-    Dir.glob("#{ENTRIES_DATA_DIR}/**/*json") do |file_path|
+    Dir.glob("#{ENTRIES_DATA_DIR}/*") do |dir_path|
+      collection_name = File.basename(dir_path)
+      puts "Importing entries for #{collection_name}."
+      collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
+      content_type_id = collection_attributes['content_type_id']
+      space_id = collection_attributes['space_id']
+      import_entry(content_type_id, dir_path, space_id)
+    end
+  end
+
+  private
+
+  def import_entry(content_type_id, dir_path, space_id)
+    Dir.glob("#{dir_path}/*.json") do |file_path|
+      entry_id = File.basename(dir_path, '.json')
       entry_attributes = JSON.parse(File.read(file_path))
-      collection_name = file_path.match(/data\/entries\/(.*)\/.*/)[1]
-      puts "Create entry for #{collection_name}."
-      content_type_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['content_type_id']
-      space_id = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))['space_id']
-      entry_params = {}
-      entry_attributes.each do |attr, value|
-        attr_value = if value.is_a? Hash
-                       parse_attributes_from_hash(value, space_id, content_type_id)
-                     elsif value.is_a? Array
-                       parse_attributes_from_array(value, space_id, content_type_id)
-                     else
-                       value
-                     end
-        entry_params[attr.to_sym] = attr_value
-      end
-      entry_id = get_id(entry_attributes)
+      puts "Creating entry: #{entry_id}."
+      entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
       content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
+    end
+  end
+
+  def create_entry_parameters(content_type_id, entry_attributes, space_id)
+    entry_attributes.each_with_object({}) do |(attr, value), entry_params|
+      if !attr.start_with?('@')
+        entry_params[attr.to_sym] = if value.is_a? Hash
+                                      parse_attributes_from_hash(value, space_id, content_type_id)
+                                    elsif value.is_a? Array
+                                      parse_attributes_from_array(value, space_id, content_type_id)
+                                    else
+                                      value
+                                    end
+      end
     end
   end
 
@@ -73,22 +83,21 @@ class ContentfulImporter
   end
 
   def parse_attributes_from_array(params, space_id, content_type_id)
-    array_attributes = []
-    params.each do |attr|
+    params.each_with_object([]) do |attr, array_attributes|
       array_attributes << if attr['@type']
                             create_entry(attr, space_id, content_type_id)
                           else
                             attr
                           end
     end
-    array_attributes
   end
 
-  private
+  def content_type(content_type_id, space_id)
+    Contentful::Management::ContentType.find(space_id, content_type_id)
+  end
 
-  def add_content_type_id_to_file(content_type_id, space_id, file_path)
-    content_type = JSON.parse(File.read(file_path))
-    File.open(file_path, 'w').write(format_json(content_type.merge(content_type_id: content_type_id, space_id: space_id)))
+  def add_content_type_id_to_file(collection, content_type_id, space_id, file_path)
+    File.open(file_path, 'w').write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id)))
   end
 
   def format_json(item)
@@ -97,9 +106,9 @@ class ContentfulImporter
 
   def create_entry(params, space_id, content_type_id)
     content_type = Contentful::Management::ContentType.find(space_id, content_type_id)
-    entry = content_type.entries.new
-    entry.id = get_id(params)
-    entry
+    content_type.entries.new.tap do |entry|
+      entry.id = get_id(params)
+    end
   end
 
   def get_id(params)
@@ -107,10 +116,11 @@ class ContentfulImporter
   end
 
   def create_asset(space_id, params)
-    file = Contentful::Management::File.new
-    file.properties[:contentType] = 'image/png'
-    file.properties[:fileName] = 'fix_this_name'
-    file.properties[:upload] = params['@url']
+    file = Contentful::Management::File.new.tap do |file|
+      file.properties[:contentType] = 'image/png' #TODO mapping for extensions
+      file.properties[:fileName] = 'fix_this_name'
+      file.properties[:upload] = params['@url']
+    end
     space = Contentful::Management::Space.find(space_id)
     space.assets.create(title: 'StorageRoom file', description: 'test', file: file).process_file
   end

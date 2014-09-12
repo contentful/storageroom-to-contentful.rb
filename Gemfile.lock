@@ -1,9 +1,13 @@
-GEM
-  remote: https://rubygems.org/
+PATH
+  remote: /Users/warkocz/RubymineProjects/contentful-management.rb
   specs:
     contentful-management (0.2.0)
       http (~> 0.6)
       multi_json (~> 1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     http (0.6.2)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
@@ -13,4 +17,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  contentful-management
+  contentful-management!

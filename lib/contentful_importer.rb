@@ -47,8 +47,8 @@ class ContentfulImporter
 
   def import_entry(content_type_id, dir_path, space_id)
     Dir.glob("#{dir_path}/*.json") do |file_path|
-      entry_id = File.basename(dir_path, '.json')
       entry_attributes = JSON.parse(File.read(file_path))
+      entry_id = File.basename(dir_path, '.json')
       puts "Creating entry: #{entry_id}."
       entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
       content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
@@ -118,8 +118,7 @@ class ContentfulImporter
 
   def create_asset(space_id, params)
     file = Contentful::Management::File.new.tap do |file|
-      file_content_type = MimeContentType::EXTENSION_LIST[File.extname(params['@url'])]
-      file.properties[:contentType] = file_content_type
+      file.properties[:contentType] = file_content_type(params)
       file.properties[:fileName] = 'fix_this_name'
       file.properties[:upload] = params['@url']
     end
@@ -150,6 +149,10 @@ class ContentfulImporter
     else
       {type: field_type}
     end
+  end
+
+  def file_content_type(params)
+    MimeContentType::EXTENSION_LIST[File.extname(params['@url'])]
   end
 
   def create_array_field(params)

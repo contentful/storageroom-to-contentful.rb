@@ -4,16 +4,17 @@ require_relative 'storage_room_exporter'
 require_relative 'contentful_importer'
 
 class Migrator
-
   attr_reader :storage_room_exporter, :contentful_importer
 
-  def run
-    puts <<-eoruby, __FILE__
+  MESSAGE = <<-eoruby, __FILE__
 Actions:
   1. Export data from StorageRoom to JSON files.
   2. Import collections to Contentful.
   3. Import entries to Contentful.
-    eoruby
+  eoruby
+
+  def run
+    puts MESSAGE
     action_choice = gets.to_i
     case action_choice
       when 1
@@ -37,6 +38,3 @@ Actions:
 end
 
 Migrator.new.run
-
-
-

@@ -1,6 +1,5 @@
 require_relative 'mime_content_type'
 class ContentfulImporter
-
   ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
   ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
   COLLECTIONS_DATA_DIR = 'data/collections'
@@ -24,10 +23,8 @@ class ContentfulImporter
       collection_attributes = JSON.parse(File.read(file_path))
       content_type = space.content_types.create(name: collection_attributes['entry_type'], description: collection_attributes['note'])
       puts "Importing content_type: #{content_type.name}"
-      collection_attributes['fields'].each do |field|
-        create_field(field, content_type)
-      end
-      create_webhook_for_content_type(collection_attributes['webhook_definitions'], content_type.space.id) if collection_attributes['webhook_definitions']
+      create_content_type_fields(collection_attributes, content_type)
+      create_content_type_webhooks(collection_attributes['webhook_definitions'], content_type.space.id)
       add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
       content_type.activate
     end
@@ -46,9 +43,17 @@ class ContentfulImporter
 
   private
 
-  def create_webhook_for_content_type(params, space_id)
-    params.each do |webhook|
-      Contentful::Management::Webhook.create(space_id, url: webhook['url'])
+  def create_content_type_fields(collection_attributes, content_type)
+    collection_attributes['fields'].each do |field|
+      create_field(field, content_type)
+    end
+  end
+
+  def create_content_type_webhooks(params, space_id)
+    if params
+      params.each do |webhook|
+        Contentful::Management::Webhook.create(space_id, url: webhook['url'])
+      end
     end
   end
 
@@ -64,15 +69,14 @@ class ContentfulImporter
 
   def create_entry_parameters(content_type_id, entry_attributes, space_id)
     entry_attributes.each_with_object({}) do |(attr, value), entry_params|
-      if !attr.start_with?('@')
-        entry_params[attr.to_sym] = if value.is_a? Hash
-                                      parse_attributes_from_hash(value, space_id, content_type_id)
-                                    elsif value.is_a? Array
-                                      parse_attributes_from_array(value, space_id, content_type_id)
-                                    else
-                                      value
-                                    end
-      end
+      next if attr.start_with?('@')
+      entry_params[attr.to_sym] = if value.is_a? Hash
+                                    parse_attributes_from_hash(value, space_id, content_type_id)
+                                  elsif value.is_a? Array
+                                    parse_attributes_from_array(value, space_id, content_type_id)
+                                  else
+                                    value
+                                  end
     end
   end
 
@@ -128,13 +132,13 @@ class ContentfulImporter
   end
 
   def create_asset(space_id, params)
-    file = Contentful::Management::File.new.tap do |file|
+    asset_file = Contentful::Management::File.new.tap do |file|
       file.properties[:contentType] = file_content_type(params)
       file.properties[:fileName] = 'fix_this_name'
       file.properties[:upload] = params['@url']
     end
     space = Contentful::Management::Space.find(space_id)
-    space.assets.create(title: 'StorageRoom file', description: 'test', file: file).process_file
+    space.assets.create(title: 'StorageRoom file', description: 'test', file: asset_file).process_file
   end
 
   def create_location_file(params)

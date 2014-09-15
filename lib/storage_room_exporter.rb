@@ -1,7 +1,4 @@
-# require 'net/http'
-
 class StorageRoomExporter
-
   ACCOUNT_ID = '4d13574cba05613d25000004'
   APPLICATION_API_KEY = 'HKqZqeesYzwmB3DC6eeZ'
   COLLECTIONS_DATA_DIR = 'data/collections'
@@ -51,7 +48,7 @@ class StorageRoomExporter
     if response.code == '200'
       JSON.parse(response.body)
     else
-      raise "ERROR: #{uri.inspect}"
+      fail "ERROR: #{uri.inspect}"
     end
   end
 
@@ -62,5 +59,4 @@ class StorageRoomExporter
   def entries(collection)
     get_request("collections/#{collection_id(collection)}/entries")['array']['resources']
   end
-
 end

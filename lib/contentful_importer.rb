@@ -27,6 +27,7 @@ class ContentfulImporter
       collection_attributes['fields'].each do |field|
         create_field(field, content_type)
       end
+      create_webhook_for_content_type(collection_attributes['webhook_definitions'], content_type.space.id) if collection_attributes['webhook_definitions']
       add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
       content_type.activate
     end
@@ -44,6 +45,12 @@ class ContentfulImporter
   end
 
   private
+
+  def create_webhook_for_content_type(params, space_id)
+    params.each do |webhook|
+      Contentful::Management::Webhook.create(space_id, url: webhook['url'])
+    end
+  end
 
   def import_entry(content_type_id, dir_path, space_id)
     Dir.glob("#{dir_path}/*.json") do |file_path|
@@ -71,15 +78,19 @@ class ContentfulImporter
 
   def parse_attributes_from_hash(params, space_id, content_type_id)
     type = params['@type']
-    case type
-      when 'Location'
-        create_location_file(params)
-      when 'File'
-        create_asset(space_id, params)
-      when 'Image'
-        create_asset(space_id, params)
-      else
-        create_entry(params, space_id, content_type_id)
+    if type
+      case type
+        when 'Location'
+          create_location_file(params)
+        when 'File'
+          create_asset(space_id, params)
+        when 'Image'
+          create_asset(space_id, params)
+        else
+          create_entry(params, space_id, content_type_id)
+      end
+    else
+      params.to_json
     end
   end
 
@@ -127,10 +138,10 @@ class ContentfulImporter
   end
 
   def create_location_file(params)
-      Contentful::Management::Location.new.tap do |file|
-        file.lat = params['lat']
-        file.lon = params['lng']
-      end
+    Contentful::Management::Location.new.tap do |file|
+      file.lat = params['lat']
+      file.lon = params['lng']
+    end
   end
 
   def create_field(field, content_type)

@@ -1,4 +1,6 @@
 require_relative 'mime_content_type'
+require 'contentful/management'
+
 class ContentfulImporter
   ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
   ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
@@ -15,7 +17,7 @@ class ContentfulImporter
     # puts "Write your contentful name of space:"
     # name_space = gets
     # @space = Contentful::Management::Space.create(name: name_space, organization_id: ORGANIZATION_ID)
-    @space = Contentful::Management::Space.find('ene4qtp2sh7u')
+    @space = Contentful::Management::Space.find('jsdhlmknq7i6')
   end
 
   def import_content_types
@@ -41,6 +43,28 @@ class ContentfulImporter
     end
   end
 
+  def parse_storageroom_params_to_contentful
+    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
+      collection_attributes = JSON.parse(File.read(file_path))
+      collection_attributes['fields'].each do |field|
+        if field['input_type'] == 'select'
+          field['input_type'] = 'Array'
+          field['link'] = 'Symbol'
+          select_id = field['identifier']
+          Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
+            entry_attributes = JSON.parse(File.read(entry_path))
+            value_of_select = entry_attributes["#{select_id}"]
+           unless value_of_select.is_a? Array
+              entry_attributes["#{select_id}"] = [value_of_select]
+            end
+            File.open(entry_path, 'w').write(format_json(entry_attributes))
+          end
+          File.open(file_path, 'w').write(format_json(collection_attributes))
+        end
+      end
+    end
+  end
+
   private
 
   def create_content_type_fields(collection_attributes, content_type)
@@ -63,7 +87,8 @@ class ContentfulImporter
       entry_id = File.basename(file_path, '.json')
       puts "Creating entry: #{entry_id}."
       entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
-      content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
+      entry = content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
+      import_status(entry)
     end
   end
 
@@ -94,7 +119,7 @@ class ContentfulImporter
           create_entry(params, space_id, content_type_id)
       end
     else
-      params.to_json
+      params
     end
   end
 
@@ -105,6 +130,14 @@ class ContentfulImporter
                           else
                             attr
                           end
+    end
+  end
+
+  def import_status(entry)
+    if entry.is_a? Contentful::Management::Entry
+      puts 'Imported successfully!'
+    else
+      puts "Failure! - #{entry.class.to_s}"
     end
   end
 

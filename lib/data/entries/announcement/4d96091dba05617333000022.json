@@ -7,8 +7,12 @@
   "@created_at": "2011-04-01T17:19:25Z",
   "@updated_at": "2011-04-01T17:19:25Z",
   "text": "We submitted a new version of our application, you will be able to download it soon",
-  "locale": "en",
-  "type": "announcement",
+  "locale": [
+    "en"
+  ],
+  "type": [
+    "announcement"
+  ],
   "link": null,
   "image": null
 }

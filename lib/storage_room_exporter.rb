@@ -11,7 +11,7 @@ class StorageRoomExporter
     puts 'Exporting collections:'
     collections.each do |collection|
       puts collection['name']
-      save_to_file(COLLECTIONS_DATA_DIR, collection['name'], format_json(collection))
+      save_to_file(COLLECTIONS_DATA_DIR, collection['entry_type'], format_json(collection))
     end
   end
 

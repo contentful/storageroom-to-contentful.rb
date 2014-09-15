@@ -25,6 +25,8 @@ Actions:
         contentful_importer.import_content_types
       when 3
         contentful_importer.import_entries
+      when 4
+        contentful_importer.parse_storageroom_params_to_contentful
     end
   end
 

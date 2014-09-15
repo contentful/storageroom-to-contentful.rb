@@ -4,9 +4,9 @@
   "@account_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004",
   "@entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries",
   "@deleted_entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F540d6d001e29fa3541000d2d",
-  "@version": 2,
+  "@version": 5,
   "@created_at": "2014-09-08T08:46:56Z",
-  "@updated_at": "2014-09-11T07:38:50Z",
+  "@updated_at": "2014-09-15T06:54:19Z",
   "name": "Codequest",
   "note": "Testing",
   "entry_type": "Codequest",
@@ -18,7 +18,7 @@
       "identifier": "name",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Text",
+      "input_type": "text_field",
       "include_blank_choice": false
     },
     {
@@ -27,7 +27,7 @@
       "identifier": "number",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Integer",
+      "input_type": "text_field",
       "include_blank_choice": false
     },
     {
@@ -36,7 +36,7 @@
       "identifier": "float1",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Number",
+      "input_type": "text_field",
       "include_blank_choice": false
     },
     {
@@ -45,7 +45,7 @@
       "identifier": "boolean",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Boolean",
+      "input_type": "radio",
       "include_blank_choice": false,
       "choices": [
         [
@@ -64,7 +64,7 @@
       "identifier": "date",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Date",
+      "input_type": "date_picker",
       "include_blank_choice": false
     },
     {
@@ -73,7 +73,7 @@
       "identifier": "time",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Date",
+      "input_type": "time_picker",
       "include_blank_choice": false
     },
     {
@@ -82,7 +82,7 @@
       "identifier": "location",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Location"
+      "input_type": "location"
     },
     {
       "@type": "FileField",
@@ -90,7 +90,7 @@
       "identifier": "file",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Asset"
+      "input_type": "file"
     },
     {
       "@type": "ImageField",
@@ -98,7 +98,7 @@
       "identifier": "image",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Asset",
+      "input_type": "file",
       "versions": [
 
       ]
@@ -109,8 +109,7 @@
       "identifier": "array",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
-      "link": "Symbol"
+      "input_type": "array_field"
     },
     {
       "@type": "OneAssociationField",
@@ -118,7 +117,7 @@
       "identifier": "entry",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Entry",
+      "input_type": "association_field",
       "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005"
     },
     {
@@ -127,8 +126,7 @@
       "identifier": "entries",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
-      "link_type": "Entry",
+      "input_type": "association_field",
       "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033"
     },
     {
@@ -137,12 +135,27 @@
       "identifier": "object_json",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Object"
+      "input_type": "json_field"
     }
   ],
   "webhook_definitions": [
-
-  ],
-  "content_type_id": "61LsuGAsLYwGMWwywcgocI",
-  "space_id": "ene4qtp2sh7u"
+    {
+      "@type": "WebhookDefinition",
+      "url": "https://www.example.com",
+      "on_create": true,
+      "on_update": true,
+      "on_delete": true,
+      "api": true,
+      "web_interface": true
+    },
+    {
+      "@type": "WebhookDefinition",
+      "url": "https://www.example2.com",
+      "on_create": true,
+      "on_update": true,
+      "on_delete": true,
+      "api": true,
+      "web_interface": true
+    }
+  ]
 }

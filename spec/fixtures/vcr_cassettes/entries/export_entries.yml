@@ -1,0 +1,351 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '9474'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"07493a7a638d7722da61013620286fd9"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections","@type":"Array","resources":[{"@type":"Collection","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@account_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004","@entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries","@deleted_entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F4d96091dba0561733300001b","@version":6,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2014-09-15T07:12:43Z","name":"Announcements","note":"","entry_type":"Announcement","primary_field_identifier":"text","fields":[{"@type":"StringField","name":"Text","identifier":"text","show_in_interface":true,"edit_in_interface":true,"input_type":"text_area","required":true,"include_blank_choice":false},{"@type":"StringField","name":"Locale","identifier":"locale","show_in_interface":true,"edit_in_interface":true,"input_type":"select","required":true,"include_blank_choice":false,"choices":["en","de"]},{"@type":"StringField","name":"Type","identifier":"type","show_in_interface":true,"edit_in_interface":true,"input_type":"select","required":true,"include_blank_choice":false,"choices":["announcement"]},{"@type":"StringField","name":"Link","identifier":"link","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","include_blank_choice":false},{"@type":"FileField","name":"Image","identifier":"image","show_in_interface":true,"edit_in_interface":true,"input_type":"file","hint":"Upload
+        an icon image"}],"webhook_definitions":[{"@type":"WebhookDefinition","url":"http://www.postbin.org/195aj9e","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true},{"@type":"WebhookDefinition","url":"https://www.example2.com","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true}]},{"@type":"Collection","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@account_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004","@entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries","@deleted_entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F4dff88d74d085d6010000033","@version":7,"@created_at":"2011-06-20T17:52:23Z","@updated_at":"2011-08-21T09:14:50Z","name":"Category","note":null,"entry_type":"Category","primary_field_identifier":"name","fields":[{"@type":"StringField","name":"Name","identifier":"name","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","required":true,"include_blank_choice":false}],"webhook_definitions":[]},{"@type":"Collection","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@account_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004","@entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries","@deleted_entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F540d6d001e29fa3541000d2d","@version":5,"@created_at":"2014-09-08T08:46:56Z","@updated_at":"2014-09-15T06:54:19Z","name":"Codequest","note":"Testing","entry_type":"Codequest","primary_field_identifier":"name","fields":[{"@type":"StringField","name":"Name","identifier":"name","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","include_blank_choice":false},{"@type":"IntegerField","name":"Number","identifier":"number","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","include_blank_choice":false},{"@type":"FloatField","name":"Float","identifier":"float1","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","include_blank_choice":false},{"@type":"BooleanField","name":"Boolean","identifier":"boolean","show_in_interface":true,"edit_in_interface":true,"input_type":"radio","include_blank_choice":false,"choices":[["Yes",true],["No",false]]},{"@type":"DateField","name":"Date","identifier":"date","show_in_interface":true,"edit_in_interface":true,"input_type":"date_picker","include_blank_choice":false},{"@type":"TimeField","name":"Time","identifier":"time","show_in_interface":true,"edit_in_interface":true,"input_type":"time_picker","include_blank_choice":false},{"@type":"LocationField","name":"Location","identifier":"location","show_in_interface":true,"edit_in_interface":true,"input_type":"location"},{"@type":"FileField","name":"File","identifier":"file","show_in_interface":true,"edit_in_interface":true,"input_type":"file"},{"@type":"ImageField","name":"Image","identifier":"image","show_in_interface":true,"edit_in_interface":true,"input_type":"file","versions":[]},{"@type":"ArrayField","name":"Array","identifier":"array","show_in_interface":true,"edit_in_interface":true,"input_type":"array_field"},{"@type":"OneAssociationField","name":"Entry","identifier":"entry","show_in_interface":true,"edit_in_interface":true,"input_type":"association_field","collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005"},{"@type":"ManyAssociationField","name":"Entries","identifier":"entries","show_in_interface":true,"edit_in_interface":true,"input_type":"association_field","collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033"},{"@type":"JsonField","name":"Object","identifier":"object_json","show_in_interface":true,"edit_in_interface":true,"input_type":"json_field"}],"webhook_definitions":[{"@type":"WebhookDefinition","url":"https://www.example.com","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true},{"@type":"WebhookDefinition","url":"https://www.example2.com","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true}]},{"@type":"Collection","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@account_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004","@entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries","@deleted_entries_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F4d960916ba05617333000005","@version":12,"@created_at":"2011-04-01T17:19:18Z","@updated_at":"2013-03-01T07:58:20Z","name":"Restaurants","note":"","entry_type":"Restaurant","primary_field_identifier":"name","fields":[{"@type":"StringField","name":"Name","identifier":"name","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","required":true,"include_blank_choice":false},{"@type":"StringField","name":"Text","identifier":"text","show_in_interface":true,"edit_in_interface":true,"input_type":"html_editor","required":true,"include_blank_choice":false},{"@type":"StringField","name":"Website","identifier":"website","show_in_interface":true,"edit_in_interface":true,"input_type":"text_field","required":true,"regexp":"/\\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(([0-9]{1,5})?/.*)?\\Z/ix","include_blank_choice":false},{"@type":"LocationField","name":"Location","identifier":"location","show_in_interface":true,"edit_in_interface":true,"input_type":"location","required":true},{"@type":"FileField","name":"Image","identifier":"image","show_in_interface":true,"edit_in_interface":true,"input_type":"file","hint":"Upload
+        an image"},{"@type":"StringField","name":"Address","identifier":"address","show_in_interface":true,"edit_in_interface":true,"input_type":"text_area","required":true,"include_blank_choice":false},{"@type":"DateField","name":"Last
+        Visit","identifier":"last_visit","show_in_interface":true,"edit_in_interface":true,"input_type":"date_picker","include_blank_choice":false},{"@type":"IntegerField","name":"Price
+        Range","identifier":"price_range","show_in_interface":true,"edit_in_interface":true,"input_type":"select","required":true,"include_blank_choice":false,"choices":[1,2,3]},{"@type":"IntegerField","name":"Stars","identifier":"stars","show_in_interface":true,"edit_in_interface":true,"input_type":"select","required":true,"include_blank_choice":false,"choices":[1,2,3,4,5]},{"@type":"BooleanField","name":"Vegetarian
+        Menu","identifier":"vegetarian_menu","show_in_interface":true,"edit_in_interface":true,"input_type":"radio","include_blank_choice":false,"choices":[["Yes",true],["No",false]]},{"@type":"FileField","name":"Preview
+        Image","identifier":"preview_image","show_in_interface":true,"edit_in_interface":true,"input_type":"file","hint":"Upload
+        an preview image"}],"webhook_definitions":[{"@type":"WebhookDefinition","url":"http://requestb.in/s802aas8","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true}]}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:17 GMT
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4582'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"6c1cca8f6776ee04fcabe8dd59dd24d1"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@total_resources":8,"@pages":1,"@page":1,"@per_page":20,"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries","@type":"Array","resources":[{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000021","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Welcome
+        to our app. Try clicking around.","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000022","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"We
+        submitted a new version of our application, you will be able to download it
+        soon","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000023","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":2,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-08-08T09:54:28Z","text":"Why
+        not follow us on twitter?","locale":"en","type":"announcement","link":"http://www.twitter.com/thriventures","image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d96091dba0561733300001b/entries/4d96091dba05617333000023/fields/k4d96091dba05617333000020/file.png"}},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000024","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Did
+        you visit the website of our partner?","locale":"en","type":"announcement","link":"http://www.google.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000025","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Our
+        blog is currently down, please bear with us","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000026","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:02Z","text":"Buy
+        our other app with a 30% discount today","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000027","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:06Z","text":"Yey,
+        we have won an award for our application!","locale":"en","type":"announcement","link":"http://oscar.go.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000028","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:09Z","text":"Did
+        you know that you can change the interface language in the settings?","locale":"en","type":"announcement","link":null,"image":null}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '5920'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"3c0a7e61c1c8f3b27c2470fd2bdb4b67"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@total_resources":14,"@pages":1,"@page":1,"@per_page":20,"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries","@type":"Array","resources":[{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4dff89074d085d608600005a","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-06-20T17:53:11Z","@updated_at":"2011-06-20T17:53:11Z","name":"Category
+        1"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4dff89204d085d5ff5000097","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-06-20T17:53:36Z","@updated_at":"2011-06-20T17:53:36Z","name":"Category
+        2"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4dff892f4d085d604800005f","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-06-20T17:53:51Z","@updated_at":"2011-06-20T17:53:51Z","name":"Category
+        3"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1454d085d466100003f","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:09Z","@updated_at":"2011-07-26T11:13:09Z","name":"Category
+        4"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea14c4d085d46aa00000d","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:16Z","@updated_at":"2011-07-26T11:13:16Z","name":"Category
+        5"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1514d085d4716000019","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:21Z","@updated_at":"2011-07-26T11:13:21Z","name":"Category
+        6"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1574d085d4621000055","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:27Z","@updated_at":"2011-07-26T11:13:27Z","name":"Category
+        7"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea15c4d085d46aa000012","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:32Z","@updated_at":"2011-07-26T11:13:32Z","name":"Category
+        8"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1614d085d46aa000017","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:37Z","@updated_at":"2011-07-26T11:13:37Z","name":"Category
+        9"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:40Z","@updated_at":"2011-07-26T11:13:40Z","name":"Category
+        10"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:43Z","@updated_at":"2011-07-26T11:13:43Z","name":"Category
+        11"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea16c4d085d466100004f","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:48Z","@updated_at":"2011-07-26T11:13:48Z","name":"Category
+        12"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1714d085d46a7000026","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:53Z","@updated_at":"2011-07-26T11:13:53Z","name":"Category
+        13"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1754d085d46aa000026","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:57Z","@updated_at":"2011-07-26T11:13:57Z","name":"Category
+        14"}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3578'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"afa958c160c068b8428c38e4ba7280cf"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@total_resources":2,"@pages":1,"@page":1,"@per_page":20,"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries","@type":"Array","resources":[{"@type":"Codequest","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@version":2,"@trash":false,"@created_at":"2014-09-08T08:49:26Z","@updated_at":"2014-09-12T08:49:46Z","name":"Test","number":11,"float1":1.1,"boolean":true,"date":"2014-09-03","time":"2014-09-09T06:13:00Z","location":{"@type":"Location","lat":53.13248859999999,"lng":23.168840300000056},"file":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d/fields/k540d6d001e29fa3541000d34/file.png"},"image":{"@type":"Image","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d/fields/k540d6d001e29fa3541000d35/file.png","@processing":false,"@versions":{}},"array":["some
+        value","second value","third value"],"entry":{"@type":"Restaurant","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012"},"entries":[{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021"},{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019"}],"object_json":null},{"@type":"Codequest","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@version":2,"@trash":false,"@created_at":"2014-09-12T12:38:18Z","@updated_at":"2014-09-12T12:39:26Z","name":"Test
+        z plikiem","number":11,"float1":null,"boolean":null,"date":null,"time":null,"location":null,"file":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b/fields/k540d6d001e29fa3541000d34/file.pdf"},"image":{"@type":"Image","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b/fields/k540d6d001e29fa3541000d35/file.png","@processing":false,"@versions":{}},"array":[],"entry":null,"entries":[{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019"},{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021"}],"object_json":{"entry":{"@type":"Codequest","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@version":2,"@trash":false,"@created_at":"2014-09-08T08:49:26Z","@updated_at":"2014-09-12T08:49:46Z","name":"Test","number":11}}}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '13806'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"fcad81f1f6273c1607b54f89f0f6fbb8"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@total_resources":10,"@pages":1,"@page":1,"@per_page":20,"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries","@type":"Array","resources":[{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960917ba05617333000011","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":4,"@trash":false,"@created_at":"2011-04-01T17:19:19Z","@updated_at":"2013-04-19T10:37:53Z","name":"M-Steakhouse","text":"Hello.Probably
+        the best beef in Germany.&nbsp;","website":"http://www.the-steakhouse.de/steakhouse/main-frames.html","location":{"@type":"Location","lat":50.106993125620185,"lng":8.630141015624986},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d960917ba05617333000011/fields/k4d960916ba0561733300000f/file.png"},"address":"Feuerbachstrasse
+        11a\r\n60325 Frankfurt am Main\r\nGermany","last_visit":"2011-04-01","price_range":3,"stars":4,"vegetarian_menu":true,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d960917ba05617333000011/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":4,"@trash":false,"@created_at":"2011-04-01T17:19:21Z","@updated_at":"2012-04-07T11:39:25Z","name":"Banyan
+        Tree Bangkok - Vertigo","text":"A must-see on every Bangkok travel itinerary,
+        Vertigo is unlike any other bar-restaurant in the world: some 61 floors above
+        the streets of Bangkok, this open-air rooftop lounge gives true meaning to
+        the word ''vertigo'' as it grants views that simply take your breath away.
+        Stylish, sophisticated and reaching for the clouds, there is no better place
+        for a romantic t\u00eate-\u00e0-t\u00eate, glamorous cocktail party or fashion
+        launch than this. Indulge in a variety of western-style fresh grilled seafood
+        and premium steaks, champagne and a wide selection of cocktails, wines-by-the-glass
+        and non-alcoholic drinks.","website":"http://www.banyantree.com/en/bangkok/overview","location":{"@type":"Location","lat":13.724,"lng":100.5411},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d960919ba05617333000012/fields/k4d960916ba0561733300000f/file.png"},"address":"21/100
+        South Sathon Road\r\nBangkok, 10120\r\n Thailand","last_visit":"2011-03-29","price_range":2,"stars":3,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d960919ba05617333000012/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091aba05617333000014","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:22Z","@updated_at":"2011-04-01T17:19:22Z","name":"Peter
+        Luger","text":"Rated No. 1 New York Steak House for 26 years in a Row.","website":"http://www.peterluger.com/","location":{"@type":"Location","lat":40.7097,"lng":-73.962},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000014/fields/k4d960916ba0561733300000f/file.png"},"address":"178
+        Broadway\nBrooklyn, N.Y. 11211","last_visit":"2011-03-02","price_range":3,"stars":4,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000014/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091aba05617333000015","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:22Z","@updated_at":"2011-04-01T17:19:22Z","name":"Pat''s
+        King of Steaks","text":"Creator of the Philly Steak and Cheese Steak","website":"http://www.patskingofsteaks.com/","location":{"@type":"Location","lat":39.933,"lng":-75.159},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000015/fields/k4d960916ba0561733300000f/file.png"},"address":"1237
+        East Passyunk Avenue\n, Philadelphia, PA","last_visit":"2011-03-29","price_range":1,"stars":3,"vegetarian_menu":true,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000015/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091aba05617333000013","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":11,"@trash":false,"@created_at":"2011-04-01T17:19:22Z","@updated_at":"2013-03-01T07:59:05Z","name":"Wolfgang''s
+        Steakhouse","text":"Located in the heart of midtown Manhattan, the flagship
+        Park Avenue Wolfgang\u2019s is splendidly situated in the former Vanderbilt
+        Hotel dining room.","website":"http://wolfgangssteakhouse.net/","location":{"@type":"Location","lat":52.516246155615235,"lng":13.404717908984367},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000013/fields/k4d960916ba0561733300000f/file.png"},"address":"4
+        Park Avenue\r\nNew York, NY 10016","last_visit":"2011-03-25","price_range":2,"stars":2,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091aba05617333000013/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091bba05617333000016","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:23Z","@updated_at":"2011-04-01T17:19:23Z","name":"Shula''s","text":"One
+        of the best Steak Houses in Florida","website":"http://www.donshula.com/locations.php?sub=4&l=1&restid=7","location":{"@type":"Location","lat":25.913,"lng":-80.322},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091bba05617333000016/fields/k4d960916ba0561733300000f/file.png"},"address":"7601
+        Miami Lakes Drive\nMiami Lakes, FL 33014","last_visit":"2010-12-22","price_range":3,"stars":4,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091bba05617333000016/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091bba05617333000017","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:23Z","@updated_at":"2011-04-01T17:19:23Z","name":"LG''s
+        Steak House","text":"In December of 1997, a second LG''s Prime Steakhouse
+        opened in beautiful downtown Palm Springs, California. Located on South Palm
+        Canyon Drive, between the cross streets of Arenas and Barristo, LG''s Prime
+        Steakhouse, Palm Springs features a large covered patio for dining and people
+        watching on South Palm Canyon. The d\u00e9cor is eclectic and the restaurant
+        has a private dining room for parties. French doors in the main dining area
+        open onto the patio, which also has an indoor-outdoor bar.","website":"http://www.lgsprimesteakhouse.com/palmsprings.html","location":{"@type":"Location","lat":33.82,"lng":-116.546},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091bba05617333000017/fields/k4d960916ba0561733300000f/file.png"},"address":"255
+        S. Palm Canyon Drive\nPalm Springs, CA 92262","last_visit":"2010-04-01","price_range":3,"stars":5,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091bba05617333000017/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091cba05617333000018","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:24Z","@updated_at":"2011-04-01T17:19:24Z","name":"Hill
+        Top Steak House","text":"In 1961 Frank Giuffrida bought a club in Saugus that
+        he converted into a western-style steakhouse. Over the years Frank became
+        known as the \"king of the Hill\" serving over three million customers annually.  Now
+        over 50 million meals later The Hilltop is still known today for it''s generous
+        portions at a great value winning numerous awards.","website":"http://hilltopsteakhouse.com","location":{"@type":"Location","lat":42.474,"lng":-71.023},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000018/fields/k4d960916ba0561733300000f/file.png"},"address":"855
+        Broadway, Saugus, MA","last_visit":"2011-02-06","price_range":2,"stars":1,"vegetarian_menu":true,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000018/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091cba05617333000019","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:24Z","@updated_at":"2011-04-01T17:19:24Z","name":"Morton''s
+        Steak House","text":"Located in Toronto''s trendy Yorkville at the Park Hyatt
+        Hotel, Morton''s the Steakhouse offers a classic dining experience. Welcoming
+        decor, succulent steaks and fresh fish and seafood make Morton''s a destination
+        for Torontonians, celebrities and tourists alike. Whether you are looking
+        for the perfect place to unwind with cocktails and Bar Bites or to book a
+        private boardroom for a special occasion, Morton''s offers impeccable service
+        and a timeless menu.","website":"http://www.mortons.com/toronto/","location":{"@type":"Location","lat":43.668,"lng":-79.394},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000019/fields/k4d960916ba0561733300000f/file.png"},"address":"4
+        Avenue Road at Prince Arthur\nToronto, Canada","last_visit":"2010-11-29","price_range":3,"stars":3,"vegetarian_menu":true,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba05617333000019/fields/k4d960916ba05617333000010/file.png"}},{"@type":"Restaurant","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091cba0561733300001a","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:24Z","@updated_at":"2011-04-01T17:19:24Z","name":"Ruth''s
+        Chris Honululu","text":"Whether it''s a romantic steak dinner for two, an
+        important business meeting, or a private party, Ruth''s Chris Steak House
+        can accommodate your needs. Our Honolulu steakhouse provides guests with a
+        warm, comfortable atmosphere. The restaurant is also handicap accessible.","website":"http://www.ruthschris.com/Steak-House/6504/Honolulu/Oahu","location":{"@type":"Location","lat":21.3,"lng":-157.861},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba0561733300001a/fields/k4d960916ba0561733300000f/file.png"},"address":"500
+        Ala Moana Blvd,\nRestaurant Row,\nHonolulu, HI 96813","last_visit":"2011-01-14","price_range":3,"stars":4,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba0561733300001a/fields/k4d960916ba05617333000010/file.png"}}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+- request:
+    method: get
+    uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 16 Sep 2014 14:35:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4582'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Etag:
+      - '"6c1cca8f6776ee04fcabe8dd59dd24d1"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '{"array":{"@total_resources":8,"@pages":1,"@page":1,"@per_page":20,"@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries","@type":"Array","resources":[{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000021","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Welcome
+        to our app. Try clicking around.","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000022","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"We
+        submitted a new version of our application, you will be able to download it
+        soon","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000023","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":2,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-08-08T09:54:28Z","text":"Why
+        not follow us on twitter?","locale":"en","type":"announcement","link":"http://www.twitter.com/thriventures","image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d96091dba0561733300001b/entries/4d96091dba05617333000023/fields/k4d96091dba05617333000020/file.png"}},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000024","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Did
+        you visit the website of our partner?","locale":"en","type":"announcement","link":"http://www.google.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000025","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":1,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-04-01T17:19:25Z","text":"Our
+        blog is currently down, please bear with us","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000026","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:02Z","text":"Buy
+        our other app with a 30% discount today","locale":"en","type":"announcement","link":null,"image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000027","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:06Z","text":"Yey,
+        we have won an award for our application!","locale":"en","type":"announcement","link":"http://oscar.go.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000028","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:09Z","text":"Did
+        you know that you can change the interface language in the settings?","locale":"en","type":"announcement","link":null,"image":null}]}}'
+    http_version: 
+  recorded_at: Tue, 16 Sep 2014 14:36:19 GMT
+recorded_with: VCR 2.9.3

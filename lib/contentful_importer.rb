@@ -54,7 +54,9 @@ class ContentfulImporter
             value_of_select = entry_attributes["#{select_id}"]
             unless value_of_select.is_a? String
               entry_attributes["#{select_id}"] = value_of_select.to_s
-              File.open(entry_path, 'w').write(format_json(entry_attributes))
+              File.open(entry_path, 'w') do |file|
+                file.write(format_json(entry_attributes))
+              end
             end
           end
         end

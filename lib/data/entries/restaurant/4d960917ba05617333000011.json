@@ -20,8 +20,8 @@
   },
   "address": "Feuerbachstrasse 11a\r\n60325 Frankfurt am Main\r\nGermany",
   "last_visit": "2011-04-01",
-  "price_range": "3",
-  "stars": "4",
+  "price_range": 3,
+  "stars": 4,
   "vegetarian_menu": true,
   "preview_image": {
     "@type": "File",

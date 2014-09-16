@@ -2,6 +2,8 @@ require 'contentful/management'
 require 'fileutils'
 require_relative 'storage_room_exporter'
 require_relative 'contentful_importer'
+require 'dotenv'
+Dotenv.load
 
 class Migrator
   attr_reader :storage_room_exporter, :contentful_importer
@@ -10,7 +12,8 @@ class Migrator
 Actions:
   1. Export data from StorageRoom to JSON files.
   2. Import collections to Contentful.
-  3. Import entries to Contentful.
+  3. Convert symbol values to String.
+  4. Import entries to Contentful.
   eoruby
 
   def run
@@ -24,9 +27,10 @@ Actions:
         contentful_importer.create_space
         contentful_importer.import_content_types
       when 3
-        contentful_importer.import_entries
-      when 4
         contentful_importer.convert_symbol_params_to_string
+
+      when 4
+        contentful_importer.import_entries
     end
   end
 

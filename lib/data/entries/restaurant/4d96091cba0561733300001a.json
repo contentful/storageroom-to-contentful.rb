@@ -20,8 +20,8 @@
   },
   "address": "500 Ala Moana Blvd,\nRestaurant Row,\nHonolulu, HI 96813",
   "last_visit": "2011-01-14",
-  "price_range": "3",
-  "stars": "4",
+  "price_range": 3,
+  "stars": 4,
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

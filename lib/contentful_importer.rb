@@ -1,23 +1,17 @@
 require_relative 'mime_content_type'
-require 'contentful/management'
-
 class ContentfulImporter
-  ACCESS_TOKEN = 'e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00'
-  ORGANIZATION_ID = '1EQPR5IHrPx94UY4AViTYO'
   COLLECTIONS_DATA_DIR = 'data/collections'
   ENTRIES_DATA_DIR = 'data/entries'
-
   attr_reader :space
 
   def initialize
-    Contentful::Management::Client.new(ACCESS_TOKEN)
+    Contentful::Management::Client.new(credentials['ACCESS_TOKEN'])
   end
 
   def create_space
-    # puts "Write your contentful name of space:"
-    # name_space = gets
-    # @space = Contentful::Management::Space.create(name: name_space, organization_id: ORGANIZATION_ID)
-    @space = Contentful::Management::Space.find('jsdhlmknq7i6')
+    puts 'Write your contentful name of space:'
+    name_space = gets
+    @space = Contentful::Management::Space.create(name: name_space, organization_id: credentials['ORGANIZATION_ID'])
   end
 
   def import_content_types
@@ -150,6 +144,10 @@ class ContentfulImporter
 
   def format_json(item)
     JSON.pretty_generate(JSON.parse(item.to_json))
+  end
+
+  def credentials
+    @credentials ||= YAML.load_file('../credentials.yaml')
   end
 
   def create_entry(params, space_id, content_type_id)

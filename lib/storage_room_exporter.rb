@@ -1,6 +1,4 @@
 class StorageRoomExporter
-  ACCOUNT_ID = '4d13574cba05613d25000004'
-  APPLICATION_API_KEY = 'HKqZqeesYzwmB3DC6eeZ'
   COLLECTIONS_DATA_DIR = 'data/collections'
   ENTRIES_DATA_DIR = 'data/entries'
   STORAGE_ROOM_URL = 'http://api.storageroomapp.com/accounts/'
@@ -40,8 +38,12 @@ class StorageRoomExporter
     @collections ||= get_request('collections')['array']['resources']
   end
 
+  def credentials
+    @credentials ||= YAML.load_file('../credentials.yaml')
+  end
+
   def get_request(path)
-    uri = URI.parse("#{STORAGE_ROOM_URL}#{ACCOUNT_ID}/#{path}.json?auth_token=#{APPLICATION_API_KEY}")
+    uri = URI.parse("#{STORAGE_ROOM_URL}#{credentials['ACCOUNT_ID']}/#{path}.json?auth_token=#{credentials['APPLICATION_API_KEY']}")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)

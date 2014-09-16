@@ -20,8 +20,8 @@
   },
   "address": "1237 East Passyunk Avenue\n, Philadelphia, PA",
   "last_visit": "2011-03-29",
-  "price_range": "1",
-  "stars": "3",
+  "price_range": 1,
+  "stars": 3,
   "vegetarian_menu": true,
   "preview_image": {
     "@type": "File",

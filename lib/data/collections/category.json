@@ -18,14 +18,12 @@
       "identifier": "name",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Text",
+      "input_type": "text_field",
       "required": true,
       "include_blank_choice": false
     }
   ],
   "webhook_definitions": [
 
-  ],
-  "content_type_id": "7z1jNXXzHO2EamAw2OA0qW",
-  "space_id": "jsdhlmknq7i6"
+  ]
 }

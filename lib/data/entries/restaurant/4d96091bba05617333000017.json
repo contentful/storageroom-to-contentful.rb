@@ -20,8 +20,8 @@
   },
   "address": "255 S. Palm Canyon Drive\nPalm Springs, CA 92262",
   "last_visit": "2010-04-01",
-  "price_range": "3",
-  "stars": "5",
+  "price_range": 3,
+  "stars": 5,
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

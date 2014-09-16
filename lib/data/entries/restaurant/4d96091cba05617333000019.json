@@ -20,8 +20,8 @@
   },
   "address": "4 Avenue Road at Prince Arthur\nToronto, Canada",
   "last_visit": "2010-11-29",
-  "price_range": "3",
-  "stars": "3",
+  "price_range": 3,
+  "stars": 3,
   "vegetarian_menu": true,
   "preview_image": {
     "@type": "File",

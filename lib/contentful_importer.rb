@@ -43,25 +43,24 @@ class ContentfulImporter
     end
   end
 
-  # def parse_storageroom_params_to_contentful
-  #   Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
-  #     collection_attributes = JSON.parse(File.read(file_path))
-  #     collection_attributes['fields'].each do |field|
-  #       if field['input_type'] == 'Symbol'
-  #         select_id = field['identifier']
-  #         Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
-  #           entry_attributes = JSON.parse(File.read(entry_path))
-  #           value_of_select = entry_attributes["#{select_id}"]
-  #          unless value_of_select.is_a? Fixnum
-  #             entry_attributes["#{select_id}"] = value_of_select.to_enum
-  #           end
-  #           File.open(entry_path, 'w').write(format_json(entry_attributes))
-  #         end
-  #         File.open(file_path, 'w').write(format_json(collection_attributes))
-  #       end
-  #     end
-  #   end
-  # end
+  def convert_symbol_params_to_string
+    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
+      collection_attributes = JSON.parse(File.read(file_path))
+      collection_attributes['fields'].each do |field|
+        if field['input_type'] == 'Symbol'
+          select_id = field['identifier']
+          Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
+            entry_attributes = JSON.parse(File.read(entry_path))
+            value_of_select = entry_attributes["#{select_id}"]
+            unless value_of_select.is_a? String
+              entry_attributes["#{select_id}"] = value_of_select.to_s
+              File.open(entry_path, 'w').write(format_json(entry_attributes))
+            end
+          end
+        end
+      end
+    end
+  end
 
   private
 
@@ -135,7 +134,7 @@ class ContentfulImporter
     if entry.is_a? Contentful::Management::Entry
       puts 'Imported successfully!'
     else
-      puts "Failure! - #{entry.class.to_s}"
+      puts "Failure! - #{entry.message}"
     end
   end
 

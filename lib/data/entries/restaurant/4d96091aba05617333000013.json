@@ -20,8 +20,8 @@
   },
   "address": "4 Park Avenue\r\nNew York, NY 10016",
   "last_visit": "2011-03-25",
-  "price_range": 2,
-  "stars": 2,
+  "price_range": "2",
+  "stars": "2",
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

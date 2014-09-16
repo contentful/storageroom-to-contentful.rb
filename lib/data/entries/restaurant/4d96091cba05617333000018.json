@@ -20,8 +20,8 @@
   },
   "address": "855 Broadway, Saugus, MA",
   "last_visit": "2011-02-06",
-  "price_range": 2,
-  "stars": 1,
+  "price_range": "2",
+  "stars": "1",
   "vegetarian_menu": true,
   "preview_image": {
     "@type": "File",

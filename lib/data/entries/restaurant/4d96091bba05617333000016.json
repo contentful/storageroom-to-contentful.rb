@@ -20,8 +20,8 @@
   },
   "address": "7601 Miami Lakes Drive\nMiami Lakes, FL 33014",
   "last_visit": "2010-12-22",
-  "price_range": 3,
-  "stars": 4,
+  "price_range": "3",
+  "stars": "4",
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

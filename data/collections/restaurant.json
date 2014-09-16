@@ -1,0 +1,155 @@
+{
+  "@type": "Collection",
+  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005",
+  "@account_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004",
+  "@entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries",
+  "@deleted_entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F4d960916ba05617333000005",
+  "@version": 12,
+  "@created_at": "2011-04-01T17:19:18Z",
+  "@updated_at": "2013-03-01T07:58:20Z",
+  "name": "Restaurants",
+  "note": "",
+  "entry_type": "Restaurant",
+  "primary_field_identifier": "name",
+  "fields": [
+    {
+      "@type": "StringField",
+      "name": "Name",
+      "identifier": "name",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "required": true,
+      "include_blank_choice": false
+    },
+    {
+      "@type": "StringField",
+      "name": "Text",
+      "identifier": "text",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "html_editor",
+      "required": true,
+      "include_blank_choice": false
+    },
+    {
+      "@type": "StringField",
+      "name": "Website",
+      "identifier": "website",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_field",
+      "required": true,
+      "regexp": "/\\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(([0-9]{1,5})?/.*)?\\Z/ix",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "LocationField",
+      "name": "Location",
+      "identifier": "location",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "location",
+      "required": true
+    },
+    {
+      "@type": "FileField",
+      "name": "Image",
+      "identifier": "image",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "file",
+      "hint": "Upload an image"
+    },
+    {
+      "@type": "StringField",
+      "name": "Address",
+      "identifier": "address",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "text_area",
+      "required": true,
+      "include_blank_choice": false
+    },
+    {
+      "@type": "DateField",
+      "name": "Last Visit",
+      "identifier": "last_visit",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "date_picker",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "IntegerField",
+      "name": "Price Range",
+      "identifier": "price_range",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "select",
+      "required": true,
+      "include_blank_choice": false,
+      "choices": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "@type": "IntegerField",
+      "name": "Stars",
+      "identifier": "stars",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "select",
+      "required": true,
+      "include_blank_choice": false,
+      "choices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "@type": "BooleanField",
+      "name": "Vegetarian Menu",
+      "identifier": "vegetarian_menu",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "radio",
+      "include_blank_choice": false,
+      "choices": [
+        [
+          "Yes",
+          true
+        ],
+        [
+          "No",
+          false
+        ]
+      ]
+    },
+    {
+      "@type": "FileField",
+      "name": "Preview Image",
+      "identifier": "preview_image",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "file",
+      "hint": "Upload an preview image"
+    }
+  ],
+  "webhook_definitions": [
+    {
+      "@type": "WebhookDefinition",
+      "url": "http://requestb.in/s802aas8",
+      "on_create": true,
+      "on_update": true,
+      "on_delete": true,
+      "api": true,
+      "web_interface": true
+    }
+  ]
+}

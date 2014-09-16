@@ -37,28 +37,36 @@ class ContentfulImporter
     end
   end
 
-  def convert_symbol_params_to_string
+  def find_symbol_params_in_collection
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
       collection_attributes['fields'].each do |field|
-        if field['input_type'] == 'Symbol'
-          select_id = field['identifier']
-          Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
-            entry_attributes = JSON.parse(File.read(entry_path))
-            value_of_select = entry_attributes["#{select_id}"]
-            unless value_of_select.is_a? String
-              entry_attributes["#{select_id}"] = value_of_select.to_s
-              File.open(entry_path, 'w') do |file|
-                file.write(format_json(entry_attributes))
-              end
-            end
-          end
-        end
+        find_symbol_attribute(collection_attributes, field)
       end
     end
   end
 
   private
+
+  def find_symbol_attribute(collection_attributes, field)
+    convert_symbol_value(collection_attributes, field) if field['input_type'] == 'Symbol'
+  end
+
+  def convert_symbol_value(collection_attributes, field)
+    select_id = field['identifier']
+    Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
+      entry_attributes = JSON.parse(File.read(entry_path))
+      value_of_select = entry_attributes["#{select_id}"]
+      parse_to_string(entry_path, value_of_select, select_id, entry_attributes) unless value_of_select.is_a? String
+    end
+  end
+
+  def parse_to_string(entry_path, value_of_select, select_id, entry_attributes)
+    entry_attributes["#{select_id}"] = value_of_select.to_s
+    File.open(entry_path, 'w') do |file|
+      file.write(format_json(entry_attributes))
+    end
+  end
 
   def create_content_type_fields(collection_attributes, content_type)
     collection_attributes['fields'].each do |field|
@@ -206,4 +214,5 @@ class ContentfulImporter
       field.link_type = params['link_type']
     end
   end
+
 end

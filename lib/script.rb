@@ -2,8 +2,6 @@ require 'contentful/management'
 require 'fileutils'
 require_relative 'storage_room_exporter'
 require_relative 'contentful_importer'
-require 'dotenv'
-Dotenv.load
 
 class Migrator
   attr_reader :storage_room_exporter, :contentful_importer
@@ -27,7 +25,7 @@ Actions:
         contentful_importer.create_space
         contentful_importer.import_content_types
       when 3
-        contentful_importer.convert_symbol_params_to_string
+        contentful_importer.find_symbol_params_in_collection
 
       when 4
         contentful_importer.import_entries

@@ -18,24 +18,23 @@
       "identifier": "text",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "text_area",
+      "input_type": "Text",
       "required": true,
       "include_blank_choice": false
     },
     {
       "@type": "StringField",
-      "name": "Locale",
-      "identifier": "locale",
+      "name": "Lang",
+      "identifier": "lang",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
+      "input_type": "Symbol",
       "required": true,
       "include_blank_choice": false,
       "choices": [
         "en",
         "de"
-      ],
-      "link": "Symbol"
+      ]
     },
     {
       "@type": "StringField",
@@ -43,13 +42,12 @@
       "identifier": "type",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
+      "input_type": "Symbol",
       "required": true,
       "include_blank_choice": false,
       "choices": [
         "announcement"
-      ],
-      "link": "Symbol"
+      ]
     },
     {
       "@type": "StringField",
@@ -57,7 +55,7 @@
       "identifier": "link",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "text_field",
+      "input_type": "Text",
       "include_blank_choice": false
     },
     {
@@ -66,7 +64,7 @@
       "identifier": "image",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "file",
+      "input_type": "Asset",
       "hint": "Upload an icon image"
     }
   ],
@@ -89,5 +87,7 @@
       "api": true,
       "web_interface": true
     }
-  ]
+  ],
+  "content_type_id": "4NvMCau7u8ISCQOi6E24Qy",
+  "space_id": "jsdhlmknq7i6"
 }

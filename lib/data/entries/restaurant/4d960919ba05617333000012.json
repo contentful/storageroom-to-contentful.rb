@@ -20,12 +20,8 @@
   },
   "address": "21/100 South Sathon Road\r\nBangkok, 10120\r\n Thailand",
   "last_visit": "2011-03-29",
-  "price_range": [
-    2
-  ],
-  "stars": [
-    3
-  ],
+  "price_range": 2,
+  "stars": 3,
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

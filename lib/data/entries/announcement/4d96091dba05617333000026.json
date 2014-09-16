@@ -7,12 +7,8 @@
   "@created_at": "2011-04-01T17:19:25Z",
   "@updated_at": "2011-11-24T08:20:02Z",
   "text": "Buy our other app with a 30% discount today",
-  "locale": [
-    "en"
-  ],
-  "type": [
-    "announcement"
-  ],
+  "lang": "en",
+  "type": "announcement",
   "link": null,
   "image": null
 }

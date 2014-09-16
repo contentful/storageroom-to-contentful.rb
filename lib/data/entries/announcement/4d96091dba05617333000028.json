@@ -7,12 +7,8 @@
   "@created_at": "2011-04-01T17:19:25Z",
   "@updated_at": "2011-11-24T08:20:09Z",
   "text": "Did you know that you can change the interface language in the settings?",
-  "locale": [
-    "en"
-  ],
-  "type": [
-    "announcement"
-  ],
+  "lang": "en",
+  "type": "announcement",
   "link": null,
   "image": null
 }

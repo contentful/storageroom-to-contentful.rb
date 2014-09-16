@@ -18,7 +18,7 @@
       "identifier": "name",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "text_field",
+      "input_type": "Text",
       "required": true,
       "include_blank_choice": false
     },
@@ -28,7 +28,7 @@
       "identifier": "text",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "html_editor",
+      "input_type": "Text",
       "required": true,
       "include_blank_choice": false
     },
@@ -38,7 +38,7 @@
       "identifier": "website",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "text_field",
+      "input_type": "Text",
       "required": true,
       "regexp": "/\\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(([0-9]{1,5})?/.*)?\\Z/ix",
       "include_blank_choice": false
@@ -49,7 +49,7 @@
       "identifier": "location",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "location",
+      "input_type": "Location",
       "required": true
     },
     {
@@ -58,7 +58,7 @@
       "identifier": "image",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "file",
+      "input_type": "Asset",
       "hint": "Upload an image"
     },
     {
@@ -67,7 +67,7 @@
       "identifier": "address",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "text_area",
+      "input_type": "Text",
       "required": true,
       "include_blank_choice": false
     },
@@ -77,7 +77,7 @@
       "identifier": "last_visit",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "date_picker",
+      "input_type": "Date",
       "include_blank_choice": false
     },
     {
@@ -86,15 +86,14 @@
       "identifier": "price_range",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
+      "input_type": "Symbol",
       "required": true,
       "include_blank_choice": false,
       "choices": [
         1,
         2,
         3
-      ],
-      "link": "Symbol"
+      ]
     },
     {
       "@type": "IntegerField",
@@ -102,7 +101,7 @@
       "identifier": "stars",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "Array",
+      "input_type": "Symbol",
       "required": true,
       "include_blank_choice": false,
       "choices": [
@@ -111,8 +110,7 @@
         3,
         4,
         5
-      ],
-      "link": "Symbol"
+      ]
     },
     {
       "@type": "BooleanField",
@@ -120,7 +118,7 @@
       "identifier": "vegetarian_menu",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "radio",
+      "input_type": "Boolean",
       "include_blank_choice": false,
       "choices": [
         [
@@ -139,7 +137,7 @@
       "identifier": "preview_image",
       "show_in_interface": true,
       "edit_in_interface": true,
-      "input_type": "file",
+      "input_type": "Asset",
       "hint": "Upload an preview image"
     }
   ],
@@ -153,5 +151,7 @@
       "api": true,
       "web_interface": true
     }
-  ]
+  ],
+  "content_type_id": "5m0h4q5qJqaioI8KyE4Gqg",
+  "space_id": "jsdhlmknq7i6"
 }

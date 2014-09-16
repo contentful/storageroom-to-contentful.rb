@@ -20,12 +20,8 @@
   },
   "address": "178 Broadway\nBrooklyn, N.Y. 11211",
   "last_visit": "2011-03-02",
-  "price_range": [
-    3
-  ],
-  "stars": [
-    4
-  ],
+  "price_range": 3,
+  "stars": 4,
   "vegetarian_menu": false,
   "preview_image": {
     "@type": "File",

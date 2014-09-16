@@ -43,27 +43,25 @@ class ContentfulImporter
     end
   end
 
-  def parse_storageroom_params_to_contentful
-    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
-      collection_attributes = JSON.parse(File.read(file_path))
-      collection_attributes['fields'].each do |field|
-        if field['input_type'] == 'select'
-          field['input_type'] = 'Array'
-          field['link'] = 'Symbol'
-          select_id = field['identifier']
-          Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
-            entry_attributes = JSON.parse(File.read(entry_path))
-            value_of_select = entry_attributes["#{select_id}"]
-           unless value_of_select.is_a? Array
-              entry_attributes["#{select_id}"] = [value_of_select]
-            end
-            File.open(entry_path, 'w').write(format_json(entry_attributes))
-          end
-          File.open(file_path, 'w').write(format_json(collection_attributes))
-        end
-      end
-    end
-  end
+  # def parse_storageroom_params_to_contentful
+  #   Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
+  #     collection_attributes = JSON.parse(File.read(file_path))
+  #     collection_attributes['fields'].each do |field|
+  #       if field['input_type'] == 'Symbol'
+  #         select_id = field['identifier']
+  #         Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
+  #           entry_attributes = JSON.parse(File.read(entry_path))
+  #           value_of_select = entry_attributes["#{select_id}"]
+  #          unless value_of_select.is_a? Fixnum
+  #             entry_attributes["#{select_id}"] = value_of_select.to_enum
+  #           end
+  #           File.open(entry_path, 'w').write(format_json(entry_attributes))
+  #         end
+  #         File.open(file_path, 'w').write(format_json(collection_attributes))
+  #       end
+  #     end
+  #   end
+  # end
 
   private
 

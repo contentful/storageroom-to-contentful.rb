@@ -43,34 +43,36 @@ To create a single ```Symbol``` you must change ```input_type``` to ```Symbol```
 
 Example:
 ```
-                "name": "Symbols",
-                "identifier": "symbol_tag",
-                "input_type": "Symbol",
+        "name": "Symbols",
+        "identifier": "symbol_tag",
+        "input_type": "Symbol",
 ```
 #### Array
 StorageRoom has a field type: ```Array``` which is not directly referred in Contentful.
-As n equivalent it can be treated as a Symbols.
+As n equivalent it can be treated as a ```Multiple Symbols```.
 To create a multiple ```Symbols``` you must change ```input_type``` to ```Array``` and add an additional parameter:
 ```"link": "Symbol"```
 
-#### Locale
-* Entries in Contetnful can be localized.
-When importing Entry from StoragRoom to Contentful, some entry may have attribute named as 'locale'.
-If the value of this attribute will not be the same as the ```code``` of locale in Contentful, create entry fails.
 
 Example:
 ```
-                "name": "Symbols",
-                "identifier": "symbol_tag",
-                "input_type": "Array",
-                "link": "Symbol"
+        "name": "Symbols",
+        "identifier": "symbol_tag",
+        "input_type": "Array",
+        "link": "Symbol"
 ```
+
+#### Locale
+Entries in Contetnful can be localized.
+When importing Entry from StoragRoom to Contentful, some entry may have attribute named as 'locale'.
+If the value of this attribute will not be the same as the ```code``` of locale in Contentful, create entry fails.
+
 
 ##Association
 
  ```
-    1. OneAssociationField (To-One)
-    2. ManyAssociationField (To-Many)
+        1. OneAssociationField (To-One)
+        2. ManyAssociationField (To-Many)
  ```
 #### OneAssociationField (To-One)
 
@@ -100,7 +102,7 @@ Enter the name of the new space on Contentful and import collections as content 
 
 ##Step 3:
 
-If the collection has a field of type 'Symbol', the value of the entry must be strings.
+If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 
 Example:
 #### Field in Collection

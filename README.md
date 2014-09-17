@@ -2,7 +2,8 @@ Storageroom to Contentful
 =================
 
 ## Description
-This script helps user to download all data from StorageRoom application (one per time) to save as JSON files and import collections and entries to the Contentful platform.
+Script can be used to migrate user's data from StorageRoom application (one per time) to the Contentful platform. 
+Script is using json files dumped from StorageRoom API and loads them into Contenful via [CMA gem](https://github.com/contentful/contentful-management.rb)
 
 ## Installation
 ```
@@ -10,12 +11,12 @@ $ bundle install
 ```
 
 ## Usage
-Note that you need to specify your ```ACCOUNT_ID```, ```APPLICATION_API_KEY```, ```ACCESS_TOKEN```, ```ORGANIZATION_ID``` in ```credentials.yaml``` file.
+You need to specify your ```ACCOUNT_ID```, ```APPLICATION_API_KEY```, ```ACCESS_TOKEN```, ```ORGANIZATION_ID``` in ```credentials.yaml``` file.
 Your access token can be found at [CMA - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
 
 ##Step 1:
 
-Download all data from Storageroom and save locally as JSON file to make proposal for Contentful content types.
+Downloads all data from StorageRoom and save locally as JSON files to make proposal for Contentful content types.
 You have to manually modify the structure of collection.
 
 Available types of field on Contentful:
@@ -36,8 +37,8 @@ Each file in ```'lib/data/collections'``` must be changed.
 Value of "input_type" attribute must belongs to list of available field types on Contentful.
 
 #### Select
-Storageroom has a field type which is not directly referred to Contentful as the ```select``` type.
-As a equivalent can be treated as a Symbol.
+StorageRoom has a field type: ```select``` which is not directly referred in Contentful.
+As an equivalent it can be treated as a Symbol.
 To create a single ```Symbol``` you must change ```input_type``` to ```Symbol```
 
 Example:
@@ -47,14 +48,14 @@ Example:
                 "input_type": "Symbol",
 ```
 #### Array
-Storageroom has a field type which is not directly referred to Contentful as the ```Array``` type.
-As a equivalent can be treated as a Symbols.
+StorageRoom has a field type: ```Array``` which is not directly referred in Contentful.
+As n equivalent it can be treated as a Symbols.
 To create a multiple ```Symbols``` you must change ```input_type``` to ```Array``` and add an additional parameter:
 ```"link": "Symbol"```
 
 #### Locale
-* Entry in Contetnful can be localized.
-When importing Entry of Storagroom to Contentful, some entry may have attribute named as 'locale'.
+* Entries in Contetnful can be localized.
+When importing Entry from StoragRoom to Contentful, some entry may have attribute named as 'locale'.
 If the value of this attribute will not be the same as the ```code``` of locale in Contentful, create entry fails.
 
 Example:
@@ -79,7 +80,7 @@ To create an ```Entry``` or ```Asset``` Link type, we must change ```input_type`
 
 * Entries
 
-To create an multiple ```Entries``` Link type, we must change ```"link_type"``` to ```Array``` and add an additional parameter:
+To create multiple ```Entries``` Link type, we must change ```"link_type"``` to ```Array``` and add an additional parameter:
 ```"link_type": "Entry"```
 
 Example:
@@ -94,7 +95,7 @@ Example:
 
 ##Step 2:
 
-After modify files with collections, select action '2' from the menu.
+After modifying files with collections, run script again and select action '2' from the menu.
 Enter the name of the new space on Contentful and import collections as content types.
 
 ##Step 3:
@@ -128,7 +129,7 @@ Example:
 To convert the data as a String, select action 3 from the menu.
 
 ##Step 4:
-To import all entries from JSON files to Contentful platform,  select action 4 from the menu.
+To import all entries from JSON files to Contentful platform, select action 4 from the menu.
 
 ##Script execution:
 

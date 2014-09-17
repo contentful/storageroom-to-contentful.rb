@@ -152,7 +152,7 @@ class ContentfulImporter
   end
 
   def add_content_type_id_to_file(collection, content_type_id, space_id, file_path)
-    File.open(file_path, 'w').write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id)))
+    File.open(file_path, 'w') {|file| file.write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id)))}
   end
 
   def format_json(item)

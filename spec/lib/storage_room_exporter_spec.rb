@@ -5,12 +5,15 @@ require 'contentful/management'
 describe StorageRoomExporter do
 
   before do
+    stub_const('StorageRoomExporter::COLLECTIONS_DATA_DIR', 'spec/support/data/collections')
+    stub_const('StorageRoomExporter::ENTRIES_DATA_DIR', 'spec/support/data/entries')
     StorageRoomExporter.any_instance.stub(:credentials).and_return(YAML.load_file('spec/support/credentials_spec.yaml'))
   end
 
   context 'collections' do
     it 'export_collections' do
       vcr('collection/export_collections') do
+        StorageRoomExporter.any_instance.stub(:save_to_file)
         collections = subject.export_collections
         expect(collections.count).to eq 4
         expect(collections.first['@type']).to eq 'Collection'
@@ -30,11 +33,11 @@ describe StorageRoomExporter do
       collection_id = subject.send(:collection_id, collection)
       expect(collection_id).to eq '540d6d001e29fa3541000d2d'
     end
-
   end
   context 'entries' do
     it 'export_entries' do
       vcr('entries/export_entries') do
+        StorageRoomExporter.any_instance.stub(:save_to_file)
         entries = subject.export_entries
         request = subject.send(:entries, entries.first)
         expect(request.count).to eq 8
@@ -43,7 +46,7 @@ describe StorageRoomExporter do
       end
     end
 
-    it 'entries' do
+    it 'get all entries from storageroom' do
       vcr('entries/entries') do
         collection = JSON.parse(File.read('spec/support/data/collections/codequest.json'))
         request = subject.send(:entries, collection)
@@ -54,4 +57,10 @@ describe StorageRoomExporter do
       end
     end
   end
+
+  it 'save_to_file' do
+    entry = File.read('spec/support/data/entries/codequest/540d6d961e29fa3559000d0d.json')
+    subject.send(:save_to_file, 'spec/support/data', 'save_to_file', entry)
+  end
+
 end

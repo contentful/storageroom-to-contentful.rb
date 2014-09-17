@@ -1,163 +1,165 @@
 {
-    "@type": "Collection",
-    "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d",
-    "@account_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004",
-    "@entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries",
-    "@deleted_entries_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2F4d13574cba05613d25000004%2Fcollections%2F540d6d001e29fa3541000d2d",
-    "@version": 5,
-    "@created_at": "2014-09-08T08:46:56Z",
-    "@updated_at": "2014-09-15T06:54:19Z",
-    "name": "Codequest",
-    "note": "Testing",
-    "entry_type": "Codequest",
-    "primary_field_identifier": "name",
-    "fields": [
-        {
-            "@type": "StringField",
-            "name": "Name",
-            "identifier": "name",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Text",
-            "include_blank_choice": false
-        },
-        {
-            "@type": "IntegerField",
-            "name": "Number",
-            "identifier": "number",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Integer",
-            "include_blank_choice": false
-        },
-        {
-            "@type": "FloatField",
-            "name": "Float",
-            "identifier": "float1",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Number",
-            "include_blank_choice": false
-        },
-        {
-            "@type": "BooleanField",
-            "name": "Boolean",
-            "identifier": "boolean",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Boolean",
-            "include_blank_choice": false,
-            "choices": [
-                [
-                    "Yes",
-                    true
-                ],
-                [
-                    "No",
-                    false
-                ]
-            ]
-        },
-        {
-            "@type": "DateField",
-            "name": "Date",
-            "identifier": "date",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Date",
-            "include_blank_choice": false
-        },
-        {
-            "@type": "TimeField",
-            "name": "Time",
-            "identifier": "time",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Date",
-            "include_blank_choice": false
-        },
-        {
-            "@type": "LocationField",
-            "name": "Location",
-            "identifier": "location",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Location"
-        },
-        {
-            "@type": "FileField",
-            "name": "File",
-            "identifier": "file",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Asset"
-        },
-        {
-            "@type": "ImageField",
-            "name": "Image",
-            "identifier": "image",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Asset",
-            "versions": [
+  "@type": "Collection",
+  "@url": "http://api.storageroomapp.com/accounts/account_id/collections/540d6d001e29fa3541000d2d",
+  "@account_url": "http://api.storageroomapp.com/accounts/account_id",
+  "@entries_url": "http://api.storageroomapp.com/accounts/account_id/collections/540d6d001e29fa3541000d2d/entries",
+  "@deleted_entries_url": "http://api.storageroomapp.com/accounts/account_id/deleted_entries?collection_url=http%3A%2F%2Fapi.storageroomapp.com%2Faccounts%2Faccount_id%2Fcollections%2F540d6d001e29fa3541000d2d",
+  "@version": 5,
+  "@created_at": "2014-09-08T08:46:56Z",
+  "@updated_at": "2014-09-15T06:54:19Z",
+  "name": "Codequest",
+  "note": "Testing",
+  "entry_type": "Codequest",
+  "primary_field_identifier": "name",
+  "fields": [
+    {
+      "@type": "StringField",
+      "name": "Name",
+      "identifier": "name",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Text",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "IntegerField",
+      "name": "Number",
+      "identifier": "number",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Integer",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "FloatField",
+      "name": "Float",
+      "identifier": "float1",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Number",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "BooleanField",
+      "name": "Boolean",
+      "identifier": "boolean",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Boolean",
+      "include_blank_choice": false,
+      "choices": [
+        [
+          "Yes",
+          true
+        ],
+        [
+          "No",
+          false
+        ]
+      ]
+    },
+    {
+      "@type": "DateField",
+      "name": "Date",
+      "identifier": "date",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Date",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "TimeField",
+      "name": "Time",
+      "identifier": "time",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Date",
+      "include_blank_choice": false
+    },
+    {
+      "@type": "LocationField",
+      "name": "Location",
+      "identifier": "location",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Location"
+    },
+    {
+      "@type": "FileField",
+      "name": "File",
+      "identifier": "file",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Asset"
+    },
+    {
+      "@type": "ImageField",
+      "name": "Image",
+      "identifier": "image",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Asset",
+      "versions": [
 
-            ]
-        },
-        {
-            "@type": "ArrayField",
-            "name": "Array",
-            "identifier": "array",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Array",
-            "link": "Symbol"
-        },
-        {
-            "@type": "OneAssociationField",
-            "name": "Entry",
-            "identifier": "entry",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Entry",
-            "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005"
-        },
-        {
-            "@type": "ManyAssociationField",
-            "name": "Entries",
-            "identifier": "entries",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Array",
-            "link_type": "Entry",
-            "collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033"
-        },
-        {
-            "@type": "JsonField",
-            "name": "Object",
-            "identifier": "object_json",
-            "show_in_interface": true,
-            "edit_in_interface": true,
-            "input_type": "Object"
-        }
-    ],
-    "webhook_definitions": [
-        {
-            "@type": "WebhookDefinition",
-            "url": "https://www.example.com",
-            "on_create": true,
-            "on_update": true,
-            "on_delete": true,
-            "api": true,
-            "web_interface": true
-        },
-        {
-            "@type": "WebhookDefinition",
-            "url": "https://www.example2.com",
-            "on_create": true,
-            "on_update": true,
-            "on_delete": true,
-            "api": true,
-            "web_interface": true
-        }
-    ]
+      ]
+    },
+    {
+      "@type": "ArrayField",
+      "name": "Array",
+      "identifier": "array",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Array",
+      "link": "Symbol"
+    },
+    {
+      "@type": "OneAssociationField",
+      "name": "Entry",
+      "identifier": "entry",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Entry",
+      "collection_url": "http://api.storageroomapp.com/accounts/account_id/collections/4d960916ba05617333000005"
+    },
+    {
+      "@type": "ManyAssociationField",
+      "name": "Entries",
+      "identifier": "entries",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Array",
+      "link_type": "Entry",
+      "collection_url": "http://api.storageroomapp.com/accounts/account_id/collections/4dff88d74d085d6010000033"
+    },
+    {
+      "@type": "JsonField",
+      "name": "Object",
+      "identifier": "object_json",
+      "show_in_interface": true,
+      "edit_in_interface": true,
+      "input_type": "Object"
+    }
+  ],
+  "webhook_definitions": [
+    {
+      "@type": "WebhookDefinition",
+      "url": "https://www.example.com",
+      "on_create": true,
+      "on_update": true,
+      "on_delete": true,
+      "api": true,
+      "web_interface": true
+    },
+    {
+      "@type": "WebhookDefinition",
+      "url": "https://www.example2.com",
+      "on_create": true,
+      "on_update": true,
+      "on_delete": true,
+      "api": true,
+      "web_interface": true
+    }
+  ],
+  "content_type_id": "24jJwCT1bWskqEOOASgUCG",
+  "space_id": "ksbb7zto17p9"
 }

@@ -10,11 +10,11 @@ http_interactions:
       User-Agent:
       - RubyContenfulManagementGem/0.2.0
       Authorization:
-      - Bearer e548877d1c317ee58e5710c793bd2d92419149b1e3c50d47755a19a5deadda00
+      - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Organization:
-      - 1EQPR5IHrPx94UY4AViTYO
+      - <ORGANIZATION_ID>
       Host:
       - api.contentful.com
   response:

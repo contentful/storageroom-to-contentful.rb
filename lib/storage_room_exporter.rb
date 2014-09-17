@@ -31,7 +31,7 @@ class StorageRoomExporter
 
   def save_to_file(dir, file_name, json)
     FileUtils.mkdir_p dir unless File.directory?(dir)
-    File.open("#{dir}/#{file_name.downcase}.json", 'w').write(json)
+    File.open("#{dir}/#{file_name.downcase}.json", 'w') { |file| file.write(json) }
   end
 
   def collections

@@ -1,4 +1,5 @@
 require_relative 'mime_content_type'
+require 'contentful/management'
 class ContentfulImporter
   COLLECTIONS_DATA_DIR = 'data/collections'
   ENTRIES_DATA_DIR = 'data/entries'
@@ -55,13 +56,17 @@ class ContentfulImporter
   def convert_symbol_value(collection_attributes, field)
     select_id = field['identifier']
     Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
-      entry_attributes = JSON.parse(File.read(entry_path))
-      value_of_select = entry_attributes["#{select_id}"]
-      parse_to_string(entry_path, value_of_select, select_id, entry_attributes) unless value_of_select.is_a? String
+      convert_params_from_symbol_in_entry_file(entry_path, select_id)
     end
   end
 
-  def parse_to_string(entry_path, value_of_select, select_id, entry_attributes)
+  def convert_params_from_symbol_in_entry_file(entry_path, select_id)
+    entry_attributes = JSON.parse(File.read(entry_path))
+    value_of_select = entry_attributes["#{select_id}"]
+    parse_symbol_value_to_string(entry_path, value_of_select, select_id, entry_attributes) unless value_of_select.is_a? String
+  end
+
+  def parse_symbol_value_to_string(entry_path, value_of_select, select_id, entry_attributes)
     entry_attributes["#{select_id}"] = value_of_select.to_s
     File.open(entry_path, 'w') do |file|
       file.write(format_json(entry_attributes))

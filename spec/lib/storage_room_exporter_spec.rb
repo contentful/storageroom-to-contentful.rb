@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'storage_room_exporter'
+require 'contentful/management'
 
 describe StorageRoomExporter do
 
@@ -24,6 +25,12 @@ describe StorageRoomExporter do
         expect(request['array']['resources'].first['entry_type']).to eq 'Announcement'
       end
     end
+    it 'collection_id ' do
+      collection = JSON.parse(File.read('spec/support/data/collections/codequest.json'))
+      collection_id = subject.send(:collection_id, collection)
+      expect(collection_id).to eq '540d6d001e29fa3541000d2d'
+    end
+
   end
   context 'entries' do
     it 'export_entries' do
@@ -33,6 +40,17 @@ describe StorageRoomExporter do
         expect(request.count).to eq 8
         expect(request.first['@type']).to eq 'Announcement'
         expect(request.first['text']).to eq 'Welcome to our app. Try clicking around.'
+      end
+    end
+
+    it 'entries' do
+      vcr('entries/entries') do
+        collection = JSON.parse(File.read('spec/support/data/collections/codequest.json'))
+        request = subject.send(:entries, collection)
+        expect(request.count).to eq 2
+        expect(request.first['@type']).to eq 'Codequest'
+        expect(request.first['name']).to eq 'Test'
+        expect(request.first['number']).to eq 11
       end
     end
   end

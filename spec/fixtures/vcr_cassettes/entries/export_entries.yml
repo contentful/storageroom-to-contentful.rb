@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:16 GMT
+      - Wed, 17 Sep 2014 08:30:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
         Image","identifier":"preview_image","show_in_interface":true,"edit_in_interface":true,"input_type":"file","hint":"Upload
         an preview image"}],"webhook_definitions":[{"@type":"WebhookDefinition","url":"http://requestb.in/s802aas8","on_create":true,"on_update":true,"on_delete":true,"api":true,"web_interface":true}]}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:17 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:45 GMT
 - request:
     method: get
     uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
@@ -71,7 +71,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:16 GMT
+      - Wed, 17 Sep 2014 08:30:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -101,7 +101,7 @@ http_interactions:
         we have won an award for our application!","locale":"en","type":"announcement","link":"http://oscar.go.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000028","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:09Z","text":"Did
         you know that you can change the interface language in the settings?","locale":"en","type":"announcement","link":null,"image":null}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:45 GMT
 - request:
     method: get
     uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
@@ -123,7 +123,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:16 GMT
+      - Wed, 17 Sep 2014 08:30:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -158,7 +158,7 @@ http_interactions:
         13"},{"@type":"Category","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1754d085d46aa000026","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033","@version":1,"@trash":false,"@created_at":"2011-07-26T11:13:57Z","@updated_at":"2011-07-26T11:13:57Z","name":"Category
         14"}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:46 GMT
 - request:
     method: get
     uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
@@ -180,7 +180,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:17 GMT
+      - Wed, 17 Sep 2014 08:30:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -203,7 +203,7 @@ http_interactions:
         value","second value","third value"],"entry":{"@type":"Restaurant","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012"},"entries":[{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021"},{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019"}],"object_json":null},{"@type":"Codequest","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@version":2,"@trash":false,"@created_at":"2014-09-12T12:38:18Z","@updated_at":"2014-09-12T12:39:26Z","name":"Test
         z plikiem","number":11,"float1":null,"boolean":null,"date":null,"time":null,"location":null,"file":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b/fields/k540d6d001e29fa3541000d34/file.pdf"},"image":{"@type":"Image","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/540d6d001e29fa3541000d2d/entries/5412e93a1e29fa07dd00178b/fields/k540d6d001e29fa3541000d35/file.png","@processing":false,"@versions":{}},"array":[],"entry":null,"entries":[{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1644d085d46e0000019"},{"@type":"Category","url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4dff88d74d085d6010000033/entries/4e2ea1674d085d46a7000021"}],"object_json":{"entry":{"@type":"Codequest","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d","@version":2,"@trash":false,"@created_at":"2014-09-08T08:49:26Z","@updated_at":"2014-09-12T08:49:46Z","name":"Test","number":11}}}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:47 GMT
 - request:
     method: get
     uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
@@ -225,7 +225,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:17 GMT
+      - Wed, 17 Sep 2014 08:30:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -295,7 +295,7 @@ http_interactions:
         warm, comfortable atmosphere. The restaurant is also handicap accessible.","website":"http://www.ruthschris.com/Steak-House/6504/Honolulu/Oahu","location":{"@type":"Location","lat":21.3,"lng":-157.861},"image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba0561733300001a/fields/k4d960916ba0561733300000f/file.png"},"address":"500
         Ala Moana Blvd,\nRestaurant Row,\nHonolulu, HI 96813","last_visit":"2011-01-14","price_range":3,"stars":4,"vegetarian_menu":false,"preview_image":{"@type":"File","@url":"http://files.storageroomapp.com/accounts/4d13574cba05613d25000004/collection/4d960916ba05617333000005/entries/4d96091cba0561733300001a/fields/k4d960916ba05617333000010/file.png"}}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:18 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:47 GMT
 - request:
     method: get
     uri: http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries.json?auth_token=HKqZqeesYzwmB3DC6eeZ
@@ -317,7 +317,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 16 Sep 2014 14:35:17 GMT
+      - Wed, 17 Sep 2014 08:30:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -347,5 +347,5 @@ http_interactions:
         we have won an award for our application!","locale":"en","type":"announcement","link":"http://oscar.go.com/","image":null},{"@type":"Announcement","@url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b/entries/4d96091dba05617333000028","@collection_url":"http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d96091dba0561733300001b","@version":3,"@trash":false,"@created_at":"2011-04-01T17:19:25Z","@updated_at":"2011-11-24T08:20:09Z","text":"Did
         you know that you can change the interface language in the settings?","locale":"en","type":"announcement","link":null,"image":null}]}}'
     http_version: 
-  recorded_at: Tue, 16 Sep 2014 14:36:19 GMT
+  recorded_at: Wed, 17 Sep 2014 08:31:47 GMT
 recorded_with: VCR 2.9.3

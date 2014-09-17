@@ -12,6 +12,7 @@ Actions:
   2. Import collections to Contentful.
   3. Convert symbol values to String.
   4. Import entries to Contentful.
+  5. Publish all entries on Contentful.
   eoruby
 
   def run
@@ -26,9 +27,10 @@ Actions:
         contentful_importer.import_content_types
       when 3
         contentful_importer.find_symbol_params_in_collection
-
       when 4
         contentful_importer.import_entries
+      when 5
+        contentful_importer.publish_all_entries
     end
   end
 

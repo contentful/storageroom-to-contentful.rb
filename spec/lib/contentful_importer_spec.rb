@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'contentful_importer'
 require 'contentful/management'
+require 'yaml'
 
 describe ContentfulImporter do
 

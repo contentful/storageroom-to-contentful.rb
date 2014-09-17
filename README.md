@@ -11,7 +11,12 @@ $ bundle install
 ```
 
 ## Usage
-You need to specify your ```ACCOUNT_ID```, ```APPLICATION_API_KEY```, ```ACCESS_TOKEN```, ```ORGANIZATION_ID``` in ```credentials.yaml``` file.
+In ```credentials.yaml``` file, you need to specify your credentials to:
+* [Contentful]((https://www.contentful.com)
+```ACCOUNT_ID```, ```APPLICATION_API_KEY```,
+* [StorageRoom](http://storageroomapp.com/)
+```ACCESS_TOKEN```, ```ORGANIZATION_ID```
+
 Your access token can be found at [CMA - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
 
 ##Step 1:

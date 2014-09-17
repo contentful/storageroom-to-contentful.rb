@@ -1,6 +1,11 @@
+require 'yaml'
+require 'uri'
+require 'net/http'
+require_relative 'shared_methods'
 class StorageRoomExporter
-  COLLECTIONS_DATA_DIR = 'data/collections'
-  ENTRIES_DATA_DIR = 'data/entries'
+  include SharedMethods
+  COLLECTIONS_DATA_DIR = "#{$APP_ROOT}/data/collections"
+  ENTRIES_DATA_DIR = "#{$APP_ROOT}/data/entries"
   STORAGE_ROOM_URL = 'http://api.storageroomapp.com/accounts/'
 
   attr_reader :collections
@@ -25,10 +30,6 @@ class StorageRoomExporter
 
   private
 
-  def format_json(item)
-    JSON.pretty_generate(item)
-  end
-
   def save_to_file(dir, file_name, json)
     FileUtils.mkdir_p dir unless File.directory?(dir)
     File.open("#{dir}/#{file_name.downcase}.json", 'w') { |file| file.write(json) }
@@ -36,10 +37,6 @@ class StorageRoomExporter
 
   def collections
     @collections ||= get_request('collections')['array']['resources']
-  end
-
-  def credentials
-    @credentials ||= YAML.load_file('../credentials.yaml')
   end
 
   def get_request(path)

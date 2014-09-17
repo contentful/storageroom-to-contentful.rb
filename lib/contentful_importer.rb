@@ -1,8 +1,11 @@
 require_relative 'mime_content_type'
 require 'contentful/management'
+require_relative 'shared_methods'
+
 class ContentfulImporter
-  COLLECTIONS_DATA_DIR = 'data/collections'
-  ENTRIES_DATA_DIR = 'data/entries'
+  include SharedMethods
+  COLLECTIONS_DATA_DIR = "#{$APP_ROOT}/data/collections"
+  ENTRIES_DATA_DIR = "#{$APP_ROOT}/data/entries"
   attr_reader :space
 
   def initialize
@@ -23,7 +26,7 @@ class ContentfulImporter
       create_content_type_fields(collection_attributes, content_type)
       create_content_type_webhooks(collection_attributes['webhook_definitions'], content_type.space.id)
       add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
-      content_type.activate
+      active_content_type(content_type.activate)
     end
   end
 
@@ -35,6 +38,18 @@ class ContentfulImporter
       content_type_id = collection_attributes['content_type_id']
       space_id = collection_attributes['space_id']
       import_entry(content_type_id, dir_path, space_id)
+    end
+  end
+
+  def publish_all_entries
+    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |dir_path|
+      collection_name = File.basename(dir_path,'.json')
+      puts "Publish entries for #{collection_name}."
+      collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
+      Contentful::Management::Space.find(collection_attributes['space_id']).entries.all.each do |entry|
+        puts "Publish an entry with ID #{entry.id}."
+        entry_publish_status(entry.publish)
+      end
     end
   end
 
@@ -143,7 +158,7 @@ class ContentfulImporter
     if entry.is_a? Contentful::Management::Entry
       puts 'Imported successfully!'
     else
-      puts "Failure! - #{entry.message}"
+      puts "### Failure! - #{entry.message} ###"
     end
   end
 
@@ -152,15 +167,7 @@ class ContentfulImporter
   end
 
   def add_content_type_id_to_file(collection, content_type_id, space_id, file_path)
-    File.open(file_path, 'w') {|file| file.write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id)))}
-  end
-
-  def format_json(item)
-    JSON.pretty_generate(JSON.parse(item.to_json))
-  end
-
-  def credentials
-    @credentials ||= YAML.load_file('../credentials.yaml')
+    File.open(file_path, 'w') { |file| file.write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id))) }
   end
 
   def create_entry(params, space_id, content_type_id)
@@ -196,6 +203,22 @@ class ContentfulImporter
     field_params.merge!(additional_field_params(field))
     puts "Creating field: #{field_params[:type]}"
     content_type.fields.create(field_params)
+  end
+
+  def active_content_type(content_type)
+    if content_type.is_a? Contentful::Management::ContentType
+      puts 'Successfully activated!'
+    else
+      puts "### Failure! - #{content_type.message} ! ###"
+    end
+  end
+
+  def entry_publish_status(entry)
+    if entry.is_a? Contentful::Management::Entry
+      puts 'Successfully published!'
+    else
+      puts "### Failure! - #{entry.message} ! ###"
+    end
   end
 
   def additional_field_params(field)

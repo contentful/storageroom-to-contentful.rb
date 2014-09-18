@@ -24,29 +24,41 @@ class StorageRoomExporter
   end
 
   def mapping_collections_input_types
-    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
-      collection_attributes = JSON.parse(File.read(file_path))
-      collection_attributes['fields'].each do |field|
-        field_type = field['input_type']
-        field['input_type'] = begin
-          I18n.t! "fields.input_type.#{field['@type']}.#{field_type}"
-        rescue I18n::MissingTranslationData
-          I18n.t "fields.input_type.#{field_type}"
-        end
-        mapping_array_type(field)
-      end
+    read_collection_data do |collection_attributes, fields, file_path|
+      translate_fields(fields)
       File.open(file_path, 'w') { |file| file.write(format_json(collection_attributes)) }
     end
   end
 
   private
 
-  def mapping_array_type(field)
-    if field['@type'] == 'ManyAssociationField'
-      field['link_type'] = 'Entry'
-    elsif field['@type'] == 'ArrayField'
-      field['link'] = 'Symbol'
+  def read_collection_data(&block)
+    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
+      collection_attributes = JSON.parse(File.read(file_path), symbolize_names: true)
+      yield collection_attributes, collection_attributes[:fields], file_path
     end
+  end
+
+  def translate_fields(fields)
+    fields.each do |field|
+      translate_input_type(field)
+      mapping_array_type(field)
+    end
+
+  end
+
+  def translate_input_type(field)
+    field_type = field[:input_type]
+    field[:input_type] = begin
+      I18n.t! "fields.input_type.#{field[:@type]}.#{field_type}"
+    rescue I18n::MissingTranslationData
+      I18n.t "fields.input_type.#{field_type}"
+    end
+  end
+
+  def mapping_array_type(field)
+    field['link_type'] = 'Entry' if field[:@type] == 'ManyAssociationField'
+    field['link'] = 'Symbol' if field[:@type] == 'ArrayField'
   end
 
   def save_to_file(dir, file_name, json)

@@ -27,29 +27,13 @@ class StorageRoomExporter
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
       collection_attributes['fields'].each do |field|
-        case field['input_type']
-          when 'select'
-            field['input_type'] = 'Symbol'
-          when 'date_picker'
-            field['input_type'] = 'Date'
-          when 'time_picker'
-            field['input_type'] = 'Date'
-          when 'location'
-            field['input_type'] = 'Location'
-          when 'file'
-            field['input_type'] = 'Asset'
-          when 'json_field'
-            field['input_type'] = 'Object'
-          when 'radio'
-            field['input_type'] = 'Boolean'
-          when 'array_field'
-            field['input_type'] = 'Array'
-            field['link'] = 'Symbol'
-          when 'text_field'
-            mapping_text_fields(field)
-          when 'association_field'
-            mapping_association_field(field)
+        field_type = field['input_type']
+        field['input_type'] = begin
+          I18n.t! "fields.input_type.#{field['@type']}.#{field_type}"
+        rescue I18n::MissingTranslationData
+          I18n.t "fields.input_type.#{field_type}"
         end
+        mapping_array_type(field)
       end
       File.open(file_path, 'w') { |file| file.write(format_json(collection_attributes)) }
     end
@@ -57,23 +41,11 @@ class StorageRoomExporter
 
   private
 
-  def mapping_association_field(field)
-    if field['@type'] == 'OneAssociationField'
-      field['input_type'] = 'Entry'
-    else
-      field['input_type'] = 'Array'
+  def mapping_array_type(field)
+    if field['@type'] == 'ManyAssociationField'
       field['link_type'] = 'Entry'
-    end
-  end
-
-  def mapping_text_fields(field)
-    case field['@type']
-      when 'StringField'
-        field['input_type'] = 'Text'
-      when 'IntegerField'
-        field['input_type'] = 'Integer'
-      when 'FloatField'
-        field['input_type'] = 'Number'
+    elsif field['@type'] == 'ArrayField'
+      field['link'] = 'Symbol'
     end
   end
 

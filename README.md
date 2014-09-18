@@ -146,5 +146,5 @@ To import all entries from JSON files to Contentful platform, select action 4 fr
 ##Script execution:
 
 ```
-$ ruby 'lib/script.rb'
+$ ruby 'bin/script.rb'
 ```

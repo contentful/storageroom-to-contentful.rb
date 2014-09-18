@@ -1,12 +1,7 @@
-require 'yaml'
 require 'uri'
 require 'net/http'
-require_relative 'shared_methods'
+
 class StorageRoomExporter
-  include SharedMethods
-  COLLECTIONS_DATA_DIR = "#{$APP_ROOT}/data/collections"
-  ENTRIES_DATA_DIR = "#{$APP_ROOT}/data/entries"
-  STORAGE_ROOM_URL = 'http://api.storageroomapp.com/accounts/'
 
   attr_reader :collections
 
@@ -32,20 +27,55 @@ class StorageRoomExporter
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
       collection_attributes['fields'].each do |field|
-        input_type = field['input_type']
-        case input_type
+        case field['input_type']
+          when 'select'
+            field['input_type'] = 'Symbol'
+          when 'date_picker'
+            field['input_type'] = 'Date'
+          when 'time_picker'
+            field['input_type'] = 'Date'
+          when 'location'
+            field['input_type'] = 'Location'
           when 'file'
-          when 'association_field'
+            field['input_type'] = 'Asset'
           when 'json_field'
+            field['input_type'] = 'Object'
           when 'radio'
-          when 'text_field'
+            field['input_type'] = 'Boolean'
           when 'array_field'
+            field['input_type'] = 'Array'
+            field['link'] = 'Symbol'
+          when 'text_field'
+            mapping_text_fields(field)
+          when 'association_field'
+            mapping_association_field(field)
         end
       end
+      File.open(file_path, 'w') { |file| file.write(format_json(collection_attributes)) }
     end
   end
 
   private
+
+  def mapping_association_field(field)
+    if field['@type'] == 'OneAssociationField'
+      field['input_type'] = 'Entry'
+    else
+      field['input_type'] = 'Array'
+      field['link_type'] = 'Entry'
+    end
+  end
+
+  def mapping_text_fields(field)
+    case field['@type']
+      when 'StringField'
+        field['input_type'] = 'Text'
+      when 'IntegerField'
+        field['input_type'] = 'Integer'
+      when 'FloatField'
+        field['input_type'] = 'Number'
+    end
+  end
 
   def save_to_file(dir, file_name, json)
     FileUtils.mkdir_p dir unless File.directory?(dir)
@@ -57,7 +87,7 @@ class StorageRoomExporter
   end
 
   def get_request(path)
-    uri = URI.parse("#{STORAGE_ROOM_URL}#{credentials['ACCOUNT_ID']}/#{path}.json?auth_token=#{credentials['APPLICATION_API_KEY']}")
+    uri = URI.parse("#{STORAGE_ROOM_URL}#{CREDENTIALS['ACCOUNT_ID']}/#{path}.json?auth_token=#{CREDENTIALS['APPLICATION_API_KEY']}")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
@@ -68,6 +98,10 @@ class StorageRoomExporter
     end
   end
 
+  def format_json(item)
+    JSON.pretty_generate(JSON.parse(item.to_json))
+  end
+
   def collection_id(collection)
     File.basename(collection['@url'])
   end
@@ -75,4 +109,5 @@ class StorageRoomExporter
   def entries(collection)
     get_request("collections/#{collection_id(collection)}/entries")['array']['resources']
   end
+
 end

@@ -1,7 +1,7 @@
-require 'contentful/management'
-require 'fileutils'
 require_relative 'storage_room_exporter'
 require_relative 'contentful_importer'
+require 'contentful/management'
+require 'fileutils'
 
 class Migrator
   attr_reader :storage_room_exporter, :contentful_importer
@@ -22,6 +22,7 @@ Actions:
       when 1
         storage_room_exporter.export_collections
         storage_room_exporter.export_entries
+        storage_room_exporter.mapping_collections_input_types
       when 2
         contentful_importer.create_space
         contentful_importer.import_content_types

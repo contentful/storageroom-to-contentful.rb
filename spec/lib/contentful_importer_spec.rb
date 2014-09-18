@@ -6,9 +6,10 @@ require 'yaml'
 describe ContentfulImporter do
 
   before do
+    stub_const('ContentfulImporter::STORAGE_ROOM_URL', 'http://api.storageroomapp.com/accounts/')
     stub_const('ContentfulImporter::COLLECTIONS_DATA_DIR', 'spec/support/data/collections')
     stub_const('ContentfulImporter::ENTRIES_DATA_DIR', 'spec/support/data/entries')
-    ContentfulImporter.any_instance.stub(:credentials).and_return(YAML.load_file('spec/support/credentials_spec.yaml'))
+    stub_const('ContentfulImporter::CREDENTIALS', YAML.load_file('spec/support/credentials_spec.yaml'))
   end
 
   it 'create_space' do
@@ -55,7 +56,7 @@ describe ContentfulImporter do
     stub_const('ContentfulImporter::COLLECTIONS_DATA_DIR', 'spec/support/data/symbol/collections')
     stub_const('ContentfulImporter::ENTRIES_DATA_DIR', 'spec/support/data/symbol/entries')
     ContentfulImporter.any_instance.stub(:parse_symbol_value_to_string)
-    subject.find_symbol_params_in_collection
+    subject.find_symbol_type_in_collection
   end
 
   it 'parse_symbol_value_to_string' do

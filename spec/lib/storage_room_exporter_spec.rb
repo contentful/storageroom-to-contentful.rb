@@ -5,9 +5,10 @@ require 'contentful/management'
 describe StorageRoomExporter do
 
   before do
+    stub_const('StorageRoomExporter::STORAGE_ROOM_URL', 'http://api.storageroomapp.com/accounts/')
     stub_const('StorageRoomExporter::COLLECTIONS_DATA_DIR', 'spec/support/data/collections')
     stub_const('StorageRoomExporter::ENTRIES_DATA_DIR', 'spec/support/data/entries')
-    StorageRoomExporter.any_instance.stub(:credentials).and_return(YAML.load_file('spec/support/credentials_spec.yaml'))
+    stub_const('StorageRoomExporter::CREDENTIALS', YAML.load_file('spec/support/credentials_spec.yaml'))
   end
 
   context 'collections' do

@@ -1,21 +1,17 @@
 require_relative 'mime_content_type'
 require 'contentful/management'
-require_relative 'shared_methods'
 
 class ContentfulImporter
-  include SharedMethods
-  COLLECTIONS_DATA_DIR = "#{$APP_ROOT}/data/collections"
-  ENTRIES_DATA_DIR = "#{$APP_ROOT}/data/entries"
   attr_reader :space
 
   def initialize
-    Contentful::Management::Client.new(credentials['ACCESS_TOKEN'])
+    Contentful::Management::Client.new(CREDENTIALS['ACCESS_TOKEN'])
   end
 
   def create_space
     puts 'Write your contentful name of space:'
     name_space = gets
-    @space = Contentful::Management::Space.create(name: name_space, organization_id: credentials['ORGANIZATION_ID'])
+    @space = Contentful::Management::Space.create(name: name_space, organization_id: CREDENTIALS['ORGANIZATION_ID'])
   end
 
   def import_content_types
@@ -43,7 +39,7 @@ class ContentfulImporter
 
   def publish_all_entries
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |dir_path|
-      collection_name = File.basename(dir_path,'.json')
+      collection_name = File.basename(dir_path, '.json')
       puts "Publish entries for #{collection_name}."
       collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
       Contentful::Management::Space.find(collection_attributes['space_id']).entries.all.each do |entry|
@@ -226,6 +222,10 @@ class ContentfulImporter
 
   def file_content_type(params)
     MimeContentType::EXTENSION_LIST[File.extname(params['@url'])]
+  end
+
+  def format_json(item)
+    JSON.pretty_generate(JSON.parse(item.to_json))
   end
 
   def create_array_field(params)

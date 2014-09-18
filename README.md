@@ -21,7 +21,6 @@ In ```credentials.yaml``` file, you need to specify your credentials to:
 Your access token can be found at [CMA - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
 
 ##Step 1:
-
 Downloads all data from StorageRoom and save locally as JSON files to make proposal for Contentful content types.
 You have to manually modify the structure of collection.
 
@@ -104,14 +103,14 @@ Example:
     "unique": null,
     "link_type": "Entry"
 ```
-
 ##Step 2:
-
-After modifying files with collections, run script again and select action '2' from the menu.
-Enter the name of the new space on Contentful and import collections as content types.
+To convert values of ​​input_type in each collection file (``` data/collections/ ```), select action '4' from the menu.
 
 ##Step 3:
+After modifying files with collections, run script again and select action '3' from the menu.
+Enter the name of the new space on Contentful and import collections as content types.
 
+##Step 4:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 
 Example:
@@ -138,10 +137,14 @@ Example:
   "price_range": 2,
 }
 ```
-To convert the data as a String, select action 3 from the menu.
+To convert the data as a String, select action '4' from the menu.
 
-##Step 4:
-To import all entries from JSON files to Contentful platform, select action 4 from the menu.
+##Step 5:
+To import all entries from JSON files to Contentful platform, select action '5' from the menu.
+
+##Step 6:
+To publish all entries on Contentful, select action '6' from the menu.
+In the case of an unsuccessful publication,there will be displayed error message
 
 ##Script execution:
 

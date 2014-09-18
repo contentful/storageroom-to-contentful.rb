@@ -9,10 +9,11 @@ class Migrator
   MESSAGE = <<-eoruby, __FILE__
 Actions:
   1. Export data from StorageRoom to JSON files.
-  2. Import collections to Contentful.
-  3. Convert symbol values to String.
-  4. Import entries to Contentful.
-  5. Publish all entries on Contentful.
+  2. Convert Storageroom field types to Contentful
+  3. Import collections to Contentful.
+  4. Convert symbol values to String.
+  5. Import entries to Contentful.
+  6. Publish all entries on Contentful.
   eoruby
 
   def run
@@ -22,15 +23,16 @@ Actions:
       when 1
         storage_room_exporter.export_collections
         storage_room_exporter.export_entries
-        storage_room_exporter.mapping_collections_input_types
       when 2
+        storage_room_exporter.mapping_collections_input_types
+      when 3
         contentful_importer.create_space
         contentful_importer.import_content_types
-      when 3
-        contentful_importer.find_symbol_type_in_collection
       when 4
-        contentful_importer.import_entries
+        contentful_importer.find_symbol_type_in_collection
       when 5
+        contentful_importer.import_entries
+      when 6
         contentful_importer.publish_all_entries
     end
   end

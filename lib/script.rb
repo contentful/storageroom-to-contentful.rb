@@ -26,7 +26,7 @@ Actions:
         contentful_importer.create_space
         contentful_importer.import_content_types
       when 3
-        contentful_importer.find_symbol_params_in_collection
+        contentful_importer.find_symbol_type_in_collection
       when 4
         contentful_importer.import_entries
       when 5

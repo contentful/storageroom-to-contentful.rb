@@ -28,6 +28,23 @@ class StorageRoomExporter
     end
   end
 
+  def mapping_collections_input_types
+    Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
+      collection_attributes = JSON.parse(File.read(file_path))
+      collection_attributes['fields'].each do |field|
+        input_type = field['input_type']
+        case input_type
+          when 'file'
+          when 'association_field'
+          when 'json_field'
+          when 'radio'
+          when 'text_field'
+          when 'array_field'
+        end
+      end
+    end
+  end
+
   private
 
   def save_to_file(dir, file_name, json)

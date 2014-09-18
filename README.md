@@ -12,8 +12,9 @@ $ bundle install
 
 ## Usage
 In ```credentials.yaml``` file, you need to specify your credentials to:
-* [Contentful]((https://www.contentful.com)
-```ACCOUNT_ID```, ```APPLICATION_API_KEY```,
+* [Contentful](https://www.contentful.com)
+```ACCOUNT_ID```, ```APPLICATION_API_KEY```
+
 * [StorageRoom](http://storageroomapp.com/)
 ```ACCESS_TOKEN```, ```ORGANIZATION_ID```
 
@@ -40,6 +41,10 @@ Available types of field on Contentful:
 
 Each file in ```'lib/data/collections'``` must be changed.
 Value of "input_type" attribute must belongs to list of available field types on Contentful.
+
+#### File & Image
+File and Image are equivalent to ```Asset``` in Contentful.
+To create Asset type in Contentful, you must change ```input_type``` to ```Asset```.
 
 #### Select
 StorageRoom has a field type: ```select``` which is not directly referred in Contentful.

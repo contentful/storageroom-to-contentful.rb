@@ -26,7 +26,7 @@ class ContentfulImporter
       create_content_type_fields(collection_attributes, content_type)
       create_content_type_webhooks(collection_attributes['webhook_definitions'], content_type.space.id)
       add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
-      active_content_type(content_type.activate)
+      active_status(content_type.activate)
     end
   end
 
@@ -48,12 +48,12 @@ class ContentfulImporter
       collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
       Contentful::Management::Space.find(collection_attributes['space_id']).entries.all.each do |entry|
         puts "Publish an entry with ID #{entry.id}."
-        entry_publish_status(entry.publish)
+        active_status(entry.publish)
       end
     end
   end
 
-  def find_symbol_params_in_collection
+  def find_symbol_type_in_collection
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
       collection_attributes['fields'].each do |field|
@@ -65,10 +65,10 @@ class ContentfulImporter
   private
 
   def find_symbol_attribute(collection_attributes, field)
-    convert_symbol_value(collection_attributes, field) if field['input_type'] == 'Symbol'
+    find_symbol_type_in_entry(collection_attributes, field) if field['input_type'] == 'Symbol'
   end
 
-  def convert_symbol_value(collection_attributes, field)
+  def find_symbol_type_in_entry(collection_attributes, field)
     select_id = field['identifier']
     Dir.glob("#{ENTRIES_DATA_DIR}/#{collection_attributes['entry_type'].downcase}/*json") do |entry_path|
       convert_params_from_symbol_in_entry_file(entry_path, select_id)
@@ -205,19 +205,11 @@ class ContentfulImporter
     content_type.fields.create(field_params)
   end
 
-  def active_content_type(content_type)
-    if content_type.is_a? Contentful::Management::ContentType
+  def active_status(ct_object)
+    if ct_object.is_a? Contentful::Management::Error
+      puts "### Failure! - #{ct_object.message} ! ###"
+    else
       puts 'Successfully activated!'
-    else
-      puts "### Failure! - #{content_type.message} ! ###"
-    end
-  end
-
-  def entry_publish_status(entry)
-    if entry.is_a? Contentful::Management::Entry
-      puts 'Successfully published!'
-    else
-      puts "### Failure! - #{entry.message} ! ###"
     end
   end
 

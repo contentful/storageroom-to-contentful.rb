@@ -80,7 +80,7 @@ class StorageRoomExporter
     if response.code == '200'
       JSON.parse(response.body)
     else
-      fail "ERROR: #{uri.inspect}"
+      fail "ERROR: #{response.body}\n#{uri.inspect}"
     end
   end
 

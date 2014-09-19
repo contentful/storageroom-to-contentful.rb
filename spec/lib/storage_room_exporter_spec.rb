@@ -113,10 +113,29 @@ describe StorageRoomExporter do
     end
 
     it 'OneAssociationField' do
-      field = {:@type => 'OneAssociationField', :input_type => 'file'}
+      field = {:@type => 'OneAssociationField', :input_type => 'association_field'}
       subject.send(:translate_input_type, field)
-      expect(field[:input_type]).to eq 'Asset'
+      expect(field[:input_type]).to eq 'Entry'
     end
+
+    it 'OneAssociationField' do
+      field = {:@type => 'ManyAssociationField', :input_type => 'association_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Array'
+    end
+
+    it 'Array_field' do
+      field = {:@type => 'ManyAssociationField', :input_type => 'array_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Array'
+    end
+
+    it 'Json_field' do
+      field = {:@type => 'JsonField', :input_type => 'json_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Object'
+    end
+
   end
 
 end

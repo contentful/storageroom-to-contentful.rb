@@ -58,11 +58,11 @@ class ContentfulImporter
     end
   end
 
+  private
+
   def get_space_id(collection)
     collection['space_id']
   end
-
-  private
 
   def find_symbol_attribute(collection_attributes, field)
     find_symbol_type_in_entry(collection_attributes, field) if field['input_type'] == 'Symbol'

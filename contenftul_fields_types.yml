@@ -8,6 +8,7 @@ en:
       file: Asset
       json_field: Object
       radio: Boolean
+      checkbox: Boolean
       array_field: Array
       text_area: Text
       IntegerField:

@@ -74,6 +74,18 @@ describe StorageRoomExporter do
     subject.mapping_collections_input_types
   end
 
+  context 'mapping_array_fields' do
+    it 'add symbol link to array of symbols' do
+      field = {:@type => 'ArrayField'}
+      subject.send(:mapping_array_type, field)
+      expect(field['link']).to eq 'Symbol'
+    end
+    it 'add entry link_type to Array of Entries' do
+      field = {:@type => 'ManyAssociationField'}
+      subject.send(:mapping_array_type, field)
+      expect(field['link_type']).to eq 'Entry'
+    end
+  end
 
   context 'translate input types' do
     it 'StringField and text_field' do

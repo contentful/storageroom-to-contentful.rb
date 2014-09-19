@@ -9,7 +9,7 @@ class Migrator
   MESSAGE = <<-eoruby, __FILE__
 Actions:
   1. Export data from StorageRoom to JSON files.
-  2. Convert Storageroom field types to Contentful
+  2. Convert Storageroom field types to Contentful.
   3. Import collections to Contentful.
   4. Convert symbol values to String.
   5. Import entries to Contentful.

@@ -9,6 +9,7 @@ en:
       json_field: Object
       radio: Boolean
       array_field: Array
+      text_area: Text
       IntegerField:
         text_field: Integer
       FloatField:

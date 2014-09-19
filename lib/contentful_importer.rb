@@ -10,7 +10,7 @@ class ContentfulImporter
 
   def create_space
     puts 'Write your contentful name of space:'
-    name_space = gets
+    name_space = gets.strip
     @space = Contentful::Management::Space.create(name: name_space, organization_id: CREDENTIALS['ORGANIZATION_ID'])
   end
 
@@ -58,11 +58,11 @@ class ContentfulImporter
     end
   end
 
-  private
-
   def get_space_id(collection)
     collection['space_id']
   end
+
+  private
 
   def find_symbol_attribute(collection_attributes, field)
     find_symbol_type_in_entry(collection_attributes, field) if field['input_type'] == 'Symbol'

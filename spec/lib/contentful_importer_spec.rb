@@ -63,13 +63,18 @@ describe ContentfulImporter do
     path = 'spec/support/data/convert/entries/symbol_test/symbol_entry.json'
     entry_attributes = JSON.parse(File.read(path))
     subject.send(:parse_symbol_value_to_string, path, 3, 'stars', entry_attributes)
-
   end
 
-  # it 'publish_all_entries' do
-  #   vcr('import/publish_entries') do
-  #     subject.publish_all_entries
-  #   end
-  # end
+  it 'get_space_id' do
+    space_id = subject.send(:get_space_id, {'space_id' => '123456'})
+    expect(space_id).to eq '123456'
+  end
+
+  it 'publish_all_entries' do
+    vcr('import/publish_entries') do
+      ContentfulImporter.any_instance.stub(:get_space_id).and_return('pwgzawloi92k')
+      subject.publish_all_entries
+    end
+  end
 
 end

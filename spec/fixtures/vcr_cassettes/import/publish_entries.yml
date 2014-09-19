@@ -1,0 +1,601 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/pwgzawloi92k
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.2.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      "^access-Control-Expose-Headers":
+      - Etag
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 19 Sep 2014 11:05:33 GMT
+      Etag:
+      - '"2d227c41bc22e46abed43ffe316cf339"'
+      Server:
+      - nginx
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-941147472
+      Content-Length:
+      - '463'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"pwgzawloi92k",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-09-18T11:29:33Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-09-18T11:29:33Z"
+          },
+          "name":"TestingafterRefactor\n"}
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 11:06:47 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/pwgzawloi92k/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.2.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - pwgzawloi92k
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 19 Sep 2014 11:05:34 GMT
+      Etag:
+      - '"903d92b076840cec127d05b02ff0aa4c"'
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '2798'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "Codequest",
+              "description": "Testing",
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Text"
+                },
+                {
+                  "id": "number",
+                  "name": "Number",
+                  "type": "Integer"
+                },
+                {
+                  "id": "float1",
+                  "name": "Float",
+                  "type": "Number"
+                },
+                {
+                  "id": "boolean",
+                  "name": "Boolean",
+                  "type": "Boolean"
+                },
+                {
+                  "id": "date",
+                  "name": "Date",
+                  "type": "Date"
+                },
+                {
+                  "id": "time",
+                  "name": "Time",
+                  "type": "Date"
+                },
+                {
+                  "id": "location",
+                  "name": "Location",
+                  "type": "Location"
+                },
+                {
+                  "id": "file",
+                  "name": "File",
+                  "type": "Link",
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "image",
+                  "name": "Image",
+                  "type": "Link",
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "array",
+                  "name": "Array",
+                  "type": "Array",
+                  "items": {
+                    "type": "Symbol"
+                  }
+                },
+                {
+                  "id": "entry",
+                  "name": "Entry",
+                  "type": "Link",
+                  "linkType": "Entry"
+                },
+                {
+                  "id": "entries",
+                  "name": "Entries",
+                  "type": "Array",
+                  "items": {
+                    "type": "Link",
+                    "linkType": "Entry"
+                  }
+                },
+                {
+                  "id": "object_json",
+                  "name": "Object",
+                  "type": "Object"
+                }
+              ],
+              "sys": {
+                "id": "4I3VZrr0Ewc8mYee6AsGYA",
+                "type": "ContentType",
+                "createdAt": "2014-09-18T11:29:38.451Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "pwgzawloi92k"
+                  }
+                },
+                "firstPublishedAt": "2014-09-18T11:29:50.875Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-09-18T11:29:50.875Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 14,
+                "version": 15,
+                "updatedAt": "2014-09-18T11:29:50.889Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 11:06:48 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/pwgzawloi92k/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.2.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - pwgzawloi92k
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 19 Sep 2014 11:05:35 GMT
+      Etag:
+      - '"8ae36a6632bcf1a31b71a960030a2cb9"'
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '2730'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Test z plikiem"
+                },
+                "number": {
+                  "en-US": 11
+                },
+                "float1": {
+                  "en-US": null
+                },
+                "boolean": {
+                  "en-US": null
+                },
+                "date": {
+                  "en-US": null
+                },
+                "time": {
+                  "en-US": null
+                },
+                "location": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "3FEY2ZA4JOEu8IqwCysSYO"
+                    }
+                  }
+                },
+                "image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "1Z3L7KdYhCoe6SA2mK0wmm"
+                    }
+                  }
+                },
+                "array": {
+                  "en-US": []
+                },
+                "entry": {
+                  "en-US": null
+                },
+                "entries": {
+                  "en-US": []
+                },
+                "object_json": {
+                  "en-US": {
+                    "entry": {
+                      "@type": "Codequest",
+                      "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d",
+                      "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d",
+                      "@version": 2,
+                      "@trash": false,
+                      "@created_at": "2014-09-08T08:49:26Z",
+                      "@updated_at": "2014-09-12T08:49:46Z",
+                      "name": "Test",
+                      "number": 11
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "5412e93a1e29fa07dd00178b",
+                "type": "Entry",
+                "createdAt": "2014-09-18T11:30:12.844Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "pwgzawloi92k"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "4I3VZrr0Ewc8mYee6AsGYA"
+                  }
+                },
+                "firstPublishedAt": "2014-09-19T06:31:46.059Z",
+                "publishedCounter": 1,
+                "version": 5,
+                "updatedAt": "2014-09-19T06:31:52.183Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 11:06:48 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/pwgzawloi92k/entries/5412e93a1e29fa07dd00178b/published
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.2.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '5'
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - pwgzawloi92k
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 19 Sep 2014 11:05:36 GMT
+      Etag:
+      - '"b9b3c216d278ab208965c87c5a234ffe"'
+      Server:
+      - nginx
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '2430'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "name": {
+              "en-US": "Test z plikiem"
+            },
+            "number": {
+              "en-US": 11
+            },
+            "float1": {
+              "en-US": null
+            },
+            "boolean": {
+              "en-US": null
+            },
+            "date": {
+              "en-US": null
+            },
+            "time": {
+              "en-US": null
+            },
+            "location": {
+              "en-US": null
+            },
+            "file": {
+              "en-US": {
+                "sys": {
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "id": "3FEY2ZA4JOEu8IqwCysSYO"
+                }
+              }
+            },
+            "image": {
+              "en-US": {
+                "sys": {
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "id": "1Z3L7KdYhCoe6SA2mK0wmm"
+                }
+              }
+            },
+            "array": {
+              "en-US": []
+            },
+            "entry": {
+              "en-US": null
+            },
+            "entries": {
+              "en-US": []
+            },
+            "object_json": {
+              "en-US": {
+                "entry": {
+                  "@type": "Codequest",
+                  "@url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d/entries/540d6d961e29fa3559000d0d",
+                  "@collection_url": "http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/540d6d001e29fa3541000d2d",
+                  "@version": 2,
+                  "@trash": false,
+                  "@created_at": "2014-09-08T08:49:26Z",
+                  "@updated_at": "2014-09-12T08:49:46Z",
+                  "name": "Test",
+                  "number": 11
+                }
+              }
+            }
+          },
+          "sys": {
+            "id": "5412e93a1e29fa07dd00178b",
+            "type": "Entry",
+            "createdAt": "2014-09-18T11:30:12.844Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "pwgzawloi92k"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "4I3VZrr0Ewc8mYee6AsGYA"
+              }
+            },
+            "firstPublishedAt": "2014-09-19T06:31:46.059Z",
+            "publishedCounter": 2,
+            "version": 6,
+            "updatedAt": "2014-09-19T11:05:36.358Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedAt": "2014-09-19T11:05:36.358Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 5
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 11:06:50 GMT
+recorded_with: VCR 2.9.3

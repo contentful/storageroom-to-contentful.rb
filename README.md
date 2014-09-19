@@ -20,7 +20,7 @@ In ```credentials.yaml``` file, you need to specify your credentials to:
 
 Your access token can be found at [CMA - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
 
-##Step 1:
+##Step 1 - Export data from StorageRoom:
 Downloads all data from StorageRoom and save locally as JSON files to make proposal for Contentful content types.
 You have to manually modify the structure of collection.
 
@@ -78,11 +78,11 @@ If the value of this attribute will not be the same as the ```code``` of locale 
 
 
 ##Association
-
  ```
     1. OneAssociationField (To-One)
     2. ManyAssociationField (To-Many)
  ```
+
 #### OneAssociationField (To-One)
 
 To create an ```Entry``` or ```Asset``` Link type, we must change ```input_type``` to ```Asset``` or ```Entry```.
@@ -103,14 +103,14 @@ Example:
     "unique": null,
     "link_type": "Entry"
 ```
-##Step 2:
-To convert values of ​​input_type in each collection file (``` data/collections/ ```), select action '4' from the menu.
+##Step 2 - Convert Storageroom field types to Contentful:
+To convert values of ​​input_type in each collection file (``` data/collections/ ```), select action '2' from the menu.
 
-##Step 3:
+##Step 3 - Import collections to Contentful:
 After modifying files with collections, run script again and select action '3' from the menu.
 Enter the name of the new space on Contentful and import collections as content types.
 
-##Step 4:
+##Step 4 - Convert symbol values to String:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 
 Example:
@@ -139,10 +139,17 @@ Example:
 ```
 To convert the data as a String, select action '4' from the menu.
 
-##Step 5:
+##Step 5 - Import entries to Contentful:
 To import all entries from JSON files to Contentful platform, select action '5' from the menu.
 
-##Step 6:
+Each entry will be created on Contentful with the same unique ID from Storageroom.
+
+#### [Links](https://www.contentful.com/developers/documentation/content-management-api/#links)
+
+If Entry is linked to another Entry, it will be created with related resources with specified IDs.
+Until all entries will be imported, the relationship will be invalid.
+
+##Step 6 - Publish all entries on Contentful:
 To publish all entries on Contentful, select action '6' from the menu.
 In the case of an unsuccessful publication,there will be displayed error message
 

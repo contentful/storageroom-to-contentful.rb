@@ -2,7 +2,7 @@ Storageroom to Contentful
 =================
 
 ## Description
-Script can be used to migrate user's data from StorageRoom application (one per time) to the Contentful platform. 
+Script can be used to migrate user's data from StorageRoom application (one per time) to the Contentful platform.
 Script is using json files dumped from StorageRoom API and loads them into Contenful via [CMA gem](https://github.com/contentful/contentful-management.rb)
 
 ## Installation
@@ -38,7 +38,7 @@ Available types of field on Contentful:
 10. 'Location'
 ```
 
-Each file in ```'lib/data/collections'``` must be changed.
+Each file in ```data/collections``` must be changed.
 Value of "input_type" attribute must belongs to list of available field types on Contentful.
 
 #### File & Image

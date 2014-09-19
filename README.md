@@ -52,9 +52,9 @@ To create a single ```Symbol``` you must change ```input_type``` to ```Symbol```
 
 Example:
 ```
-        "name": "Symbols",
-        "identifier": "symbol_tag",
-        "input_type": "Symbol",
+    "name": "Symbols",
+    "identifier": "symbol_tag",
+    "input_type": "Symbol",
 ```
 #### Array
 StorageRoom has a field type: ```Array``` which is not directly referred in Contentful.
@@ -65,10 +65,10 @@ To create a multiple ```Symbols``` you must change ```input_type``` to ```Array`
 
 Example:
 ```
-        "name": "Symbols",
-        "identifier": "symbol_tag",
-        "input_type": "Array",
-        "link": "Symbol"
+    "name": "Symbols",
+    "identifier": "symbol_tag",
+    "input_type": "Array",
+    "link": "Symbol"
 ```
 
 #### Locale
@@ -80,8 +80,8 @@ If the value of this attribute will not be the same as the ```code``` of locale 
 ##Association
 
  ```
-        1. OneAssociationField (To-One)
-        2. ManyAssociationField (To-Many)
+    1. OneAssociationField (To-One)
+    2. ManyAssociationField (To-Many)
  ```
 #### OneAssociationField (To-One)
 
@@ -116,7 +116,7 @@ If the collection has a field of type ```Symbol```, the value of the entry must 
 Example:
 #### Field in Collection
 ```
-{
+    {
       "@type": "IntegerField",
       "name": "Price Range",
       "identifier": "price_range",
@@ -132,10 +132,10 @@ Example:
 ```
 #### Entry
 ```
-{
-  "@type": "Restaurant",
-  "price_range": 2,
-}
+    {
+      "@type": "Restaurant",
+      "price_range": 2,
+    }
 ```
 To convert the data as a String, select action '4' from the menu.
 

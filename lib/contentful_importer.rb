@@ -42,7 +42,7 @@ class ContentfulImporter
       collection_name = File.basename(dir_path, '.json')
       puts "Publish entries for #{collection_name}."
       collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
-      Contentful::Management::Space.find(collection_attributes['space_id']).entries.all.each do |entry|
+      Contentful::Management::Space.find(get_space_id(collection_attributes)).entries.all.each do |entry|
         puts "Publish an entry with ID #{entry.id}."
         active_status(entry.publish)
       end
@@ -59,6 +59,10 @@ class ContentfulImporter
   end
 
   private
+
+  def get_space_id(collection)
+    collection['space_id']
+  end
 
   def find_symbol_attribute(collection_attributes, field)
     find_symbol_type_in_entry(collection_attributes, field) if field['input_type'] == 'Symbol'

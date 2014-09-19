@@ -49,10 +49,12 @@ class StorageRoomExporter
 
   def translate_input_type(field)
     field_type = field[:input_type]
-    field[:input_type] = begin
-      I18n.t! "fields.input_type.#{field[:@type]}.#{field_type}"
-    rescue I18n::MissingTranslationData
-      I18n.t "fields.input_type.#{field_type}"
+    unless  CONTENTFUL_TYPES.include? field_type
+      field[:input_type] = begin
+        I18n.t! "fields.input_type.#{field[:@type]}.#{field_type}"
+      rescue I18n::MissingTranslationData
+        I18n.t "fields.input_type.#{field_type}"
+      end
     end
   end
 

@@ -53,16 +53,23 @@ describe ContentfulImporter do
   end
 
   it 'find_symbol_params_in_collection' do
-    stub_const('ContentfulImporter::COLLECTIONS_DATA_DIR', 'spec/support/data/symbol/collections')
-    stub_const('ContentfulImporter::ENTRIES_DATA_DIR', 'spec/support/data/symbol/entries')
+    stub_const('ContentfulImporter::COLLECTIONS_DATA_DIR', 'spec/support/data/convert/collections')
+    stub_const('ContentfulImporter::ENTRIES_DATA_DIR', 'spec/support/data/convert/entries')
     ContentfulImporter.any_instance.stub(:parse_symbol_value_to_string)
     subject.find_symbol_type_in_collection
   end
 
   it 'parse_symbol_value_to_string' do
-    path = 'spec/support/data/symbol/entries/symbol_test/symbol_entry.json'
+    path = 'spec/support/data/convert/entries/symbol_test/symbol_entry.json'
     entry_attributes = JSON.parse(File.read(path))
     subject.send(:parse_symbol_value_to_string, path, 3, 'stars', entry_attributes)
+
   end
+
+  # it 'publish_all_entries' do
+  #   vcr('import/publish_entries') do
+  #     subject.publish_all_entries
+  #   end
+  # end
 
 end

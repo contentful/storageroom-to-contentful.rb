@@ -1,14 +1,19 @@
 require 'spec_helper'
 require 'storage_room_exporter'
 require 'contentful/management'
+require 'i18n'
+require 'active_support/lazy_load_hooks'
 
 describe StorageRoomExporter do
 
   before do
+    stub_const('StorageRoomExporter::CONTENTFUL_TYPES', %w(Text Integer Number Boolean Symbol Array Entry Asset Date Location Object))
     stub_const('StorageRoomExporter::STORAGE_ROOM_URL', 'http://api.storageroomapp.com/accounts/')
     stub_const('StorageRoomExporter::COLLECTIONS_DATA_DIR', 'spec/support/data/collections')
     stub_const('StorageRoomExporter::ENTRIES_DATA_DIR', 'spec/support/data/entries')
     stub_const('StorageRoomExporter::CREDENTIALS', YAML.load_file('spec/support/credentials_spec.yaml'))
+    stub_const('APP_ROOT', File.expand_path('../../../', __FILE__))
+    I18n.load_path << "#{APP_ROOT}/contenftul_fields_types.yml"
   end
 
   context 'collections' do
@@ -62,6 +67,56 @@ describe StorageRoomExporter do
   it 'save_to_file' do
     entry = File.read('spec/support/data/entries/codequest/540d6d961e29fa3559000d0d.json')
     subject.send(:save_to_file, 'spec/support/data', 'save_to_file', entry)
+  end
+
+  it 'mapping_collections_input_types' do
+    stub_const('StorageRoomExporter::COLLECTIONS_DATA_DIR', 'spec/support/data/convert/mapping')
+    subject.mapping_collections_input_types
+  end
+
+
+  context 'translate input types' do
+    it 'StringField and text_field' do
+      field = {:@type => 'StringField', :input_type => 'text_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Text'
+    end
+    it 'IntegerField and text_field' do
+      field = {:@type => 'IntegerField', :input_type => 'text_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Integer'
+    end
+    it 'FloatFied and text_field' do
+      field = {:@type => 'FloatField', :input_type => 'text_field'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Number'
+    end
+    it 'Location and text_field' do
+      field = {:@type => 'Location', :input_type => 'location'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Location'
+    end
+    it 'BooleanField and radio' do
+      field = {:@type => 'BooleanField', :input_type => 'radio'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Boolean'
+    end
+    it 'Select' do
+      field = {:@type => 'StringField', :input_type => 'select'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Symbol'
+    end
+    it 'Image and File' do
+      field = {:@type => 'File', :input_type => 'file'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Asset'
+    end
+
+    it 'OneAssociationField' do
+      field = {:@type => 'OneAssociationField', :input_type => 'file'}
+      subject.send(:translate_input_type, field)
+      expect(field[:input_type]).to eq 'Asset'
+    end
   end
 
 end

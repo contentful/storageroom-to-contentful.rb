@@ -2,6 +2,7 @@ require_relative 'mime_content_type'
 require 'contentful/management'
 
 class ContentfulImporter
+  ENTRIES_IDS = []
   attr_reader :space
 
   def initialize
@@ -26,7 +27,14 @@ class ContentfulImporter
     end
   end
 
+  def map_entries_ids
+    Dir.glob("#{ENTRIES_DATA_DIR}/**/*json") do |dir_path|
+      ENTRIES_IDS << File.basename(dir_path, '.json')
+    end
+  end
+
   def import_entries
+    map_entries_ids
     Dir.glob("#{ENTRIES_DATA_DIR}/*") do |dir_path|
       collection_name = File.basename(dir_path)
       puts "Importing entries for #{collection_name}."
@@ -116,13 +124,14 @@ class ContentfulImporter
   def create_entry_parameters(content_type_id, entry_attributes, space_id)
     entry_attributes.each_with_object({}) do |(attr, value), entry_params|
       next if attr.start_with?('@')
-      entry_params[attr.to_sym] = if value.is_a? Hash
-                                    parse_attributes_from_hash(value, space_id, content_type_id)
-                                  elsif value.is_a? Array
-                                    parse_attributes_from_array(value, space_id, content_type_id)
-                                  else
-                                    value
-                                  end
+      entry_param = if value.is_a? Hash
+                      parse_attributes_from_hash(value, space_id, content_type_id)
+                    elsif value.is_a? Array
+                      parse_attributes_from_array(value, space_id, content_type_id)
+                    else
+                      value
+                    end
+      entry_params[attr.to_sym] = entry_param unless validate_param(entry_param)
     end
   end
 
@@ -146,11 +155,12 @@ class ContentfulImporter
 
   def parse_attributes_from_array(params, space_id, content_type_id)
     params.each_with_object([]) do |attr, array_attributes|
-      array_attributes << if attr['@type']
-                            create_entry(attr, space_id, content_type_id)
-                          else
-                            attr
-                          end
+      value = if attr['@type']
+                create_entry(attr, space_id, content_type_id)
+              else
+                attr
+              end
+      array_attributes << value unless value.nil?
     end
   end
 
@@ -171,9 +181,12 @@ class ContentfulImporter
   end
 
   def create_entry(params, space_id, content_type_id)
-    content_type = Contentful::Management::ContentType.find(space_id, content_type_id)
-    content_type.entries.new.tap do |entry|
-      entry.id = get_id(params)
+    entry_id = get_id(params)
+    if ENTRIES_IDS.include? entry_id
+      content_type = Contentful::Management::ContentType.find(space_id, content_type_id)
+      content_type.entries.new.tap do |entry|
+        entry.id = entry_id
+      end
     end
   end
 
@@ -221,6 +234,14 @@ class ContentfulImporter
       {type: 'Array', items: create_array_field(field)}
     else
       {type: field_type}
+    end
+  end
+
+  def validate_param(param)
+    if param.is_a? Array
+      param.empty?
+    else
+      param.nil?
     end
   end
 

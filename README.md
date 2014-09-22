@@ -2,23 +2,43 @@ Storageroom to Contentful
 =================
 
 ## Description
-Script can be used to migrate user's data from StorageRoom application (one per time) to the Contentful platform.
-Script is using json files dumped from StorageRoom API and loads them into Contenful via [CMA gem](https://github.com/contentful/contentful-management.rb)
+This tool can be used to migrate data from [StorageRoom](http://storageroomapp.com/) to the [Contentful](https://www.contentful.com) platform.
+
+It exports the data from StorageRoom as JSON to the local hard drive, tries to convert the data to the Contentful data types and allows to recreate the data on Contentful.
+
 
 ## Installation
+
+``` bash
+gem install storageroom-to-contentful
 ```
-$ bundle install
-```
+
+This will install a ```storageroom-to-contentful``` executable.
 
 ## Usage
-In ```settings.yaml``` file, you need to specify your credentials to:
-* [Contentful](https://www.contentful.com)
-```ACCOUNT_ID```, ```APPLICATION_API_KEY```
 
-* [StorageRoom](http://storageroomapp.com/)
-```ACCESS_TOKEN```, ```ORGANIZATION_ID```
+To use the tool you need to specify your StorageRoom and Contentful credentials in a YAML file.
+For example in a ```credentials.yaml``` file:
 
-Your access token can be found at [CMA - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
+``` yaml
+#Contentful
+ACCESS_TOKEN: access_token
+ORGANIZATION_ID: organization_id
+
+#StorageRoom
+ACCOUNT_ID: account_id
+APPLICATION_API_KEY: application_key_id%
+```
+
+Your Contentful access token can be easiest created using the [Contentful Management API - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
+
+Once you installed the Gem and created the YAML file with the credentials you can invoke the tool using:
+
+``` bash
+storageroom-to-contentful credentials.yml
+```
+
+
 
 ##Step 1 - Export data from StorageRoom:
 Downloads all data from StorageRoom and save locally as JSON files to make proposal for Contentful content types.

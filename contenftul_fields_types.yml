@@ -1,0 +1,24 @@
+en:
+  fields:
+    input_type:
+      select: Symbol
+      date_picker: Date
+      time_picker: Date
+      location: Location
+      file: Asset
+      json_field: Object
+      radio: Boolean
+      checkbox: Boolean
+      array_field: Array
+      text_area: Text
+      markdown_editor: Text
+      IntegerField:
+        text_field: Integer
+      FloatField:
+        text_field: Number
+      StringField:
+        text_field: Text
+      OneAssociationField:
+        association_field: Entry
+      ManyAssociationField:
+        association_field: Array

@@ -10,7 +10,7 @@ class ContentfulImporter
   end
 
   def create_space
-    puts 'Write your contentful name of space:'
+    puts 'Name for a new created space on Contentful:'
     name_space = gets.strip
     @space = Contentful::Management::Space.create(name: name_space, organization_id: CREDENTIALS['ORGANIZATION_ID'])
   end

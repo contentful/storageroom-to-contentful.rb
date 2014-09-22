@@ -197,11 +197,11 @@ class ContentfulImporter
   def create_asset(space_id, params)
     asset_file = Contentful::Management::File.new.tap do |file|
       file.properties[:contentType] = file_content_type(params)
-      file.properties[:fileName] = 'fix_this_name'
+      file.properties[:fileName] = params['@type']
       file.properties[:upload] = params['@url']
     end
     space = Contentful::Management::Space.find(space_id)
-    space.assets.create(title: 'StorageRoom file', description: 'test', file: asset_file).process_file
+    space.assets.create(title: "#{params['@type']}", description: '', file: asset_file).process_file
   end
 
   def create_location_file(params)

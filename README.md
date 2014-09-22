@@ -11,7 +11,7 @@ $ bundle install
 ```
 
 ## Usage
-In ```credentials.yaml``` file, you need to specify your credentials to:
+In ```settings.yaml``` file, you need to specify your credentials to:
 * [Contentful](https://www.contentful.com)
 ```ACCOUNT_ID```, ```APPLICATION_API_KEY```
 
@@ -156,5 +156,5 @@ In the case of an unsuccessful publication,there will be displayed error message
 ##Script execution:
 
 ```
-$ ruby 'bin/script.rb'
+$ ruby ruby bin/storageroom-to-contentful settings.yml
 ```

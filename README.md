@@ -1,4 +1,4 @@
-Storageroom to Contentful
+StorageRoom to Contentful
 =================
 
 ## Description
@@ -18,7 +18,7 @@ This will install a ```storageroom-to-contentful``` executable.
 ## Usage
 
 To use the tool you need to specify your StorageRoom and Contentful credentials in a YAML file.
-For example in a ```credentials.yaml``` file:
+For example in a ```credentials.yml``` file:
 
 ``` yaml
 #Contentful
@@ -38,11 +38,29 @@ Once you installed the Gem and created the YAML file with the credentials you ca
 storageroom-to-contentful credentials.yml
 ```
 
+You will be presented with a bunch of options:
+
+```
+Actions:
+  1. Export data from StorageRoom to JSON files.
+  2. Convert Storageroom field types to Contentful.
+  3. Import collections to Contentful.
+  4. Convert symbol values to String.
+  5. Import entries to Contentful.
+  6. Publish all entries on Contentful.
+
+```
 
 
-##Step 1 - Export data from StorageRoom:
-Downloads all data from StorageRoom and save locally as JSON files to make proposal for Contentful content types.
-You have to manually modify the structure of collection.
+
+##Step 1 - Export data from StorageRoom to JSON files:
+
+Downloads all data from StorageRoom and saves it locally as JSON files.
+The data will be copied to the current working directory in a sub folder called `data`.
+
+You either manually adjust the data types or try an automatic translation.
+In either case we suggest to put the `data` directory under version control like git and commit after each change.
+
 
 Available types of field on Contentful:
 ```
@@ -58,14 +76,16 @@ Available types of field on Contentful:
 10. 'Location'
 ```
 
-Each file in ```data/collections``` must be changed.
-Value of "input_type" attribute must belongs to list of available field types on Contentful.
+All files in ```data/collections``` must be inspected and changed.
+Any occurrence of the *input_type* attribute must changed to a type that is available on Contentful.
 
 #### File & Image
+
 File and Image are equivalent to ```Asset``` in Contentful.
 To create Asset type in Contentful, you must change ```input_type``` to ```Asset```.
 
 #### Select
+
 StorageRoom has a field type: ```select``` which is not directly referred in Contentful.
 As an equivalent it can be treated as a Symbol.
 To create a single ```Symbol``` you must change ```input_type``` to ```Symbol```
@@ -77,7 +97,7 @@ Example:
     "input_type": "Symbol",
 ```
 #### Array
-StorageRoom has a field type: ```Array``` which is not directly referred in Contentful.
+StorageRoom has a field type: ```Array``` that can not directly be mapped to Contentful.
 As n equivalent it can be treated as a ```Multiple Symbols```.
 To create a multiple ```Symbols``` you must change ```input_type``` to ```Array``` and add an additional parameter:
 ```"link": "Symbol"```
@@ -92,9 +112,10 @@ Example:
 ```
 
 #### Locale
-Entries in Contetnful can be localized.
-When importing Entry from StoragRoom to Contentful, some entry may have attribute named as 'locale'.
-If the value of this attribute will not be the same as the ```code``` of locale in Contentful, create entry fails.
+Entries in Contentful can be localized.
+When importing Entries from StorageRoom to Contentful, some may have attributes that are named as 'locale'.
+Is the value of this attribute not the same as locale ```code``` on Contentful creating the entries will fail.
+You always need to create the locales on Contentful before you start the import.
 
 
 ##Association
@@ -105,13 +126,13 @@ If the value of this attribute will not be the same as the ```code``` of locale 
 
 #### OneAssociationField (To-One)
 
-To create an ```Entry``` or ```Asset``` Link type, we must change ```input_type``` to ```Asset``` or ```Entry```.
+To create an ```Entry``` or ```Asset``` Link type, you must change the ```input_type``` to ```Asset``` or ```Entry```.
 
 #### ManyAssociationField (To-Many)
 
 * Entries
 
-To create multiple ```Entries``` Link type, we must change ```"link_type"``` to ```Array``` and add an additional parameter:
+To create multiple ```Entries``` Link type, you must change the ```link_type``` to ```Array``` and add an additional parameter:
 ```"link_type": "Entry"```
 
 Example:
@@ -124,11 +145,15 @@ Example:
     "link_type": "Entry"
 ```
 ##Step 2 - Convert Storageroom field types to Contentful:
+
 To convert values of ​​input_type in each collection file (``` data/collections/ ```), select action '2' from the menu.
 
 ##Step 3 - Import collections to Contentful:
-After modifying files with collections, run script again and select action '3' from the menu.
-Enter the name of the new space on Contentful and import collections as content types.
+
+Once the exported StorageRoom data is transformed to be compatible with Contentful you can start the import.
+
+Run script again and select action '3' from the menu.
+Enter the name of the new space on Contentful and import the collections as content types.
 
 ##Step 4 - Convert symbol values to String:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
@@ -157,24 +182,25 @@ Example:
       "price_range": 2,
     }
 ```
-To convert the data as a String, select action '4' from the menu.
+To convert the data to a String, select action '4' from the menu.
 
 ##Step 5 - Import entries to Contentful:
-To import all entries from JSON files to Contentful platform, select action '5' from the menu.
+To import all the entries from the exported data to the Contentful platform, select action '5' from the menu.
 
-Each entry will be created on Contentful with the same unique ID from Storageroom.
+Each entry will be created with the same StorageRoom id.
 
 #### [Links](https://www.contentful.com/developers/documentation/content-management-api/#links)
 
-If Entry is linked to another Entry, it will be created with related resources with specified IDs.
-Until all entries will be imported, the relationship will be invalid.
+If two or more entries are linked the import tool will recreate those relationships.
+
+The entries will be valid once all the required relations are created on Contentful.
 
 ##Step 6 - Publish all entries on Contentful:
-To publish all entries on Contentful, select action '6' from the menu.
-In the case of an unsuccessful publication,there will be displayed error message
+To publish all entries, select action '6' from the menu.
+If an entry can not be published the tool will print an error message containing the reason(eg. Invalid, ...)
 
 ##Script execution:
 
 ```
-$ ruby ruby bin/storageroom-to-contentful settings.yml
+$ storageroom-to-contentful credentials.yml
 ```

@@ -238,5 +238,4 @@ class ContentfulImporter
       field.link_type = params['link_type']
     end
   end
-
 end

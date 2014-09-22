@@ -66,7 +66,7 @@ describe ContentfulImporter do
   end
 
   it 'get_space_id' do
-    space_id = subject.send(:get_space_id, {'space_id' => '123456'})
+    space_id = subject.send(:get_space_id, 'space_id' => '123456')
     expect(space_id).to eq '123456'
   end
 

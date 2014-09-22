@@ -2,7 +2,6 @@ require 'uri'
 require 'net/http'
 
 class StorageRoomExporter
-
   attr_reader :collections
 
   def export_collections
@@ -32,7 +31,7 @@ class StorageRoomExporter
 
   private
 
-  def read_collection_data(&block)
+  def read_collection_data
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path), symbolize_names: true)
       yield collection_attributes, collection_attributes[:fields], file_path
@@ -44,7 +43,6 @@ class StorageRoomExporter
       translate_input_type(field)
       mapping_array_type(field)
     end
-
   end
 
   def translate_input_type(field)
@@ -95,5 +93,4 @@ class StorageRoomExporter
   def entries(collection)
     get_request("collections/#{collection_id(collection)}/entries")['array']['resources']
   end
-
 end

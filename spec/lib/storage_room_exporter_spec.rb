@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'storage_room_exporter'
 require 'contentful/management'
 require 'i18n'
-require 'active_support/lazy_load_hooks'
 
 describe StorageRoomExporter do
 

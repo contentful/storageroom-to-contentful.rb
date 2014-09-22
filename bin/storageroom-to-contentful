@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'yaml'
 require 'i18n'
-require 'active_support/lazy_load_hooks'
 
 require_relative '../lib/migrator'
 

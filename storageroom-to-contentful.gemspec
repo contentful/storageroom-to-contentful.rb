@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Andreas Tiefenthaler']
   spec.email         = ['at@an-ti.eu']
   spec.description   = 'Import data from StorageRoom to Contentful'
-  spec.summary   = 'Import data from StorageRoom to Contentful'
+  spec.summary       = 'Import data from StorageRoom to Contentful'
   spec.homepage      = ''
   spec.license       = 'MIT'
 
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'http', '~> 0.6'
   spec.add_dependency 'multi_json', '~> 1'
   spec.add_dependency 'contentful-management', '~> 0.2'
+  spec.add_dependency 'i18n', '~> 0.6'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake'

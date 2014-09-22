@@ -77,4 +77,22 @@ describe ContentfulImporter do
     end
   end
 
+  it 'map_entries_ids' do
+    subject.map_entries_ids
+    expect(ContentfulImporter::ENTRIES_IDS.first).to eq '540d6d961e29fa3559000d0d'
+  end
+
+  it 'create_entry' do
+    vcr('import/create_entry') do
+      Contentful::Management::Client.new('<ACCESS_TOKEN>')
+      stub_const('ContentfulImporter::ENTRIES_IDS', '4d960919ba05617333000012')
+      entry = {
+          '@type' => 'CollectionName',
+          'url' => 'http://api.storageroomapp.com/accounts/account_id/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012'
+      }
+      entry_object = subject.send(:create_entry, entry, 'jsdhlmknq7i6', '6x5iZOCWreIA4scme2sKwI')
+      expect(entry_object.id).to eq '4d960919ba05617333000012'
+    end
+  end
+
 end

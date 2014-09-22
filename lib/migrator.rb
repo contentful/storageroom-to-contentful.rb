@@ -6,7 +6,7 @@ require 'fileutils'
 class Migrator
   attr_reader :storage_room_exporter, :contentful_importer
 
-  MESSAGE = <<-eoruby, __FILE__
+  MESSAGE = <<-eoruby
 Actions:
   1. Export data from StorageRoom to JSON files.
   2. Convert Storageroom field types to Contentful.
@@ -14,6 +14,7 @@ Actions:
   4. Convert symbol values to String.
   5. Import entries to Contentful.
   6. Publish all entries on Contentful.
+-> Choose on of the options:
   eoruby
 
   def run
@@ -45,5 +46,3 @@ Actions:
     @contentful_importer ||= ContentfulImporter.new
   end
 end
-
-Migrator.new.run

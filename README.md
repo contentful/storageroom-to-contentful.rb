@@ -155,7 +155,7 @@ Once the exported StorageRoom data is transformed to be compatible with Contentf
 Run script again and select action '3' from the menu.
 Enter the name of the new space on Contentful and import the collections as content types.
 
-##Step 4 - Convert symbol values to String:
+## Convert symbol values to String:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 
 Example:
@@ -182,10 +182,9 @@ Example:
       "price_range": 2,
     }
 ```
-To convert the data to a String, select action '4' from the menu.
 
-##Step 5 - Import entries to Contentful:
-To import all the entries from the exported data to the Contentful platform, select action '5' from the menu.
+##Step 4 - Import entries to Contentful:
+To import all the entries from the exported data to the Contentful platform, select action '4' from the menu.
 
 Each entry will be created with the same StorageRoom id.
 
@@ -195,8 +194,8 @@ If two or more entries are linked the import tool will recreate those relationsh
 
 The entries will be valid once all the required relations are created on Contentful.
 
-##Step 6 - Publish all entries on Contentful:
-To publish all entries, select action '6' from the menu.
+##Step 5 - Publish all entries on Contentful:
+To publish all entries, select action '5' from the menu.
 If an entry can not be published the tool will print an error message containing the reason(eg. Invalid, ...)
 
 ##Script execution:

@@ -11,9 +11,8 @@ Actions:
   1. Export data from StorageRoom to JSON files.
   2. Convert Storageroom field types to Contentful.
   3. Import collections to Contentful.
-  4. Convert symbol values to String.
-  5. Import entries to Contentful.
-  6. Publish all entries on Contentful.
+  4. Import entries to Contentful.
+  5. Publish all entries on Contentful.
 -> Choose on of the options:
   eoruby
 
@@ -29,11 +28,10 @@ Actions:
       when 3
         contentful_importer.create_space
         contentful_importer.import_content_types
-      when 4
         contentful_importer.find_symbol_type_in_collection
-      when 5
+      when 4
         contentful_importer.import_entries
-      when 6
+      when 5
         contentful_importer.publish_all_entries
     end
   end

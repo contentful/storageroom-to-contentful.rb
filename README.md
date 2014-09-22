@@ -110,7 +110,7 @@ To convert values of ​​input_type in each collection file (``` data/collecti
 After modifying files with collections, run script again and select action '3' from the menu.
 Enter the name of the new space on Contentful and import collections as content types.
 
-##Step 4 - Convert symbol values to String:
+## Convert symbol values to String:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 
 Example:
@@ -137,10 +137,9 @@ Example:
       "price_range": 2,
     }
 ```
-To convert the data as a String, select action '4' from the menu.
 
-##Step 5 - Import entries to Contentful:
-To import all entries from JSON files to Contentful platform, select action '5' from the menu.
+##Step 4 - Import entries to Contentful:
+To import all entries from JSON files to Contentful platform, select action '4' from the menu.
 
 Each entry will be created on Contentful with the same unique ID from Storageroom.
 
@@ -149,8 +148,8 @@ Each entry will be created on Contentful with the same unique ID from Storageroo
 If Entry is linked to another Entry, it will be created with related resources with specified IDs.
 Until all entries will be imported, the relationship will be invalid.
 
-##Step 6 - Publish all entries on Contentful:
-To publish all entries on Contentful, select action '6' from the menu.
+##Step 5 - Publish all entries on Contentful:
+To publish all entries on Contentful, select action '5' from the menu.
 In the case of an unsuccessful publication,there will be displayed error message
 
 ##Script execution:

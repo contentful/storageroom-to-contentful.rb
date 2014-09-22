@@ -47,7 +47,6 @@ Actions:
   3. Import collections to Contentful.
   4. Import entries to Contentful.
   5. Publish all entries on Contentful.
-
 ```
 
 
@@ -148,6 +147,10 @@ Example:
 To convert values of ​​input_type in each collection file (``` data/collections/ ```), select action '2' from the menu.
 
 ##Step 3 - Import collections to Contentful:
+Once the exported StorageRoom data is transformed to be compatible with Contentful you can start the import.
+
+Run script again and select action '3' from the menu.
+Enter the name of the new space on Contentful and import the collections as content types.
 
 Once the exported StorageRoom data is transformed to be compatible with Contentful you can start the import.
 
@@ -195,6 +198,7 @@ The entries will be valid once all the required relations are created on Content
 
 ##Step 5 - Publish all entries on Contentful:
 To publish all entries, select action '5' from the menu.
+
 If an entry can not be published the tool will print an error message containing the reason(eg. Invalid, ...)
 
 ##Script execution:

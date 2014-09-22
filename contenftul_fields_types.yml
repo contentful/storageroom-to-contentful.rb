@@ -11,6 +11,7 @@ en:
       checkbox: Boolean
       array_field: Array
       text_area: Text
+      markdown_editor: Text
       IntegerField:
         text_field: Integer
       FloatField:

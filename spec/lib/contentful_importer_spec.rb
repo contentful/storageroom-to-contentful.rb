@@ -87,8 +87,8 @@ describe ContentfulImporter do
       Contentful::Management::Client.new('<ACCESS_TOKEN>')
       stub_const('ContentfulImporter::ENTRIES_IDS', '4d960919ba05617333000012')
       entry = {
-          '@type' => 'CollectionName',
-          'url' => 'http://api.storageroomapp.com/accounts/account_id/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012'
+        '@type' => 'CollectionName',
+        'url' => 'http://api.storageroomapp.com/accounts/account_id/collections/4d960916ba05617333000005/entries/4d960919ba05617333000012'
       }
       entry_object = subject.send(:create_entry, entry, 'jsdhlmknq7i6', '6x5iZOCWreIA4scme2sKwI')
       expect(entry_object.id).to eq '4d960919ba05617333000012'

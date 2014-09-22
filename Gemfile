@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rubocop'
-gem 'contentful-management', git: 'https://github.com/contentful/contentful-management.rb'
+gem 'contentful-management'
 
 gem 'pry'
 

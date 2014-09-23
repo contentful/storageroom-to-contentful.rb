@@ -152,11 +152,6 @@ Once the exported StorageRoom data is transformed to be compatible with Contentf
 Run script again and select action '3' from the menu.
 Enter the name of the new space on Contentful and import the collections as content types.
 
-Once the exported StorageRoom data is transformed to be compatible with Contentful you can start the import.
-
-Run script again and select action '3' from the menu.
-Enter the name of the new space on Contentful and import the collections as content types.
-
 ## Convert symbol values to String:
 If the collection has a field of type ```Symbol```, the value of the entry must be strings.
 

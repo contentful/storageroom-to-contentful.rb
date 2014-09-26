@@ -9,8 +9,10 @@ en:
       json_field: Object
       radio: Boolean
       checkbox: Boolean
+      check_boxes: Boolean
       array_field: Array
       text_area: Text
+      html_editor: Text
       markdown_editor: Text
       IntegerField:
         text_field: Integer

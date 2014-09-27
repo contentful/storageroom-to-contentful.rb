@@ -2,9 +2,13 @@ StorageRoom to Contentful
 =================
 
 ## Description
-This tool can be used to migrate data from [StorageRoom](http://storageroomapp.com/) to the [Contentful](https://www.contentful.com) platform.
 
-It exports the data from StorageRoom as JSON to the local hard drive, tries to convert the data to the Contentful data types and allows to recreate the data on Contentful.
+[StorageRoom](http://storageroomapp.com/) will be shut down on 1/1/2015. This tool can be used to:
+
+1. migrate content from StorageRoom to the [Contentful](https://www.contentful.com) platform, which provides a similar feature set
+2. export your StorageRoom content without importing it into Contentful
+
+This tool exports the content from StorageRoom as JSON to your local hard drive. It will suggest the field types to use on Contentful and will allow you to recreate all the content on Contentful.
 
 
 ## Installation

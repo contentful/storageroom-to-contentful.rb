@@ -31,7 +31,7 @@ ORGANIZATION_ID: organization_id
 
 #StorageRoom
 ACCOUNT_ID: account_id
-APPLICATION_API_KEY: application_key_id%
+APPLICATION_API_KEY: application_key_id
 ```
 
 Your Contentful access token can be easiest created using the [Contentful Management API - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)

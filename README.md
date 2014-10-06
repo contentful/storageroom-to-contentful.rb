@@ -3,7 +3,7 @@ StorageRoom to Contentful
 
 ## Description
 
-[StorageRoom](http://storageroomapp.com/) will be shut down on 1/1/2015. This tool can be used to:
+[StorageRoom](http://storageroomapp.com/) will be **shut down** on **1/1/2015**. This tool can be used to:
 
 1. migrate content from StorageRoom to the [Contentful](https://www.contentful.com) platform, which provides a similar feature set
 2. export your StorageRoom content without importing it into Contentful

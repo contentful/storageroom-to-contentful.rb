@@ -1,11 +1,13 @@
 # Change Log
 
 ## Unreleased
-## Added
+### Added
 * Test for StorageRoom and Contentful credentials
+### Fixed
+* Import StorageRoom Array as Contentful Array
 
 ## 0.0.3 - 2014-09-26
-## Added
+### Added
 * check_boxes and html_editor translations
-## Removed
+### Removed
 * simplecov gem

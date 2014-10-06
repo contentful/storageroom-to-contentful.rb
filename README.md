@@ -34,7 +34,7 @@ ACCOUNT_ID: account_id
 APPLICATION_API_KEY: application_key_id
 ```
 
-Your Contentful access token can be easiest created using the [Contentful Management API - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)
+**Your Contentful access token can be easiest created using the [Contentful Management API - documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started)**
 The Contentful organization id can be found in your account settings.
 
 Once you installed the Gem and created the YAML file with the credentials you can invoke the tool using:

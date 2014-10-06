@@ -9,7 +9,7 @@ en:
       json_field: Object
       radio: Boolean
       checkbox: Boolean
-      check_boxes: Boolean
+      check_boxes: Array
       array_field: Array
       text_area: Text
       html_editor: Text

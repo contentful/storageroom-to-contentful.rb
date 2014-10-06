@@ -9,6 +9,30 @@ class ContentfulImporter
     Contentful::Management::Client.new(CREDENTIALS['ACCESS_TOKEN'])
   end
 
+  def test_credentials
+    test_contetful_credentials
+    test_storageroom_credentials
+  end
+
+  def test_contetful_credentials
+    space = Contentful::Management::Space.all
+    if space.is_a? Contentful::Management::Array
+      puts 'Contentful Management API credentials: OK'
+    end
+  rescue NoMethodError => e
+    puts 'Contentful Management API credentials: INVALID (check README)'
+  end
+
+  def test_storageroom_credentials
+    request = StorageRoomExporter.new.send(:get_request, 'collections')
+    if request.is_a? Hash
+      puts 'StorageRoom API credentials: OK'
+    end
+  rescue RuntimeError => e
+    puts 'StorageRoom API credentials: INVALID (check README)'
+    puts e
+  end
+
   def create_space
     puts 'Name for a new created space on Contentful:'
     name_space = gets.strip
@@ -259,4 +283,5 @@ class ContentfulImporter
       field.link_type = params['link_type']
     end
   end
+
 end

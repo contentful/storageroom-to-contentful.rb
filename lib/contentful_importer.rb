@@ -9,6 +9,15 @@ class ContentfulImporter
     Contentful::Management::Client.new(CREDENTIALS['ACCESS_TOKEN'])
   end
 
+  def test_contentful_credentials
+    space = Contentful::Management::Space.all
+    if space.is_a? Contentful::Management::Array
+       puts 'You are using Contentful Management API credentials.'
+    end
+  rescue StandardError => e
+    puts 'You are using invalid or Content Deliver API credentials.'
+  end
+
   def create_space
     puts 'Name for a new created space on Contentful:'
     name_space = gets.strip
@@ -259,4 +268,5 @@ class ContentfulImporter
       field.link_type = params['link_type']
     end
   end
+
 end

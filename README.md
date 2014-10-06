@@ -52,9 +52,12 @@ Actions:
   3. Import collections to Contentful.
   4. Import entries to Contentful.
   5. Publish all entries on Contentful.
+  6. Test credentials
 ```
 
+## Test credentials
 
+Before you start import the data, you can check if the credentials that you use are correct. To do that select action '6' from the menu.
 
 ##Step 1 - Export data from StorageRoom to JSON files:
 

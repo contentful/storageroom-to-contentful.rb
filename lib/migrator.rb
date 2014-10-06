@@ -13,6 +13,7 @@ Actions:
   3. Import collections to Contentful.
   4. Import entries to Contentful.
   5. Publish all entries on Contentful.
+  6. Test credentials.
 -> Choose on of the options:
   eoruby
 
@@ -33,6 +34,8 @@ Actions:
         contentful_importer.import_entries
       when 5
         contentful_importer.publish_all_entries
+      when 6
+        contentful_importer.test_contentful_credentials
     end
   end
 

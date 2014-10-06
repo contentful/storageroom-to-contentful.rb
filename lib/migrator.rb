@@ -35,7 +35,7 @@ Actions:
       when 5
         contentful_importer.publish_all_entries
       when 6
-        contentful_importer.test_contentful_credentials
+        contentful_importer.test_credentials
     end
   end
 

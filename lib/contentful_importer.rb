@@ -9,13 +9,28 @@ class ContentfulImporter
     Contentful::Management::Client.new(CREDENTIALS['ACCESS_TOKEN'])
   end
 
-  def test_contentful_credentials
+  def test_credentials
+    test_contetful_credentials
+    test_storageroom_credentials
+  end
+
+  def test_contetful_credentials
     space = Contentful::Management::Space.all
     if space.is_a? Contentful::Management::Array
-       puts 'You are using Contentful Management API credentials.'
+      puts 'Contentful Management API credentials: OK'
     end
-  rescue StandardError => e
-    puts 'You are using invalid or Content Deliver API credentials.'
+  rescue NoMethodError => e
+    puts 'Contentful Management API credentials: INVALID (check README)'
+  end
+
+  def test_storageroom_credentials
+    request = StorageRoomExporter.new.send(:get_request, 'collections')
+    if request.is_a? Hash
+      puts 'StorageRoom API credentials: OK'
+    end
+  rescue RuntimeError => e
+    puts 'StorageRoom API credentials: INVALID (check README)'
+    puts e
   end
 
   def create_space

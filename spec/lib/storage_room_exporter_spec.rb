@@ -20,7 +20,7 @@ describe StorageRoomExporter do
       vcr('collection/export_collections') do
         StorageRoomExporter.any_instance.stub(:save_to_file)
         collections = subject.export_collections
-        expect(collections.count).to eq 4
+        expect(collections.count).to eq 1
         expect(collections.first['@type']).to eq 'Collection'
       end
     end
@@ -28,9 +28,9 @@ describe StorageRoomExporter do
     it 'get_request ' do
       vcr('collection/get_request') do
         request = subject.send(:get_request, 'collections')
-        expect(request['array']['resources'].count).to eq 4
+        expect(request['array']['resources'].count).to eq 1
         expect(request['array']['resources'].first['@type']).to eq 'Collection'
-        expect(request['array']['resources'].first['entry_type']).to eq 'Announcement'
+        expect(request['array']['resources'].first['entry_type']).to eq 'Codequest'
       end
     end
     it 'collection_id ' do
@@ -45,9 +45,8 @@ describe StorageRoomExporter do
         StorageRoomExporter.any_instance.stub(:save_to_file)
         entries = subject.export_entries
         request = subject.send(:entries, entries.first)
-        expect(request.count).to eq 8
-        expect(request.first['@type']).to eq 'Announcement'
-        expect(request.first['text']).to eq 'Welcome to our app. Try clicking around.'
+        expect(request.count).to eq 2
+        expect(request.first['@type']).to eq 'Codequest'
       end
     end
 

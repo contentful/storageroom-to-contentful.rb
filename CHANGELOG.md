@@ -1,6 +1,9 @@
 # Change Log
 
-## Unreleased
+## 0.0.4 - 2014-10-07
+### Fixed
+* Storage Room export only exporting the first 20 records #19
+
 ### Added
 * Test for StorageRoom and Contentful credentials
 

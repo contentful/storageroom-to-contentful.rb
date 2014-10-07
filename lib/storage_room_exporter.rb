@@ -2,7 +2,11 @@ require 'uri'
 require 'net/http'
 
 class StorageRoomExporter
+
+  PAGE_SIZE = 100
+
   attr_reader :collections
+
 
   def export_collections
     puts 'Exporting collections:'
@@ -70,8 +74,10 @@ class StorageRoomExporter
     @collections ||= get_request('collections')['array']['resources']
   end
 
-  def get_request(path)
-    uri = URI.parse("#{STORAGE_ROOM_URL}#{CREDENTIALS['ACCOUNT_ID']}/#{path}.json?auth_token=#{CREDENTIALS['APPLICATION_API_KEY']}")
+  def get_request(path, page= nil)
+    url = "#{STORAGE_ROOM_URL}#{CREDENTIALS['ACCOUNT_ID']}/#{path}.json?auth_token=#{CREDENTIALS['APPLICATION_API_KEY']}&per_page=#{PAGE_SIZE}"
+    url += "&page=#{page}" if page
+    uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
@@ -91,6 +97,14 @@ class StorageRoomExporter
   end
 
   def entries(collection)
-    get_request("collections/#{collection_id(collection)}/entries")['array']['resources']
+    entries = []
+    page = 1
+    begin
+      response = get_request("collections/#{collection_id(collection)}/entries", page)['array']
+      total = response['@total_resources']
+      entries += response['resources']
+      page += 1
+    end while entries.size < total
+    entries
   end
 end

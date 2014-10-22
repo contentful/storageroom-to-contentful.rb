@@ -16,6 +16,7 @@ DATA_DIR = "#{APP_ROOT}/data"
 COLLECTIONS_DATA_DIR = "#{DATA_DIR}/collections"
 ENTRIES_DATA_DIR = "#{DATA_DIR}/entries"
 STORAGE_ROOM_URL = 'http://api.storageroomapp.com/accounts/'
+IMPORT_TIME_DIR = "#{DATA_DIR}/import_time.json"
 CONTENTFUL_TYPES = %w(Text Integer Number Boolean Symbol Array Entry Asset Date Location Object)
 
 CREDENTIALS = YAML.load_file(File.expand_path(yaml_path))

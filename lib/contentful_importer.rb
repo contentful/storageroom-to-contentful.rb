@@ -59,6 +59,7 @@ class ContentfulImporter
 
   def import_entries
     map_entries_ids
+    create_file_with_import_time
     Dir.glob("#{ENTRIES_DATA_DIR}/*") do |dir_path|
       collection_name = File.basename(dir_path)
       puts "Importing entries for #{collection_name}."
@@ -135,6 +136,7 @@ class ContentfulImporter
   end
 
   def import_entry(content_type_id, dir_path, space_id)
+    puts "Start mapping at: #{start = Time.now}"; records = 0
     Dir.glob("#{dir_path}/*.json") do |file_path|
       entry_attributes = JSON.parse(File.read(file_path))
       entry_id = File.basename(file_path, '.json')
@@ -142,7 +144,10 @@ class ContentfulImporter
       entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
       entry = content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
       import_status(entry)
+      records += 1
     end
+    import_time = JSON.parse(File.read("#{IMPORT_TIME_DIR}"))
+    File.open(IMPORT_TIME_DIR, 'w') { |file| file.write(import_time.merge(dir_path => {total_time: "#{(Time.now - start).strftime("%H:%M:%S")} min.", records_mapped: "#{records}"})) }
   end
 
   def create_entry_parameters(content_type_id, entry_attributes, space_id)
@@ -282,6 +287,10 @@ class ContentfulImporter
       field.type = params['link'] || 'Link'
       field.link_type = params['link_type']
     end
+  end
+
+  def create_file_with_import_time
+    File.open(IMPORT_TIME_DIR, 'w') { |file| file.write({}) }
   end
 
 end

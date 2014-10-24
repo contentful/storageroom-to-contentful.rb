@@ -11,7 +11,7 @@ spec = Gem::Specification.find_by_name('storageroom-to-contentful')
 gem_root = spec.gem_dir
 
 puts gem_root
-APP_ROOT = '/tmp' #Dir.pwd
+APP_ROOT = Dir.pwd
 DATA_DIR = "#{APP_ROOT}/data"
 COLLECTIONS_DATA_DIR = "#{DATA_DIR}/collections"
 ENTRIES_DATA_DIR = "#{DATA_DIR}/entries"

@@ -1,5 +1,6 @@
 require_relative 'mime_content_type'
 require 'contentful/management'
+require 'csv'
 
 class ContentfulImporter
   ENTRIES_IDS = []
@@ -47,6 +48,7 @@ class ContentfulImporter
       create_content_type_fields(collection_attributes, content_type)
       create_content_type_webhooks(collection_attributes['webhook_definitions'], content_type.space.id)
       add_content_type_id_to_file(collection_attributes, content_type.id, content_type.space.id, file_path)
+      content_type.update(displayField: collection_attributes['displayField']) if collection_attributes['displayField']
       active_status(content_type.activate)
     end
   end
@@ -60,13 +62,14 @@ class ContentfulImporter
   def import_entries
     map_entries_ids
     create_file_with_import_time
+    create_log_file
     Dir.glob("#{ENTRIES_DATA_DIR}/*") do |dir_path|
       collection_name = File.basename(dir_path)
       puts "Importing entries for #{collection_name}."
       collection_attributes = JSON.parse(File.read("#{COLLECTIONS_DATA_DIR}/#{collection_name}.json"))
       content_type_id = collection_attributes['content_type_id']
       space_id = collection_attributes['space_id']
-      import_entry(content_type_id, dir_path, space_id)
+      import_entries_for_collection(content_type_id, dir_path, space_id)
     end
   end
 
@@ -135,19 +138,26 @@ class ContentfulImporter
     end
   end
 
-  def import_entry(content_type_id, dir_path, space_id)
+  def import_entries_for_collection(content_type_id, dir_path, space_id)
     puts "Start mapping at: #{start = Time.now}"; records = 0
     Dir.glob("#{dir_path}/*.json") do |file_path|
-      entry_attributes = JSON.parse(File.read(file_path))
-      entry_id = File.basename(file_path, '.json')
-      puts "Creating entry: #{entry_id}."
-      entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
-      entry = content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
-      import_status(entry)
+      imported_entries = CSV.read(LOG_FILE_DIR, 'r')
+      import_entry(file_path, space_id, content_type_id) unless imported_entries.flatten.include?(file_path)
       records += 1
     end
     import_time = JSON.parse(File.read("#{IMPORT_TIME_DIR}"))
-    File.open(IMPORT_TIME_DIR, 'w') { |file| file.write(import_time.merge(dir_path => {total_time: "#{(Time.now - start).strftime("%H:%M:%S")} min.", records_mapped: "#{records}"})) }
+    File.open(IMPORT_TIME_DIR, 'w') { |file| file.write(JSON.pretty_generate(import_time.merge(dir_path => {total_time: "#{((Time.now - start)/60).round(2)} min.", records_mapped: "#{records}"}))) }
+  end
+
+  def import_entry(file_path, space_id, content_type_id)
+    entry_attributes = JSON.parse(File.read(file_path))
+    entry_id = File.basename(file_path, '.json')
+    puts "Creating entry: #{entry_id}."
+    entry_params = create_entry_parameters(content_type_id, entry_attributes, space_id)
+    entry = content_type(content_type_id, space_id).entries.create(entry_params.merge(id: entry_id))
+    import_status(entry, file_path)
+  rescue StandardError => error
+    CSV.open(FAILURE_LOG_DIR, 'a') { |csv| csv << [file_path, error.message] }
   end
 
   def create_entry_parameters(content_type_id, entry_attributes, space_id)
@@ -193,11 +203,13 @@ class ContentfulImporter
     end
   end
 
-  def import_status(entry)
+  def import_status(entry, file_path)
     if entry.is_a? Contentful::Management::Entry
       puts 'Imported successfully!'
+      CSV.open(LOG_FILE_DIR, 'a') { |csv| csv << [file_path] }
     else
       puts "### Failure! - #{entry.message} ###"
+      CSV.open(FAILURE_LOG_DIR, 'a') { |csv| csv << [file_path, entry.message] }
     end
   end
 
@@ -293,4 +305,7 @@ class ContentfulImporter
     File.open(IMPORT_TIME_DIR, 'w') { |file| file.write({}) }
   end
 
+  def create_log_file
+    CSV.open(LOG_FILE_DIR, 'a')
+  end
 end

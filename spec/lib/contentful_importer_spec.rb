@@ -9,6 +9,8 @@ describe ContentfulImporter do
     stub_const('ContentfulImporter::STORAGE_ROOM_URL', 'http://api.storageroomapp.com/accounts/')
     stub_const('ContentfulImporter::COLLECTIONS_DATA_DIR', 'spec/support/data/collections')
     stub_const('ContentfulImporter::ENTRIES_DATA_DIR', 'spec/support/data/entries')
+    stub_const('ContentfulImporter::IMPORT_TIME_DIR', 'spec/support/data/import_time.json')
+    stub_const('ContentfulImporter::LOG_FILE_DIR', 'spec/support/data/imported_entries_log.csv')
     stub_const('ContentfulImporter::CREDENTIALS', YAML.load_file('spec/support/credentials_spec.yaml'))
   end
 

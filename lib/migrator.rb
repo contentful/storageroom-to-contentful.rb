@@ -14,7 +14,7 @@ Actions:
   4. Import entries to Contentful.
   5. Publish all entries on Contentful.
   6. Test credentials.
--> Choose on of the options:
+-> Choose one of the options:
   eoruby
 
   def run

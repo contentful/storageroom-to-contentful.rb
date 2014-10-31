@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.5 - 2014-10.31
+### Fixed
+* Create content type fields with a single request [#34](https://github.com/contentful/storageroom-to-contentful.rb/pull/24)
+
 ## 0.0.4 - 2014-10-07
 ### Added
 * Test for StorageRoom and Contentful credentials

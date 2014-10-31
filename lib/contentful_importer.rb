@@ -42,7 +42,7 @@ class ContentfulImporter
   def import_content_types
     Dir.glob("#{COLLECTIONS_DATA_DIR}/*json") do |file_path|
       collection_attributes = JSON.parse(File.read(file_path))
-      content_type = space.content_types.create(name: collection_attributes['entry_type'], description: collection_attributes['note'])
+      content_type = create_new_content_type(collection_attributes)
       puts "Importing content_type: #{content_type.name}"
       create_content_type_fields(collection_attributes, content_type)
       create_content_type_webhooks(collection_attributes['webhook_definitions'], content_type.space.id)
@@ -121,9 +121,11 @@ class ContentfulImporter
   end
 
   def create_content_type_fields(collection_attributes, content_type)
-    collection_attributes['fields'].each do |field|
-      create_field(field, content_type)
+    fields = collection_attributes['fields'].each_with_object([]) do |field, fields|
+      fields << create_field(field)
     end
+    content_type.fields = fields
+    content_type.save
   end
 
   def create_content_type_webhooks(params, space_id)
@@ -200,6 +202,13 @@ class ContentfulImporter
     Contentful::Management::ContentType.find(space_id, content_type_id)
   end
 
+  def create_new_content_type(collection_attributes)
+    space.content_types.new.tap do |content_type|
+      content_type.name = collection_attributes['entry_type']
+      content_type.description = collection_attributes['note']
+    end
+  end
+
   def add_content_type_id_to_file(collection, content_type_id, space_id, file_path)
     File.open(file_path, 'w') { |file| file.write(format_json(collection.merge(content_type_id: content_type_id, space_id: space_id))) }
   end
@@ -235,11 +244,22 @@ class ContentfulImporter
     end
   end
 
-  def create_field(field, content_type)
+  def create_field(field)
     field_params = {id: field['identifier'], name: field['name'], required: field['required']}
     field_params.merge!(additional_field_params(field))
     puts "Creating field: #{field_params[:type]}"
-    content_type.fields.create(field_params)
+    create_content_type_field(field_params)
+  end
+
+  def create_content_type_field(field_params)
+    Contentful::Management::Field.new.tap do |field|
+      field.id = field_params[:id]
+      field.name = field_params[:name]
+      field.type = field_params[:type]
+      field.link_type = field_params[:link_type]
+      field.required = field_params[:required]
+      field.items = field_params[:items]
+    end
   end
 
   def active_status(ct_object)

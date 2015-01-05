@@ -1,9 +1,13 @@
 StorageRoom to Contentful
 =================
 
+# StorageRoom has been shut down!
+
+This repository stays as an example on how to use the [Content Management Gem](https://github.com/contentful/contentful-management.rb).
+
 ## Description
 
-[StorageRoom](http://storageroomapp.com/) will be **shut down** on **1/1/2015**. This tool can be used to:
+[StorageRoom](http://storageroomapp.com/) was **shut down** on **1/1/2015**. This tool can be used to:
 
 1. migrate content from StorageRoom to the [Contentful](https://www.contentful.com) platform, which provides a similar feature set
 2. export your StorageRoom content without importing it into Contentful
